@@ -1,27 +1,18 @@
-.personalInfo {
-    /* Your styles for the main container */
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .title {
-    /* Your styles for the title */
-    font-size: 1.2em;
-    color: #555;
-  }
-  
-  .contact {
-    /* Your styles for the contact information */
-    margin-top: 10px;
-  }
-  
-  .contact a {
-    /* Style the links if needed */
-    color: #0077b5;
-    text-decoration: none;
-    margin: 0 5px;
-  }
-  
-  .contact a:hover {
-    text-decoration: underline;
-  }
+/* src/components/Curriculum/PersonalInfo.module.css */
+
+.personalInfoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.personalInfoIcon {
+  margin-right: 0.5em;
+  font-size: 1.2em;
+  color: var(--color-accent);
+}
+
+.personalInfoText {
+  font-size: 1.1em;
+  color: var(--color-text);
+}

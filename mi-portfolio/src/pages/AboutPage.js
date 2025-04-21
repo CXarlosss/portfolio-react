@@ -7,14 +7,17 @@ import EducationSection from '../components/About/EducationSection';
 import InterestsSection from '../components/About/InterestsSection';
 import styles from '../styles/pages/AboutPage.module.css'; // Create AboutPage.module.css
 
+
 function AboutPage() {
   return (
     <div className={styles.aboutPage}>
-      <Introduction />
-      <SkillsSection />
-      <ExperienceSection />
-      <EducationSection />
-      <InterestsSection />
+      <main className={styles.aboutMain}>
+        <Introduction />
+        <SkillsSection />
+        <ExperienceSection />
+        <EducationSection />
+        <InterestsSection />
+      </main>
     </div>
   );
 }

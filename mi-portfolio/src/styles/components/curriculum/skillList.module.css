@@ -1,0 +1,22 @@
+/* src/components/Curriculum/SkillList.module.css */
+
+.skillList {
+    display: block;
+    max-height: 140px; /* Altura máxima para el contenedor */
+    flex-wrap: wrap;
+    gap: 0.5em;
+    font-size: 0.71rem;
+  }
+  
+  .skillItem {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-size: 1em;
+  }
+  
+  .skillItem:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+  }

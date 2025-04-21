@@ -1,0 +1,44 @@
+/* src/components/Curriculum/Education.module.css (y Experience.module.css) */
+
+.educationItem,
+.experienceItem {
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 0.1em solid var(--color-secondary);
+}
+
+.educationItem:last-child,
+.experienceItem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.educationTitle,
+.experienceTitle {
+  font-size: 1.3em;
+  color: var(--color-dark);
+  margin-bottom: 0.25em;
+}
+
+.educationInstitution,
+.experienceCompany {
+  font-size: 1.1em;
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-bottom: 0.25em;
+}
+
+.educationDates,
+.experienceDates {
+  font-size: 1em;
+  color: var(--color-text);
+  margin-bottom: 0.5em;
+}
+
+.educationDescription,
+.experienceDescription {
+  font-size: 1.1em;
+  color: var(--color-text);
+  line-height: 1.6;
+}

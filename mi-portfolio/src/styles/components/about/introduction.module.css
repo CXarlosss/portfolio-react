@@ -1,42 +1,46 @@
 /* src/components/About/Introduction.module.css */
 
 .introduction {
-    padding: 2em;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: var(--color-secondary); /* Fondo suave */
-    border-radius: 0.5em;
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.05); /* Sombra sutil */
-  }
-  
-  .introduction h2 {
-    font-size: 2.2em;
-    color: var(--color-dark);
-    margin-bottom: 0.75em;
-    border-bottom: 0.1em solid var(--color-accent); /* Línea azul */
-    padding-bottom: 0.5em;
-  }
-  
-  .introduction p {
-    font-size: 1.15em;
-    color: var(--color-text);
-    line-height: 1.7;
-  }
-  
-  .highlight {
-    color: var(--color-accent);
-    font-weight: 500;
-  }
-  
-  .avatarContainer {
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  
-  .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover; /* Recorta la imagen para ajustarla al círculo */
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
-  }
+  max-height: 140px;
+  padding: 1em; /* Reducido el padding general */
+  background-color: var(--color-primary);
+  border-radius: 0.4em;
+  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+}
+
+.introduction h2 {
+  font-size: 1.2rem; /* Aún más pequeño */
+  color: var(--color-dark);
+  margin-bottom: 0.8em; /* Menos margen inferior */
+  text-align: left;
+  border-bottom: 0.05em solid var(--color-secondary);
+  padding-bottom: 0.3em; /* Menos padding inferior */
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.introduction p {
+  font-size: 0.85rem; /* Ligeramente más pequeño */
+  color: var(--color-text);
+  line-height: 1.4; /* Ligeramente más compacto */
+  margin-bottom: 0.6em; /* Menos margen inferior */
+}
+
+.highlight {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.avatarContainer {
+  text-align: center;
+  margin-bottom: 0.8em; /* Menos margen inferior */
+}
+
+.avatar {
+  width: 70px; /* Aún más pequeño */
+  height: 70px; /* Aún más pequeño */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.1);
+  border: 0.08em solid var(--color-secondary); /* Borde más fino */
+}

@@ -1,0 +1,58 @@
+/* src/pages/AboutPage.module.css */
+
+.aboutPage {
+  padding: 1em;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.aboutMain {
+  display: grid;
+  grid-template-columns: 1fr; /* Por defecto, una columna */
+  grid-gap: 1.5em;
+}
+
+@media (min-width: 768px) {
+  .aboutMain {
+    display: grid;
+    grid-template-columns: 90%; /* Sobre mí ocupa el 90% */
+    grid-template-rows: min-content auto auto; /* Filas para cada bloque principal */
+    grid-template-areas:
+      "introduction"
+      "secondary" /* Contenedor para formación, skills y experiencia */
+      "interests";
+    justify-content: center; /* Centra el bloque principal */
+  }
+
+  .introduction {
+    grid-area: introduction;
+  }
+
+  .secondarySection {
+    grid-area: secondary;
+    display: grid;
+    grid-template-columns: 20% 60% 20%; /* Formación, Skills, Experiencia */
+    grid-template-areas: "skills education  experience";
+    gap: 1.5em; /* Espacio entre las secciones secundarias */
+    align-items: start; /* Alinea las secciones secundarias en la parte superior */
+  }
+
+  .skillsSection {
+    grid-area: skills;
+    position: sticky;
+    top: 1.5em;
+    height: fit-content;
+  }
+
+  .experienceSection {
+    grid-area: experience;
+  }
+
+  .educationSection {
+    grid-area: education;
+  }
+
+  .interestsSection {
+    grid-area: interests;
+  }
+}

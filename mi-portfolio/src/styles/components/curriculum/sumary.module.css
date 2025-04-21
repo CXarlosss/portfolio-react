@@ -1,0 +1,12 @@
+/* src/components/Curriculum/Summary.module.css */
+
+.summary {
+    font-size: 1.1em;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+  
+  .highlight {
+    color: var(--color-accent);
+    font-weight: 500;
+  }

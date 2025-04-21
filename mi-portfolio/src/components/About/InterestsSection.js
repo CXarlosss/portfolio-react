@@ -7,9 +7,7 @@ function InterestsSection() {
     <div className={styles.interestsSection}>
       <h2>Lo que me apasiona fuera del código</h2>
       <p>
-        Cuando no estoy programando, disfruto de [Menciona un interés principal,
-        ej: tocar la guitarra] y explorar nuevos lugares. También me encanta [Otro
-        interés, ej: el cine] y pasar tiempo con amigos.
+        Cuando no estoy programando, disfruto de hacer deporte de manera regular y explorar nuevos lugares. También me encanta el cine y pasar tiempo con amigos.
       </p>
       <ul>
         <li>Música</li>

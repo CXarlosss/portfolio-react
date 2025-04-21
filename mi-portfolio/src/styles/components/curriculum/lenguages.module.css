@@ -1,0 +1,26 @@
+/* src/components/Curriculum/LanguageSkills.module.css */
+
+.languageSkills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adaptativo */
+    gap: 1em;
+  }
+  
+  .languageSkill {
+    background-color: var(--color-primary);
+    border: 0.1em solid var(--color-secondary);
+    border-radius: 0.5em;
+    padding: 1em;
+    text-align: center;
+  }
+  
+  .languageSkill h3 {
+    font-size: 1.2em;
+    color: var(--color-dark);
+    margin-bottom: 0.5em;
+  }
+  
+  .languageSkill p {
+    font-size: 1em;
+    color: var(--color-text);
+  }

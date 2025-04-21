@@ -1,35 +1,43 @@
 /* src/components/About/InterestSection.module.css */
 
 .interestSection {
-    padding: 2em;
-    max-width: 800px;
-    margin: 2em auto;
-  }
-  
-  .interestSection h2 {
-    font-size: 2.2em;
-    color: var(--color-dark);
-    margin-bottom: 1em;
-    text-align: center;
-  }
-  
-  .interestList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1em;
-  }
-  
-  .interestItem {
-    background-color: var(--color-secondary);
-    color: var(--color-text);
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    font-size: 1.1em;
-    margin-bottom: 0.5em;
-  }
-  
-  .interestItem:hover {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-  }
+  padding: 1.5em;
+  background-color: var(--color-primary);
+  border-radius: 0.4em;
+  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+}
+
+.interestSection h2 {
+  font-size: 1.4rem; /* Más pequeño */
+  color: var(--color-dark);
+  margin-bottom: 1em;
+  text-align: left;
+  border-bottom: 0.05em solid var(--color-secondary);
+  padding-bottom: 0.4em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.interestList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em; /* Menos espacio */
+}
+
+.interestItem {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  padding: 0.4em 0.8em; /* Más pequeño */
+  border-radius: 0.2em;
+  font-size: 0.9rem; /* Más pequeño */
+  margin-bottom: 0.4em;
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    border-color var(--transition-duration) var(--transition-timing-function);
+}
+
+.interestItem:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
