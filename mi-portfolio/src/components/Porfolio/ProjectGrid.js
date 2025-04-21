@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/portfolio/projectGrid.css'; // Create Portfolio.module.css
+import styles from '../../styles/components/portfolio/projectGrid.module.css'; // Create Portfolio.module.css
 import ProjectCard from './ProjectCard';
 
 // Import project images (replace with actual image paths)

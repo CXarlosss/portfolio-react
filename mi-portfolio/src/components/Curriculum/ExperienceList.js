@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from "../../styles/components/curriculum/experience.css";
+import styles from "../../styles/components/curriculum/experience.module.css";
 
 
 function ExperienceList() {

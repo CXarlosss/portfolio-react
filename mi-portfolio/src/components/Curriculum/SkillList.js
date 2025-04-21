@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from "../../styles/components/curriculum/skillList.css";
+import styles from "../../styles/components/curriculum/skillList.module.css";
 
 function SkillsList() {
   const skills = {

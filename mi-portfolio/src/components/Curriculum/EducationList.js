@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from "../../styles/components/curriculum/education.css";
+import styles from "../../styles/components/curriculum/education.module.css";
 
 function EducationList() {
   const education = [

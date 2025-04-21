@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/common/projectThumbnail.css'; // Use Common.module.css
+import styles from '../../styles/components/common/projectThumbnail.module.css'; // Use Common.module.css
 
 
 function ProjectThumbnail({ images, title, description, link }) {

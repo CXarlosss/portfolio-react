@@ -1,0 +1,29 @@
+/* src/components/common/SkillBadge.module.css */
+
+.skillBadge {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    display: inline-block; /* Para que los márgenes funcionen correctamente */
+    white-space: nowrap; /* Evita que el texto se rompa */
+  }
+  
+  .skillBadge:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+  }
+  
+  .skillBadgePrimary {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+  }
+  
+  .skillBadgeSecondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 0.1em solid var(--color-accent);
+  }

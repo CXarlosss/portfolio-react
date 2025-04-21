@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/about/educationSection.css'; // Use the same CSS Module
+import styles from '../../styles/components/about/educationSection.module.css'; // Use the same CSS Module
 
 function EducationSection() {
   return (

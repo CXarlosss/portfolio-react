@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/home/callToAction.css'; // Create Home.module.css
+import styles from '../../styles/components/home/callToAction.module.css'; // Create Home.module.css
 import Button from '../common/Button';
 
 function CallToAction() {

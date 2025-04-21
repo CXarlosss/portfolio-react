@@ -1,0 +1,42 @@
+/* src/components/About/Introduction.module.css */
+
+.introduction {
+    padding: 2em;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-secondary); /* Fondo suave */
+    border-radius: 0.5em;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.05); /* Sombra sutil */
+  }
+  
+  .introduction h2 {
+    font-size: 2.2em;
+    color: var(--color-dark);
+    margin-bottom: 0.75em;
+    border-bottom: 0.1em solid var(--color-accent); /* Línea azul */
+    padding-bottom: 0.5em;
+  }
+  
+  .introduction p {
+    font-size: 1.15em;
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+  
+  .highlight {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  
+  .avatarContainer {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  
+  .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; /* Recorta la imagen para ajustarla al círculo */
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
+  }

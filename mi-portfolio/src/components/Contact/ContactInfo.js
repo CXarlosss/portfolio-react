@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/contact/contactInfo.css'; // Use Contact.module.css
+import styles from '../../styles/components/contact/contactInfo.module.css'; // Use Contact.module.css
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from 'react-icons/fa'; // Example icons
 
 function ContactInfo() {

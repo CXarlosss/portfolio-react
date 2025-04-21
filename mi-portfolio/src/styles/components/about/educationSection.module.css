@@ -1,0 +1,51 @@
+/* src/components/About/EducationSection.module.css */
+
+.educationSection {
+    padding: 2em;
+    max-width: 800px;
+    margin: 2em auto;
+  }
+  
+  .educationSection h2 {
+    font-size: 2.2em;
+    color: var(--color-dark);
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  
+  .educationItem {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 0.1em solid var(--color-secondary);
+  }
+  
+  .educationItem:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .educationTitle {
+    font-size: 1.3em;
+    color: var(--color-dark);
+    margin-bottom: 0.25em;
+  }
+  
+  .educationInstitution {
+    font-size: 1.1em;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: 0.25em;
+  }
+  
+  .educationDates {
+    font-size: 1em;
+    color: var(--color-text);
+    margin-bottom: 0.5em;
+  }
+  
+  .educationDescription {
+    font-size: 1.1em;
+    color: var(--color-text);
+    line-height: 1.6;
+  }

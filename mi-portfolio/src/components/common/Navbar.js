@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from '../../styles/components/common/navbar.css';
+import styles from '../../styles/components/common/navbar.module.css';
 function Navbar() {
   return (
     <nav className={styles.navbar}>

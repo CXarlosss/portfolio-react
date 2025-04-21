@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/portfolio/projectDetailModal.css'; // Use Portfolio.module.css
+import styles from '../../styles/components/portfolio/projectDetailModal.module.css'; // Use Portfolio.module.css
 import Button from '../common/Button'; // Assuming you have a Button component
 
 function ProjectDetailModal({ project, onClose }) {

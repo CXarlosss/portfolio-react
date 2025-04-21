@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import styles from '../../styles/components/contact/contactForm.css'; // Create Contact.module.css
+import styles from '../../styles/components/contact/contactForm.module.css'; // Create Contact.module.css
 import Button from '../common/Button'; // Assuming you have a Button component
 
 function ContactForm() {

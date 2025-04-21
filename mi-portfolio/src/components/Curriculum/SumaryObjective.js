@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from "../../styles/components/curriculum/sumary.css";
+import styles from "../../styles/components/curriculum/sumary.module.css";
 
 function SummaryObjective() {
   return (

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/common/button.css'; // Create Common.module.css
+import styles from '../../styles/components/common/button.module.css'; // Create Common.module.css
 
 function Button({ children, onClick, variant, link, className }) {
   const buttonStyle = `${styles.button} ${styles[variant]} ${className}`;

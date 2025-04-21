@@ -1,6 +1,6 @@
 // @ts-nocheck // You might not need this if your setup is correct
 import React from 'react';
-import styles from "../../styles/components/curriculum/personalinfo.css"; // Corrected import (using .module.css)
+import styles from "../../styles/components/curriculum/personalinfo.module.css"; // Corrected import (using .module.css)
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 function PersonalInfo() {

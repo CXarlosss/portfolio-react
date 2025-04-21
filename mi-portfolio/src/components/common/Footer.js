@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/common/footer.css'; // Use Common.module.css
+import styles from '../../styles/components/common/footer.module.css'; // Use Common.module.css
 import { FaLinkedin, FaGithub } from 'react-icons/fa'; // Example icons
 
 function Footer() {

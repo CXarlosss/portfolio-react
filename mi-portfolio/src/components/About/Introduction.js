@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/about/introduction.css'; // Create a CSS Module for About page
+import styles from '../../styles/components/about/introduction.module.css'; // Create a CSS Module for About page
 
 function Introduction() {
   return (

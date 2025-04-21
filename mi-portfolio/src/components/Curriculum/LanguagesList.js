@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/curriculum/lenguages.css';
+import styles from '../../styles/components/curriculum/lenguages.module.css';
 
 function LanguagesList() {
   const languages = [

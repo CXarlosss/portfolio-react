@@ -1,0 +1,35 @@
+/* src/components/About/InterestSection.module.css */
+
+.interestSection {
+    padding: 2em;
+    max-width: 800px;
+    margin: 2em auto;
+  }
+  
+  .interestSection h2 {
+    font-size: 2.2em;
+    color: var(--color-dark);
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  
+  .interestList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .interestItem {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+  }
+  
+  .interestItem:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+  }

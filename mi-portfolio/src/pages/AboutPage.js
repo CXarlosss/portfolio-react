@@ -5,7 +5,7 @@ import SkillsSection from '../components/About/SkillsSection';
 import ExperienceSection from '../components/About/ExperienceSection';
 import EducationSection from '../components/About/EducationSection';
 import InterestsSection from '../components/About/InterestsSection';
-import styles from '../styles/pages/AboutPage.css'; // Create AboutPage.module.css
+import styles from '../styles/pages/AboutPage.module.css'; // Create AboutPage.module.css
 
 function AboutPage() {
   return (

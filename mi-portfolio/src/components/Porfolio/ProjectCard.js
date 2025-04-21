@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/portfolio/projectCard.css'; // Use Portfolio.module.css
+import styles from '../../styles/components/portfolio/projectCard.module.css'; // Use Portfolio.module.css
 import Button from '../common/Button'; // Assuming you have a Button component
 import { Link } from 'react-router-dom'; // If using ProjectDetailPage
 

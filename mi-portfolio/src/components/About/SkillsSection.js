@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/about/skillsSection.css'; // Use the same CSS Module
+import styles from '../../styles/components/about/skillsSection.module.css'; // Use the same CSS Module
 
 function SkillsSection() {
   return (

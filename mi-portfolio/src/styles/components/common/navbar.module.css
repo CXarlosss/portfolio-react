@@ -1,0 +1,48 @@
+/* src/components/common/Navbar.module.css */
+
+.navbar {
+    background-color: var(--color-primary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1em 0;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-dark);
+    padding-left: 1em;
+  }
+  
+  .navLinks {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0 1em;
+  }
+  
+  .navLinks li {
+    margin-left: 1em;
+  }
+  
+  .navLink {
+    color: var(--color-accent);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+    transition: background-color var(--transition-duration) var(--transition-timing-function),
+      color var(--transition-duration) var(--transition-timing-function);
+  }
+  
+  .navLink:hover,
+  .navLink.active {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+  }
+  
+  .active {
+    font-weight: 600;
+  }
