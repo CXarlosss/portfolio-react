@@ -11,8 +11,8 @@ function Footer() {
       <div className={styles.footerContent}>
         <p>&copy; {year} Carlos de Petronila Rodríguez</p>
         <div className={styles.socialLinks}>
-          <a href="TU_LINKEDIN_URL" aria-label="LinkedIn"><FaLinkedin />https://www.linkedin.com/in/carlos-de-petronila-rodriguez/</a>
-          <a href="TU_GITHUB_URL" aria-label="GitHub"><FaGithub />https://github.com/CXarlosss</a>
+          <a href="https://www.linkedin.com/in/carlos-de-petronila-rodriguez/" aria-label="LinkedIn"><FaLinkedin /></a>
+          <a href="https://github.com/CXarlosss" aria-label="GitHub"><FaGithub /></a>
         </div>
       </div>
     </footer>
