@@ -1,8 +1,7 @@
 // @ts-nocheck
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // Install react-router-dom
-import styles from '../../styles/components/common/navbar.css'; // Use Common.module.css
-
+import { NavLink } from 'react-router-dom';
+import styles from '../../styles/components/common/navbar.css';
 function Navbar() {
   return (
     <nav className={styles.navbar}>
@@ -12,7 +11,7 @@ function Navbar() {
       </div>
       <ul className={styles.navLinks}>
         <li>
-          <NavLink to="/" exact activeClassName={styles.active}>
+          <NavLink to="/" activeClassName={styles.active}>
             Inicio
           </NavLink>
         </li>
@@ -40,5 +39,4 @@ function Navbar() {
     </nav>
   );
 }
-
 export default Navbar;

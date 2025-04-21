@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/home/RecentWorkPreview.css';
+import styles from '../../styles/components/home/recentWorkPreview.css';
 import ProjectThumbnail from '../common/ProjectThumbnail';
 import Button from '../common/Button'; // Assuming you have a Button component
 

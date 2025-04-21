@@ -1,0 +1,20 @@
+/* En index.css o un archivo global */
+:root {
+    --color-primary: #ffffff;       /* Blanco */
+    --color-secondary: #e0f2f1;   /* Azul muy claro */
+    --color-accent: #03a9f4;        /* Azul claro */
+    --color-dark: #1e88e5;         /* Azul más oscuro */
+    --color-text: #333333;        /* Gris oscuro para el texto */
+    --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+  }/* En index.css o un archivo global */
+html {
+    scroll-behavior: smooth; /* Para el scroll suave */
+  }
+  
+  body {
+    font-family: var(--font-family-main);
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+  }
