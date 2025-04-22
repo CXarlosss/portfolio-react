@@ -1,27 +1,24 @@
-/* src/pages/AboutPage.module.css */
-
 .aboutPage {
-  padding: 1em;
-  max-width: 95%;
+  padding: 2rem 1rem;
+  max-width: 1200px;
   margin: 0 auto;
+  font-family: var(--font-main);
+  background-color: var(--color-primary);
 }
 
 .aboutMain {
   display: grid;
-  grid-template-columns: 1fr; /* Por defecto, una columna */
-  grid-gap: 1.5em;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
+/* Diseño para pantallas medianas y grandes */
 @media (min-width: 768px) {
   .aboutMain {
-    display: grid;
-    grid-template-columns: 90%; /* Sobre mí ocupa el 90% */
-    grid-template-rows: min-content auto auto; /* Filas para cada bloque principal */
     grid-template-areas:
       "introduction"
-      "secondary" /* Contenedor para formación, skills y experiencia */
+      "secondary"
       "interests";
-    justify-content: center; /* Centra el bloque principal */
   }
 
   .introduction {
@@ -31,17 +28,19 @@
   .secondarySection {
     grid-area: secondary;
     display: grid;
-    grid-template-columns: 20% 60% 20%; /* Formación, Skills, Experiencia */
-    grid-template-areas: "skills education  experience";
-    gap: 1.5em; /* Espacio entre las secciones secundarias */
-    align-items: start; /* Alinea las secciones secundarias en la parte superior */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
   }
 
   .skillsSection {
     grid-area: skills;
     position: sticky;
-    top: 1.5em;
+    top: 2rem;
     height: fit-content;
+    align-self: start;
+    background-color: var(--color-secondary);
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
   .experienceSection {
@@ -54,5 +53,12 @@
 
   .interestsSection {
     grid-area: interests;
+  }
+}
+
+/* Opcional: en pantallas grandes poner 3 columnas con padding y bordes */
+@media (min-width: 1024px) {
+  .secondarySection {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

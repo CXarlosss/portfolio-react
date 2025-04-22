@@ -1,0 +1,32 @@
+.curriculumPage {
+    font-family: var(--font-main);
+    background-color: var(--color-primary);
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  /* Para resaltar cada bloque de info */
+  .curriculumPage > * {
+    background-color: var(--color-secondary);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .curriculumPage > *:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Extra spacing en desktop */
+  @media (min-width: 1024px) {
+    .curriculumPage {
+      padding: 4rem 2rem;
+      gap: 3rem;
+    }
+  }
+  

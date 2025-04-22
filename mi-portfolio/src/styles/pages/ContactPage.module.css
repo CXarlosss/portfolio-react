@@ -1,0 +1,41 @@
+.contactPage {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-main);
+    background-color: var(--color-primary);
+  }
+  
+  /* Diseño responsive tipo columnas */
+  @media (min-width: 768px) {
+    .contactPage {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "form info"
+        "map map";
+    }
+  
+    .contactPage > :nth-child(1) {
+      grid-area: form;
+    }
+  
+    .contactPage > :nth-child(2) {
+      grid-area: info;
+    }
+  
+    .contactPage > :nth-child(3) {
+      grid-area: map;
+    }
+  }
+  
+  /* Mejor visualización en desktop */
+  @media (min-width: 1024px) {
+    .contactPage {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3rem;
+    }
+  }
+  

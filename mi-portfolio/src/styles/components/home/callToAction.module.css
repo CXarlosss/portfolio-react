@@ -1,0 +1,21 @@
+.callToAction {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    font-family: var(--font-main);
+  }
+  
+  .callToAction h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .callToAction p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  

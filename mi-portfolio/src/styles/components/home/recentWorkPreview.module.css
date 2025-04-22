@@ -1,0 +1,27 @@
+.recentWork {
+    padding: 3rem 2rem;
+    background-color: var(--color-primary);
+    font-family: var(--font-main);
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .recentWork h2 {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+  }
+  
+  .projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .projectsButton {
+    margin-top: 1rem;
+  }
+  

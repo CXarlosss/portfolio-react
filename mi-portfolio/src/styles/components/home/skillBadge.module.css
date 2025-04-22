@@ -1,0 +1,48 @@
+.skillsHighlight {
+    background-color: var(--color-secondary);
+    padding: 3rem 2rem;
+    font-family: var(--font-main);
+    text-align: center;
+  }
+  
+  .skillsHighlight h2 {
+    font-family: var(--font-headings);
+    color: var(--color-accent);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .skillsGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .skillItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--color-dark);
+  }
+  
+  .skillIcon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .skillIcon:hover {
+    transform: scale(1.2);
+  }
+  
+  .skillsDescription {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
