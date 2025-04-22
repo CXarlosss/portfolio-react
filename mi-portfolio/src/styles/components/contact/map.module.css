@@ -1,17 +1,49 @@
+/* src/components/Contact/Map.module.css */
+
 .map {
-    font-family: var(--font-main);
-    margin: 2rem auto;
-    max-width: 600px;
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: var(--color-primary);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-  }
-  
-  .map h2 {
-    font-family: var(--font-headings);
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
+  font-family: var(--font-main);
+  margin: 3rem auto; /* Más margen para destacar */
+  max-width: 700px; /* Un poco más ancho para una mejor visualización del mapa */
+  padding: 1.5rem; /* Más espacio interior */
+  border-radius: 1.2rem; /* Bordes más suaves */
+  background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo blanco con ligera transparencia */
+  box-shadow: 0 0.5rem 1rem rgba(var(--color-dark-rgb), 0.08); /* Sombra suave y moderna */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque para un look moderno */
+  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.1); /* Borde sutil */
+}
+
+.map h2 {
+  font-family: var(--font-headings);
+  color: var(--color-accent);
+  margin-bottom: 1.5rem; /* Más espacio debajo del título */
+  text-align: center;
+  font-size: 2rem; /* Título más grande */
+  font-weight: 700; /* Más énfasis */
+  letter-spacing: -0.02em;
+}
+
+.map iframe {
+  width: 100%; /* El iframe del mapa ocupa todo el ancho del contenedor */
+  height: 350px; /* Altura razonable para el mapa */
+  border: 0; /* Elimina el borde predeterminado del iframe */
+  border-radius: 0.8rem; /* Bordes redondeados para el mapa */
+  box-shadow: 0 0.3rem 0.6rem rgba(var(--color-dark-rgb), 0.05); /* Sombra sutil en el mapa */
+}
+
+.map p {
+  font-size: 1rem;
+  color: var(--color-text);
+  text-align: center;
+  margin-top: 1rem; /* Espacio entre el mapa y el texto adicional */
+  opacity: 0.8;
+}
+
+.map a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+
+.map a:hover {
+  color: var(--color-dark);
+}

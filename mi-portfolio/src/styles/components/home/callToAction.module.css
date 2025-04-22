@@ -1,21 +1,53 @@
+/* src/components/CallToAction/CallToAction.module.css */
+
 .callToAction {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    text-align: center;
-    padding: 3rem 2rem;
-    border-radius: 1rem;
-    margin: 3rem auto;
-    max-width: 900px;
-    font-family: var(--font-main);
-  }
-  
-  .callToAction h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .callToAction p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  text-align: center;
+  padding: 4rem 2.5rem; /* Más espacio vertical */
+  border-radius: 1.2rem; /* Bordes más suaves */
+  margin: 4rem auto; /* Más margen para destacar */
+  max-width: 950px; /* Ligeramente más ancho */
+  font-family: var(--font-main);
+  box-shadow: 0 0.7rem 1.4rem rgba(var(--color-dark-rgb), 0.1); /* Sombra moderna y sutil */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function); /* Transiciones suaves */
+}
+
+.callToAction:hover {
+  transform: translateY(-0.2rem); /* Ligeramente elevado al hacer hover */
+  box-shadow: 0 0.9rem 1.8rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más pronunciada al hacer hover */
+}
+
+.callToAction h2 {
+  font-size: 2.5rem; /* Título más grande e impactante */
+  margin-bottom: 1.5rem;
+  font-weight: 700; /* Más énfasis */
+  letter-spacing: -0.02em;
+}
+
+.callToAction p {
+  font-size: 1.2rem; /* Mejor legibilidad */
+  margin-bottom: 2.5rem;
+  line-height: 1.7; /* Mejor interlineado para bloques de texto */
+  opacity: 0.9; /* Ligeramente más opaco */
+}
+
+.callToAction button {
+  font-family: var(--font-main);
+  background-color: var(--color-primary);
+  color: var(--color-accent);
+  border: 0.15rem solid var(--color-primary); /* Borde para el hover */
+  padding: 1rem 2.5rem; /* Espaciado generoso para el botón */
+  border-radius: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+              color var(--transition-duration) var(--transition-timing-function);
+}
+
+.callToAction button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

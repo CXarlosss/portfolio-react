@@ -1,43 +1,45 @@
 /* src/components/About/InterestSection.module.css */
 
 .interestSection {
-  padding: 1.5em;
+  padding: 2rem;
   background-color: var(--color-primary);
-  border-radius: 0.4em;
-  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .interestSection h2 {
-  font-size: 1.4rem; /* Más pequeño */
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   color: var(--color-dark);
-  margin-bottom: 1em;
+  margin-bottom: 1.5rem;
   text-align: left;
-  border-bottom: 0.05em solid var(--color-secondary);
-  padding-bottom: 0.4em;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--color-secondary);
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .interestList {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4em; /* Menos espacio */
+  gap: 0.6rem;
 }
 
 .interestItem {
   background-color: var(--color-secondary);
-  color: var(--color-text);
-  padding: 0.4em 0.8em; /* Más pequeño */
-  border-radius: 0.2em;
-  font-size: 0.9rem; /* Más pequeño */
-  margin-bottom: 0.4em;
-  transition: background-color var(--transition-duration) var(--transition-timing-function),
-    color var(--transition-duration) var(--transition-timing-function),
-    border-color var(--transition-duration) var(--transition-timing-function);
+  color: var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  cursor: default;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .interestItem:hover {
   background-color: var(--color-accent);
-  color: var(--color-primary);
-  border-color: var(--color-accent);
+  color: #fff;
+  transform: translateY(-2px);
 }

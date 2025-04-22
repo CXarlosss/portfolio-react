@@ -1,33 +1,55 @@
+/* src/pages/PortfolioPage.module.css */
+
 .portfolioPage {
-    font-family: var(--font-main);
-    background-color: var(--color-primary);
-    padding: 3rem 1rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  font-family: var(--font-main);
+  background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo suave con ligera transparencia */
+  padding: 4rem 2rem; /* Aumentando el padding general */
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Más espacio entre las secciones */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
+
+.portfolioPage h1 {
+  font-family: var(--font-headings);
+  color: var(--color-accent);
+  text-align: center;
+  font-size: 3rem; /* Título principal más grande */
+  margin-bottom: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Animación suave de entrada opcional */
+.portfolioPage > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.portfolioPage > *:nth-child(2) { /* Retraso para el segundo elemento */
+  animation-delay: 0.2s;
+}
+
+.portfolioPage > *:nth-child(3) { /* Retraso para el tercer elemento */
+  animation-delay: 0.4s;
+}
+
+/* Y así sucesivamente para más elementos */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Animación suave de entrada opcional */
-  .portfolioPage > * {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Padding y espaciado extra en desktop (se mantiene similar) */
+@media (min-width: 1024px) {
+  .portfolioPage {
+    padding: 5rem 3rem;
+    gap: 4rem;
   }
-  
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Padding y espaciado extra en desktop */
-  @media (min-width: 1024px) {
-    .portfolioPage {
-      padding: 4rem 2rem;
-      gap: 3rem;
-    }
-  }
-  
+}

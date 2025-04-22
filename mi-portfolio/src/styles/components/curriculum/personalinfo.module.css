@@ -1,42 +1,61 @@
+/* src/components/About/PersonalInfo.module.css */
+
 .personalInfo {
   font-family: var(--font-main);
-  background-color: var(--color-secondary);
-  padding: 2rem;
-  border-radius: 1rem;
+  background-color: rgba(var(--color-secondary-rgb), 0.8); /* Fondo suave con ligera transparencia */
+  padding: 3rem; /* Más espacio interior */
+  border-radius: 1.2rem; /* Bordes más suaves */
   text-align: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-  max-width: 800px;
-  margin: 2rem auto;
+  box-shadow: 0 0.6rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra moderna y sutil */
+  max-width: 750px; /* Ligeramente más estrecho para enfocar el contenido */
+  margin: 3rem auto; /* Más margen superior e inferior */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.1); /* Borde sutil */
 }
 
 .personalInfo header h1 {
-  font-size: 2rem;
+  font-size: 2.5rem; /* Título principal más grande e impactante */
   color: var(--color-dark);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700; /* Más énfasis */
+  letter-spacing: -0.03em;
 }
 
 .title {
   color: var(--color-accent);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Ligeramente más grande */
+  margin-bottom: 1.5rem; /* Más espacio debajo del título */
+  opacity: 0.9; /* Ligeramente más opaco */
 }
 
 .contact {
-  margin-top: 1rem;
-  font-size: 0.95rem;
+  margin-top: 2rem; /* Más espacio desde el título */
+  font-size: 1rem; /* Mejor legibilidad */
   color: var(--color-text);
+  opacity: 0.8; /* Ligeramente menos prominente */
 }
 
 .contact p {
-  margin: 0.5rem 0;
+  margin: 0.75rem 0; /* Más espacio entre los párrafos de contacto */
 }
 
 .contact a {
-  margin: 0 0.5rem;
-  display: inline-block;
-  transition: transform 0.2s ease;
+  margin: 0 0.75rem; /* Más espacio entre los enlaces */
+  display: inline-flex; /* Para centrar el icono verticalmente con el texto */
+  align-items: center;
+  gap: 0.3rem; /* Espacio entre el icono y el texto */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              color var(--transition-duration) var(--transition-timing-function); /* Transición de color */
+  color: var(--color-accent); /* Color inicial del enlace */
 }
 
 .contact a:hover {
   transform: scale(1.1);
+  color: var(--color-dark); /* Cambio de color al hacer hover */
+}
+
+.contact svg {
+  /* Estilos para los iconos SVG (si los usas) */
+  font-size: 1.1rem;
 }

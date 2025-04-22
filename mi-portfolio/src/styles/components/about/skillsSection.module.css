@@ -1,51 +1,53 @@
 /* src/components/About/SkillsSection.module.css */
 
 .skillsSection {
-  padding: 1.5em;
-  background-color: var(--color-primary);
-  border-radius: 0.4em;
-  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+  padding: 2rem; /* Espaciado más cómodo */
+  background-color: var(--color-secondary); /* Tonos suaves son tendencia */
+  border-radius: 0.6rem; /* Bordes más suaves */
+  box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Sombra sutil y moderna */
 }
 
 .skillsSection h2 {
-  font-size: 1.4rem; /* Más pequeño */
-  color: var(--color-dark);
-  margin-bottom: 1em;
+  font-size: 1.75rem; /* Mejor jerarquía */
+  color: var(--color-accent); /* Destacado con el color de acento */
+  margin-bottom: 1.5rem;
   text-align: left;
-  border-bottom: 0.05em solid var(--color-secondary);
-  padding-bottom: 0.4em;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  border-bottom: 0.1rem solid rgba(var(--color-accent-rgb), 0.2); /* Línea de acento suave */
+  padding-bottom: 0.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .skillsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Columnas más pequeñas */
-  gap: 0.8em; /* Menos espacio */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Tarjetas un poco más anchas */
+  gap: 1rem; /* Espacio más generoso entre tarjetas */
 }
 
 .skillCard {
   background-color: var(--color-primary);
-  border: 0.05em solid var(--color-secondary);
-  border-radius: 0.2em;
-  padding: 1em; /* Menos padding */
+  border: 0.08rem solid rgba(var(--color-dark-rgb), 0.08); /* Borde sutil */
+  border-radius: 0.4rem; /* Bordes más pronunciados en las tarjetas */
+  padding: 1.5rem; /* Más espacio interno */
   text-align: center;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+  box-shadow: 0 0.3rem 0.6rem rgba(var(--color-dark-rgb), 0.08); /* Sombra suave en las tarjetas */
 }
 
 .skillCard:hover {
-  transform: translateY(-0.08em);
-  box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.09);
+  transform: translateY(-0.2rem); /* Elevación más notable al pasar el ratón */
+  box-shadow: 0 0.5rem 1rem rgba(var(--color-dark-rgb), 0.1); /* Sombra más pronunciada al hacer hover */
 }
 
 .skillCard h3 {
-  font-size: 1rem; /* Más pequeño */
+  font-size: 1.1rem; /* Ligeramente más grande */
   color: var(--color-dark);
-  margin-bottom: 0.5em;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
 }
 
 .skillCard p {
-  font-size: 0.8rem; /* Más pequeño */
-  color: var(--color-text);
+  font-size: 0.9rem; /* Mejor legibilidad */
+  color: rgba(var(--color-dark-rgb), 0.7); /* Tono de gris más suave */
 }

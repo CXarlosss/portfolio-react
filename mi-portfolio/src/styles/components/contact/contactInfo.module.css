@@ -1,33 +1,48 @@
+/* src/components/Contact/ContactInfo.module.css */
+
 .contactInfo {
-  background-color: var(--color-secondary);
+  background-color: rgba(var(--color-secondary-rgb), 0.8); /* Fondo suave con ligera transparencia */
   color: var(--color-text);
   font-family: var(--font-main);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  max-width: 600px;
-  margin: 2rem auto;
+  padding: 2.5rem; /* Un poco más de espacio interior */
+  border-radius: 1.2rem; /* Bordes más suaves */
+  box-shadow: 0 0.6rem 1.2rem rgba(var(--color-dark-rgb), 0.1); /* Sombra moderna y sutil */
+  max-width: 650px; /* Ligeramente más ancho */
+  margin: 3rem auto; /* Más margen superior e inferior para destacar */
+  backdrop-filter: blur(15px); /* Efecto de desenfoque para un look moderno */
+  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.2); /* Borde sutil */
 }
 
 .contactInfo h2 {
   color: var(--color-accent);
   font-family: var(--font-headings);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem; /* Más espacio debajo del título */
   text-align: center;
+  font-size: 2rem; /* Título un poco más grande */
+  font-weight: 700; /* Más énfasis en el título */
+  letter-spacing: -0.02em;
 }
 
 .contactInfo p {
-  margin: 0.75rem 0;
-  font-size: 1rem;
+  margin: 1rem 0; /* Más espacio vertical entre los párrafos */
+  font-size: 1.05rem; /* Ligeramente más grande para mejor lectura */
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem; /* Un poco más de espacio entre el icono y el texto */
+}
+
+.contactInfo svg {
+  /* Estilos para los iconos SVG (si los usas) */
+  font-size: 1.2rem;
+  color: var(--color-accent);
 }
 
 .contactInfo a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color var(--transition-duration) var(--transition-timing-function);
+  font-weight: 500; /* Ligeramente más énfasis en los enlaces */
+  transition: color var(--transition-duration) var(--transition-timing-function),
+              text-decoration var(--transition-duration) var(--transition-timing-function); /* Transición suave para el subrayado */
 }
 
 .contactInfo a:hover {

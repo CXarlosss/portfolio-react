@@ -1,16 +1,23 @@
+/* src/components/About/Skills.module.css (o donde los uses) */
+
 .skillBadge {
   background-color: var(--color-accent);
   color: var(--color-primary);
   font-family: var(--font-main);
-  padding: 0.4rem 0.8rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin: 0.3rem;
+  padding: 0.5rem 1rem; /* Un poco más de padding */
+  border-radius: 1.2rem; /* Bordes más suaves y modernos */
+  font-size: 0.9rem; /* Ligeramente más grande */
+  font-weight: 600; /* Un poco más de énfasis */
+  margin: 0.4rem; /* Espaciado ligero entre badges */
   display: inline-block;
-  transition: background-color var(--transition-duration) var(--transition-timing-function);
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+              transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function); /* Añadiendo más propiedades a la transición */
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.05); /* Sombra suave */
 }
 
 .skillBadge:hover {
-  background-color: #3a6b94;
+  background-color: color-mix(in srgb, var(--color-accent) 80%, black); /* Oscurecimiento sutil usando color-mix */
+  transform: translateY(-0.1rem); /* Ligera elevación al hacer hover */
+  box-shadow: 0 0.3rem 0.6rem rgba(var(--color-dark-rgb), 0.08); /* Sombra ligeramente más pronunciada al hacer hover */
 }

@@ -1,64 +1,127 @@
+/* src/pages/AboutPage.module.css */
+
 .aboutPage {
-  padding: 2rem 1rem;
-  max-width: 1200px;
+  padding: 3rem 2rem; /* Más espacio general */
+  max-width: 1300px; /* Ancho máximo un poco mayor */
   margin: 0 auto;
   font-family: var(--font-main);
-  background-color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo suave con ligera transparencia */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
 }
 
 .aboutMain {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem; /* Más espacio entre las secciones principales */
 }
 
 /* Diseño para pantallas medianas y grandes */
 @media (min-width: 768px) {
   .aboutMain {
     grid-template-areas:
-      "introduction"
-      "secondary"
-      "interests";
+      "introduction introduction"
+      "secondary skills"
+      "interests interests";
   }
 
   .introduction {
     grid-area: introduction;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(var(--color-secondary-rgb), 0.7); /* Fondo suave para la introducción */
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
   }
 
   .secondarySection {
     grid-area: secondary;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Tarjetas más anchas */
+    gap: 2.5rem; /* Más espacio entre las tarjetas secundarias */
   }
 
   .skillsSection {
     grid-area: skills;
     position: sticky;
-    top: 2rem;
+    top: 3rem; /* Más espacio desde la parte superior */
     height: fit-content;
     align-self: start;
-    background-color: var(--color-secondary);
-    padding: 1rem;
+    background-color: rgba(var(--color-accent-rgb), 0.1); /* Fondo sutil para la sección de habilidades */
+    padding: 2rem;
     border-radius: 1rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
   }
 
   .experienceSection {
     grid-area: experience;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(var(--color-secondary-rgb), 0.7);
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
   }
 
   .educationSection {
     grid-area: education;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(var(--color-secondary-rgb), 0.7);
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
   }
 
   .interestsSection {
     grid-area: interests;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(var(--color-secondary-rgb), 0.7);
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
   }
 }
 
-/* Opcional: en pantallas grandes poner 3 columnas con padding y bordes */
+/* Diseño para pantallas grandes (3 columnas) */
 @media (min-width: 1024px) {
-  .secondarySection {
-    grid-template-columns: 1fr 1fr 1fr;
+  .aboutMain {
+    grid-template-columns: 2fr 1fr; /* Columna principal más ancha */
+    grid-template-areas:
+      "introduction skills"
+      "secondary skills"
+      "interests skills";
+    gap: 4rem; /* Más espacio en pantallas grandes */
   }
+
+  .secondarySection {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en la sección secundaria */
+  }
+}
+
+/* Estilos generales para las secciones secundarias */
+.secondarySection > div,
+.interestsSection > div {
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: rgba(var(--color-secondary-rgb), 0.7);
+  box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
+}
+
+.secondarySection h3,
+.interestsSection h3,
+.introduction h2 {
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.introduction p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.interestsSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.interestsSection li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--color-dark);
 }

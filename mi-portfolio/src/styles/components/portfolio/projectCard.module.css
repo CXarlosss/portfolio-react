@@ -1,54 +1,74 @@
 .projectCard {
-    background-color: var(--color-primary);
-    border-radius: 1rem;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .projectCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  }
-  
-  .projectThumbnail {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-  
-  .projectDetails {
-    padding: 1.2rem;
-  }
-  
-  .projectDetails h3 {
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-  }
-  
-  .projectDescription {
-    font-size: 0.95rem;
-    color: var(--color-text);
-    margin-bottom: 1rem;
-  }
-  
-  .projectTechnologies {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    padding: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .projectTechnologies li {
-    background-color: var(--color-secondary);
-    padding: 0.3rem 0.7rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    color: var(--color-dark);
-  }
-  
+  background-color: var(--color-primary);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.projectThumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover .projectThumbnail {
+  transform: scale(1.03);
+}
+
+.projectDetails {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.projectDetails h3 {
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.projectDescription {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.projectTechnologies {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0;
+}
+
+.projectTechnologies li {
+  background-color: var(--color-secondary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--color-dark);
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.projectTechnologies li:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  cursor: default;
+}

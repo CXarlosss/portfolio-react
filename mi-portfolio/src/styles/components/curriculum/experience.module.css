@@ -1,34 +1,63 @@
+/* src/components/About/Experience.module.css */
+
 .experience {
-  background-color: var(--color-secondary);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+  background-color: rgba(var(--color-secondary-rgb), 0.75); /* Fondo suave con ligera transparencia */
+  padding: 3rem; /* Más espacio interior */
+  border-radius: 1.2rem; /* Bordes más suaves */
+  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-dark-rgb), 0.08); /* Sombra moderna y sutil */
   font-family: var(--font-main);
-  max-width: 800px;
-  margin: 2rem auto;
+  max-width: 900px; /* Ligeramente más ancho para contenido extenso */
+  margin: 3rem auto; /* Más margen superior e inferior */
+  backdrop-filter: blur(12px); /* Efecto de desenfoque */
+  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.15); /* Borde sutil */
 }
 
 .experience h2 {
   color: var(--color-accent);
   font-family: var(--font-headings);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem; /* Más espacio debajo del título */
   text-align: center;
+  font-size: 2.2rem; /* Título más grande */
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .experienceItem {
-  margin-bottom: 1.2rem;
-  padding-left: 1rem;
-  border-left: 3px solid var(--color-accent);
+  margin-bottom: 1.8rem; /* Más espacio entre los elementos */
+  padding-left: 1.2rem; /* Ligeramente más espacio para la línea vertical */
+  border-left: 0.2rem solid var(--color-accent); /* Línea vertical más delgada y moderna */
+  position: relative; /* Para el pseudo-elemento del punto */
+}
+
+.experienceItem::before {
+  content: '';
+  position: absolute;
+  left: -0.5rem; /* Ajusta la posición del punto */
+  top: 0.3rem; /* Ajusta la posición vertical del punto */
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: var(--color-accent);
+  border-radius: 50%; /* Crea un círculo */
+  opacity: 0.7; /* Ligera transparencia para el punto */
 }
 
 .experienceItem h3 {
-  margin: 0;
-  font-size: 1.1rem;
+  margin: 0 0 0.3rem 0; /* Espacio inferior para el título */
+  font-size: 1.2rem; /* Título un poco más grande */
   color: var(--color-dark);
+  font-weight: 600;
 }
 
 .date {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 0.2rem;
+  font-size: 0.95rem; /* Ligeramente más grande para mejor legibilidad */
+  color: rgba(var(--color-dark-rgb), 0.6); /* Tono de gris más suave */
+  margin-top: 0.3rem;
+  font-style: italic; /* Añadiendo un toque de estilo */
+}
+
+.description {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6; /* Mejor legibilidad para el texto */
 }

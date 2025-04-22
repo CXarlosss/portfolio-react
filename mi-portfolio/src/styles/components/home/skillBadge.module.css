@@ -1,48 +1,59 @@
+/* src/components/About/SkillsHighlight.module.css */
+
 .skillsHighlight {
-    background-color: var(--color-secondary);
-    padding: 3rem 2rem;
-    font-family: var(--font-main);
-    text-align: center;
-  }
-  
-  .skillsHighlight h2 {
-    font-family: var(--font-headings);
-    color: var(--color-accent);
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .skillsGrid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .skillItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.95rem;
-    color: var(--color-dark);
-  }
-  
-  .skillIcon {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .skillIcon:hover {
-    transform: scale(1.2);
-  }
-  
-  .skillsDescription {
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--color-text);
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
+  background-color: rgba(var(--color-secondary-rgb), 0.8); /* Fondo suave con ligera transparencia */
+  padding: 4rem 2.5rem; /* Más espacio vertical */
+  font-family: var(--font-main);
+  text-align: center;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
+
+.skillsHighlight h2 {
+  font-family: var(--font-headings);
+  color: var(--color-accent);
+  font-size: 2.5rem; /* Título más grande */
+  margin-bottom: 2.5rem; /* Más espacio debajo del título */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.skillsGrid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem; /* Más espacio entre los elementos de la grid */
+  margin-bottom: 3rem; /* Más espacio debajo de la grid */
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem; /* Ligeramente más grande */
+  color: var(--color-dark);
+  transition: transform var(--transition-duration) var(--transition-timing-function); /* Transición suave para el hover */
+}
+
+.skillItem:hover {
+  transform: translateY(-0.3rem); /* Ligeramente elevado al hacer hover */
+}
+
+.skillIcon {
+  font-size: 3.5rem; /* Iconos un poco más grandes */
+  margin-bottom: 0.75rem; /* Más espacio debajo del icono */
+  color: var(--color-accent); /* Iconos con el color de acento */
+  transition: transform var(--transition-duration) var(--transition-timing-function);
+}
+
+.skillIcon:hover {
+  transform: scale(1.2);
+}
+
+.skillsDescription {
+  max-width: 700px; /* Ancho ligeramente mayor para el texto */
+  margin: 2rem auto 0 auto; /* Más margen superior */
+  color: var(--color-text);
+  font-size: 1.1rem; /* Ligeramente más grande */
+  line-height: 1.7; /* Mejor interlineado */
+  opacity: 0.9; /* Ligeramente más opaco */
+}

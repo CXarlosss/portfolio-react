@@ -1,35 +1,41 @@
+/* src/components/Footer/Footer.module.css */
+
 .footer {
   background-color: var(--color-dark);
   color: var(--color-primary);
-  padding: 2rem 1rem;
+  padding: 3rem 2rem; /* Aumentando el padding vertical */
   text-align: center;
   font-family: var(--font-main);
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 -0.5rem 1rem rgba(var(--color-dark-rgb), 0.2); /* Sombra más suave y moderna */
 }
 
 .footerContent {
-  max-width: 960px;
+  max-width: 1200px; /* Ancho máximo más común para contenido */
   margin: 0 auto;
+  padding: 1rem 0; /* Añadiendo un poco de padding vertical al contenido */
 }
 
 .footerContent p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  margin: 0.75rem 0; /* Espaciado vertical ligeramente mayor */
+  font-size: 1rem; /* Mejor legibilidad */
+  opacity: 0.8; /* Ligera transparencia para suavizar el texto */
 }
 
 .socialLinks {
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Más espacio entre el texto y los iconos */
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1.5rem; /* Mayor espacio entre los iconos */
 }
 
 .socialLinks a {
   color: var(--color-primary);
-  font-size: 1.5rem;
-  transition: color var(--transition-duration) var(--transition-timing-function);
+  font-size: 1.75rem; /* Iconos un poco más grandes */
+  transition: color var(--transition-duration) var(--transition-timing-function),
+              transform var(--transition-duration) var(--transition-timing-function); /* Añadiendo transición a la transformación */
 }
 
 .socialLinks a:hover {
   color: var(--color-accent);
+  transform: translateY(-0.2rem); /* Ligera elevación al hacer hover */
 }

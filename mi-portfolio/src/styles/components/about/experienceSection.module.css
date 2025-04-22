@@ -1,27 +1,34 @@
 /* src/components/About/ExperienceSection.module.css */
 
 .experienceSection {
-  padding: 1.5em;
-  background-color: var(--color-primary);
-  border-radius: 0.4em;
-  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+  padding: 2.5rem; /* Aún más espacio para respirar */
+  background-color: var(--color-secondary); /* Usando un tono suave del global */
+  border-radius: 0.8rem; /* Más redondeado y suave */
+  box-shadow: 0 0.6rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra sutil con color oscuro global */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+}
+
+.experienceSection:hover {
+  transform: translateY(-0.3rem); /* Elevación más notable */
+  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-dark-rgb), 0.12);
 }
 
 .experienceSection h2 {
-  font-size: 1.4rem; /* Más pequeño */
-  color: var(--color-dark);
-  margin-bottom: 1em;
+  font-size: 2rem; /* Mayor impacto visual */
+  color: var(--color-accent); /* Usando el color de acento para destacar */
+  margin-bottom: 1.8rem;
   text-align: left;
-  border-bottom: 0.05em solid var(--color-secondary);
-  padding-bottom: 0.4em;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  border-bottom: 0.15rem solid rgba(var(--color-accent-rgb), 0.3); /* Línea de acento más suave */
+  padding-bottom: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
 }
 
 .experienceItem {
-  margin-bottom: 1.2em;
-  padding-bottom: 1.2em;
-  border-bottom: 0.05em solid var(--color-secondary);
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 0.08rem solid rgba(var(--color-dark-rgb), 0.1); /* Borde muy sutil */
 }
 
 .experienceItem:last-child {
@@ -31,27 +38,27 @@
 }
 
 .experienceTitle {
-  font-size: 1rem; /* Más pequeño */
+  font-size: 1.2rem; /* Un poco más grande */
   color: var(--color-dark);
-  margin-bottom: 0.1em;
+  margin-bottom: 0.3rem;
   font-weight: 600;
 }
 
 .experienceCompany {
-  font-size: 0.9rem; /* Más pequeño */
-  color: var(--color-text);
-  font-style: italic;
-  margin-bottom: 0.1em;
+  font-size: 1.05rem;
+  color: rgba(var(--color-dark-rgb), 0.7); /* Tono ligeramente más claro del oscuro */
+  font-style: normal;
+  margin-bottom: 0.4rem;
 }
 
 .experienceDates {
-  font-size: 0.8rem; /* Más pequeño */
-  color: #777;
-  margin-bottom: 0.6em;
+  font-size: 0.95rem;
+  color: rgba(var(--color-dark-rgb), 0.5); /* Tono aún más claro */
+  margin-bottom: 1rem;
 }
 
 .experienceDescription {
-  font-size: 0.9rem; /* Más pequeño */
+  font-size: 1.05rem;
   color: var(--color-text);
-  line-height: 1.4;
+  line-height: 1.6; /* Ligeramente mayor para mejor lectura */
 }

@@ -1,18 +1,25 @@
+/* src/components/About/Languages.module.css */
+
 .languages {
-  background-color: var(--color-primary);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+  background-color: rgba(var(--color-primary-rgb), 0.85); /* Fondo blanco suave con ligera transparencia */
+  padding: 2.5rem; /* Un poco más de espacio interior */
+  border-radius: 1.2rem; /* Bordes más suaves */
+  box-shadow: 0 0.5rem 1rem rgba(var(--color-dark-rgb), 0.07); /* Sombra moderna y sutil */
   font-family: var(--font-main);
-  max-width: 600px;
-  margin: 2rem auto;
+  max-width: 650px; /* Ligeramente más ancho */
+  margin: 3rem auto; /* Más margen superior e inferior para destacar */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.1); /* Borde sutil */
 }
 
 .languages h2 {
   color: var(--color-accent);
   font-family: var(--font-headings);
   text-align: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem; /* Más espacio debajo del título */
+  font-size: 2rem; /* Título más grande */
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .languages ul {
@@ -23,8 +30,19 @@
 }
 
 .languages li {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
+  margin-bottom: 1rem; /* Más espacio entre los elementos de la lista */
+  font-size: 1.1rem; /* Ligeramente más grande para mejor legibilidad */
   color: var(--color-text);
   font-weight: 500;
+  position: relative; /* Para el pseudo-elemento decorativo */
+  padding-left: 1.2rem; /* Espacio para el pseudo-elemento */
+}
+
+.languages li::before {
+  content: '✓'; /* Un checkmark como decoración */
+  position: absolute;
+  left: 0;
+  top: 0.1rem; /* Ajuste vertical */
+  color: var(--color-accent);
+  font-size: 1.2rem;
 }

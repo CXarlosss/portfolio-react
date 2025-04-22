@@ -1,101 +1,134 @@
 /* src/styles/global.css */
 
 :root {
-    --color-primary: #ffffff; /* Blanco */
-    --color-secondary: #f0f8ff; /* Azul muy claro (AliceBlue) */
-    --color-accent: #4682B4; /* Azul Acero */
-    --color-dark: #2F4F4F; /* Gris Oscuro (DarkSlateGray) */
-    --color-text: #333; /* Gris muy oscuro */
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-headings: 'Roboto', sans-serif; /* Fuente para títulos */
-    --transition-duration: 0.3s;
-    --transition-timing-function: ease-in-out;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: var(--font-main);
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    line-height: 1.6;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-headings);
-    color: var(--color-dark);
-    margin-bottom: 0.5em;
-    font-weight: 600;
-  }
-  
-  a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color var(--transition-duration) var(--transition-timing-function);
-  }
-  
-  a:hover {
-    color: var(--color-dark);
-  }
-  
-  button {
-    font-family: var(--font-main);
-    cursor: pointer;
-    border: none;
-    transition: background-color var(--transition-duration) var(--transition-timing-function),
-      color var(--transition-duration) var(--transition-timing-function);
-  }
-  
-  /* Estilos para listas */
-  ul, ol {
-      list-style-type: none; /* Elimina los puntos/números por defecto */
-      padding-left: 0;
-  }img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 0.5rem;
-  }
-  
-  section {
-    padding-block: 3rem;
-  }
-  
-  main {
-    display: block;
-  }
-  
-  input,
-  textarea {
-    font-family: var(--font-main);
-    font-size: 1rem;
-    border: 1px solid var(--color-secondary);
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
-    background-color: #fff;
-    color: var(--color-text);
-    transition: border-color var(--transition-duration) var(--transition-timing-function);
-  }
-  
-  input:focus,
-  textarea:focus {
-    border-color: var(--color-accent);
-    outline: none;
-  }
-  
+  --color-primary: #ffffff; /* Blanco */
+  --color-secondary: #f0f8ff; /* Azul muy claro (AliceBlue) */
+  --color-accent: #4682B4; /* Azul Acero */
+  --color-dark: #2F4F4F; /* Gris Oscuro (DarkSlateGray) */
+  --color-text: #333; /* Gris muy oscuro */
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-headings: 'Roboto', sans-serif; /* Fuente para títulos */
+  --transition-duration: 0.3s;
+  --transition-timing-function: ease-in-out;
+
+  /* Valores RGB para usar con rgba() */
+  --color-primary-rgb: 255, 255, 255;
+  --color-secondary-rgb: 240, 248, 255;
+  --color-accent-rgb: 70, 130, 180;
+  --color-dark-rgb: 47, 79, 79;
+  --color-text-rgb: 51, 51, 51;
+
+  /* Color para bordes sutiles */
+  --color-border: #e0e0e0;
+  --color-text-secondary: #777;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  line-height: 1.7; /* Ligeramente aumentado para mejor legibilidad */
+  -webkit-font-smoothing: antialiased; /* Mejora el renderizado de fuentes en webkit */
+  -moz-osx-font-smoothing: grayscale; /* Mejora el renderizado de fuentes en Firefox */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  color: var(--color-dark);
+  margin-bottom: 0.75em; /* Más espacio inferior para los títulos */
+  font-weight: 700; /* Títulos más marcados */
+  line-height: 1.2; /* Mejor interlineado para títulos */
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+
+a:hover {
+  color: var(--color-dark);
+  text-decoration: underline; /* Añadiendo un subrayado al pasar el ratón */
+}
+
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+              color var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function); /* Añadiendo transición para la sombra */
+  box-shadow: 0 0.15rem 0.3rem rgba(var(--color-dark-rgb), 0.05); /* Sombra sutil para los botones */
+}
+
+button:hover {
+  box-shadow: 0 0.3rem 0.6rem rgba(var(--color-dark-rgb), 0.1); /* Sombra más pronunciada al hacer hover */
+}
+
+/* Estilos para listas */
+ul,
+ol {
+  list-style-type: none; /* Elimina los puntos/números por defecto */
+  padding-left: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.6rem; /* Bordes más redondeados para las imágenes */
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.04); /* Sombra sutil para las imágenes */
+}
+
+section {
+  padding-block: 4rem; /* Aumentando el padding vertical para las secciones */
+}
+
+main {
+  display: block;
+}
+
+input,
+textarea {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  border: 0.1rem solid var(--color-border); /* Borde más sutil */
+  border-radius: 0.6rem; /* Bordes más redondeados para los inputs */
+  padding: 0.8rem 1.2rem; /* Más padding interno */
+  background-color: var(--color-primary); /* Fondo blanco */
+  color: var(--color-text);
+  transition: border-color var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function); /* Transición para la sombra */
+  box-shadow: 0 0.1rem 0.2rem rgba(var(--color-dark-rgb), 0.03); /* Sombra sutil para los inputs */
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-accent-rgb), 0.1); /* Sombra al enfocar */
+}
+
+/* Texto secundario o de menor importancia */
+.text-secondary {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}

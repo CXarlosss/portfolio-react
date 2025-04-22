@@ -1,21 +1,24 @@
+/* src/components/Portfolio/ProjectGrid.module.css */
+
 .projectGrid {
-    padding: 3rem 2rem;
-    font-family: var(--font-main);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .projectGrid h2 {
-    font-family: var(--font-headings);
-    color: var(--color-accent);
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .projectsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  
+  padding: 4rem 2.5rem; /* Más espacio vertical */
+  font-family: var(--font-main);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projectGrid h2 {
+  font-family: var(--font-headings);
+  color: var(--color-accent);
+  text-align: center;
+  font-size: 2.5rem; /* Título más grande */
+  margin-bottom: 3rem; /* Más espacio debajo del título */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tarjetas de proyecto un poco más anchas */
+  gap: 2.5rem; /* Más espacio entre las tarjetas */
+}

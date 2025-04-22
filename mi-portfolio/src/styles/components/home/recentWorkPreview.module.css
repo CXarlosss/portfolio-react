@@ -1,27 +1,50 @@
+/* src/components/Portfolio/RecentWork.module.css */
+
 .recentWork {
-    padding: 3rem 2rem;
-    background-color: var(--color-primary);
-    font-family: var(--font-main);
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .recentWork h2 {
-    font-family: var(--font-headings);
-    font-size: 2rem;
-    color: var(--color-accent);
-    margin-bottom: 2rem;
-  }
-  
-  .projectsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .projectsButton {
-    margin-top: 1rem;
-  }
-  
+  padding: 4rem 2.5rem; /* Más espacio vertical */
+  background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo blanco suave con ligera transparencia */
+  font-family: var(--font-main);
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
+
+.recentWork h2 {
+  font-family: var(--font-headings);
+  font-size: 2.5rem; /* Título más grande */
+  color: var(--color-accent);
+  margin-bottom: 2.5rem; /* Más espacio debajo del título */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Tarjetas de proyecto un poco más anchas */
+  gap: 2.5rem; /* Más espacio entre las tarjetas */
+  margin-bottom: 3rem; /* Más espacio debajo de la grid */
+}
+
+.projectsButton {
+  margin-top: 1.5rem;
+}
+
+.projectsButton button {
+  font-family: var(--font-main);
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 0.1rem solid var(--color-accent);
+  padding: 1rem 2rem;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+              color var(--transition-duration) var(--transition-timing-function);
+}
+
+.projectsButton button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}

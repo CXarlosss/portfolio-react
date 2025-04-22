@@ -1,27 +1,29 @@
 /* src/components/About/EducationSection.module.css */
 
 .educationSection {
-  padding: 1.5em;
+  padding: 2rem;
   background-color: var(--color-primary);
-  border-radius: 0.4em;
-  box-shadow: 0 0.1em 0.25em rgba(0, 0, 0, 0.07);
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .educationSection h2 {
-  font-size: 1.4rem; /* Más pequeño */
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   color: var(--color-dark);
-  margin-bottom: 1em;
+  margin-bottom: 1.5rem;
   text-align: left;
-  border-bottom: 0.05em solid var(--color-secondary);
-  padding-bottom: 0.4em;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--color-secondary);
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .educationItem {
-  margin-bottom: 1.2em;
-  padding-bottom: 1.2em;
-  border-bottom: 0.05em solid var(--color-secondary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-secondary);
+  transition: all 0.3s ease;
 }
 
 .educationItem:last-child {
@@ -31,27 +33,28 @@
 }
 
 .educationTitle {
-  font-size: 1rem; /* Más pequeño */
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--color-dark);
-  margin-bottom: 0.1em;
+  margin-bottom: 0.25rem;
   font-weight: 600;
 }
 
 .educationInstitution {
-  font-size: 0.9rem; /* Más pequeño */
+  font-size: 0.95rem;
   color: var(--color-text);
   font-style: italic;
-  margin-bottom: 0.1em;
+  margin-bottom: 0.25rem;
 }
 
 .educationDates {
-  font-size: 0.8rem; /* Más pequeño */
-  color: #777;
-  margin-bottom: 0.6em;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.75rem;
 }
 
 .educationDescription {
-  font-size: 0.9rem; /* Más pequeño */
+  font-size: 1rem;
   color: var(--color-text);
-  line-height: 1.4;
+  line-height: 1.6;
+  max-width: 70ch;
 }
