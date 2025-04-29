@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from '../../styles/components/home/callToAction.module.css'; // Create Home.module.css
+import styles from '../../styles/components/home/callToAction.module.css';
 import Button from '../common/Button';
 
 function CallToAction() {
@@ -11,7 +11,9 @@ function CallToAction() {
         Si tienes alguna pregunta o quieres discutir un proyecto, no dudes en ponerte
         en contacto conmigo. ¡Estoy emocionado de colaborar contigo!
       </p>
-      <Button link="/contact">Contáctame</Button>
+      <Button link="/contact" className={`${styles.ctaButton} my-custom-button`}>
+        Contáctame
+      </Button>
     </section>
   );
 }
