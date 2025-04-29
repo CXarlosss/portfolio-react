@@ -2,7 +2,6 @@
 import React from 'react';
 import ContactForm from '../components/Contact/ContactForm';
 import ContactInfo from '../components/Contact/ContactInfo';
-import Map from '../components/Contact/Map'; // Optional
 import styles from '../styles/pages/ContactPage.module.css'; // Create ContactPage.module.css
 
 function ContactPage() {
@@ -10,7 +9,7 @@ function ContactPage() {
     <div className={styles.contactPage}>
       <ContactForm />
       <ContactInfo />
-       <Map /> 
+      
     </div>
   );
 }

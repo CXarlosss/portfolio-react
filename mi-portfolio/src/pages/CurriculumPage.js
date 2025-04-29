@@ -11,14 +11,20 @@ import styles from '../styles/pages/CurriculumPage.module.css'; // Create Curric
 function CurriculumPage() {
   return (
     <div className={styles.curriculumPage}>
-      <PersonalInfo />
-      <SummaryObjective />
-      <ExperienceList />
-      <EducationList />
-      <SkillsList />
-      <LanguagesList />
+      <div className={styles.leftColumn}>
+        <PersonalInfo />
+        <SkillsList />
+        <LanguagesList />
+      </div>
+      <div className={styles.rightColumn}>
+        <SummaryObjective />
+        <EducationList />
+        <ExperienceList />
+        
+      </div>
     </div>
   );
 }
+
 
 export default CurriculumPage;

@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from '../../styles/components/home/heroSection.module.css'; // Create Home.module.css
 import Button from '../common/Button'; // Assuming you have a Button component
-import profileImage from '../../assets/images/1 (4).jpg'; // Import your image
+import profileImage from '../../assets/images/2 (1).jpg'; // Import your image
 
 function HeroSection() {
   return (

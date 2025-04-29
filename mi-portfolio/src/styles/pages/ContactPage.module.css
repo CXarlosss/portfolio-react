@@ -18,7 +18,7 @@
 /* Layout responsive tipo columnas */
 @media (min-width: 768px) {
   .contactPage {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 3fr 2fr; /* → 60% y 40% */
     grid-template-areas:
       "form info"
       "map map";
@@ -37,6 +37,7 @@
     grid-area: map;
   }
 }
+
 
 @media (min-width: 1024px) {
   .contactPage {
@@ -70,6 +71,12 @@
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
+}
+.contactForm {
+  background-color: var(--color-secondary);
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .contactMap {
