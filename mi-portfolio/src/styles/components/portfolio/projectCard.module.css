@@ -30,7 +30,10 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  margin-top: 1.5rem;
+  align-self: flex-start;
 }
+
 
 .projectDetails h3 {
   color: var(--color-accent);

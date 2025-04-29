@@ -11,27 +11,27 @@ function AboutPage() {
   return (
     <div className={styles.aboutPage}>
       <main className={styles.aboutMain}>
-        <div className={styles.introduction}>
-          <Introduction />
-        </div>
+  <div className={styles.introduction}>
+    <Introduction />
+  </div>
 
-        <div className={styles.skillsSection}>
-          <SkillsSection />
-        </div>
+  <div className={styles.skillsSection}>
+    <SkillsSection />
+  </div>
 
-        <div className={styles.secondarySection}>
-          <div className={styles.educationSection}>
-            <EducationSection />
-          </div>
-          <div className={styles.experienceSection}>
-            <ExperienceSection />
-          </div>
-        </div>
+  
 
-        <div className={styles.interestsSection}>
-          <InterestsSection />
-        </div>
-      </main>
+  <div className={styles.educationSection}>
+    <EducationSection />
+  </div>
+  <div className={styles.secondarySection}>
+    <ExperienceSection />
+  </div>
+  <div className={styles.interestsSection}>
+    <InterestsSection />
+  </div>
+</main>
+
     </div>
   );
 }

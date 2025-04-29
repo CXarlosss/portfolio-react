@@ -82,9 +82,11 @@
     display: grid;
     grid-template-columns: 60% 40%; /* Aquí defines el 60/40 */
     grid-template-areas:
-      "introduction skills"
-      "secondary skills"
-      "interests skills";
+    "introduction skills"
+    "education skills"
+    "secondary skills"
+    "interests skills";
+  
     gap: 4rem;
   }
 

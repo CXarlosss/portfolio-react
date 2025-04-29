@@ -1,114 +1,179 @@
-/* src/components/Portfolio/ProjectModal.module.css */
-
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(var(--color-dark-rgb), 0.8); /* Fondo oscuro semitransparente */
-  z-index: 10000; /* Asegurando mayor prioridad */
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro */
+  backdrop-filter: blur(6px); /* Desenfoque */
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow-y: auto;
   padding: 2rem;
-  overflow: auto; /* Permite el scroll si el contenido es muy largo */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
 }
 
 .modalContent {
-  background-color: rgba(var(--color-primary-rgb), 0.95); /* Fondo blanco suave con ligera transparencia */
-  border-radius: 1.2rem; /* Bordes más suaves */
-  padding: 3rem; /* Más espacio interior */
-  max-width: 1000px; /* Ancho máximo ligeramente mayor */
+  background-color: #fff;
+  border-radius: 1rem;
+  max-width: 800px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  font-family: var(--font-main);
+  padding: 2.5rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
   position: relative;
-  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-dark-rgb), 0.15); /* Sombra moderna */
 }
 
 .modalContent h2 {
-  color: var(--color-accent);
-  margin-bottom: 1.5rem; /* Más espacio debajo del título */
   font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+.modalContent p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
 }
 
 .modalImages {
   display: flex;
-  gap: 1.5rem; /* Más espacio entre imágenes */
   flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
 .modalImages img {
   width: 100%;
-  max-width: 320px; /* Imágenes un poco más grandes */
-  border-radius: 0.8rem; /* Bordes más suaves para las imágenes */
+  max-width: 300px;
+  border-radius: 0.75rem;
   object-fit: cover;
-  box-shadow: 0 0.3rem 0.6rem rgba(var(--color-dark-rgb), 0.05); /* Sombra sutil en las imágenes */
 }
 
 .modalTechnologies {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem; /* Más espacio entre las etiquetas */
-  padding: 0;
-  margin-bottom: 2rem; /* Más espacio debajo de las tecnologías */
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .modalTechnologies li {
-  background-color: var(--color-secondary);
-  padding: 0.5rem 1rem; /* Más padding en las etiquetas */
-  border-radius: 1.5rem; /* Bordes más redondeados para las etiquetas */
-  font-size: 0.9rem; /* Ligeramente más grande */
-  color: var(--color-dark); /* Texto oscuro en las etiquetas */
+  background-color: var(--color-accent-light);
+  color: var(--color-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  list-style: none;
 }
 
 .modalLinks {
   display: flex;
-  gap: 1.5rem; /* Más espacio entre los enlaces */
-  margin-bottom: 2rem; /* Más espacio debajo de los enlaces */
-  justify-content: flex-start; /* Alineación de los enlaces a la izquierda */
-}
-
-.modalLinks a {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color var(--transition-duration) var(--transition-timing-function),
-              transform var(--transition-duration) var(--transition-timing-function);
-}
-
-.modalLinks a:hover {
-  color: var(--color-dark);
-  transform: translateY(-0.1rem); /* Ligeramente elevado al hacer hover */
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .modalCloseButton {
   position: absolute;
-  top: 1.5rem; /* Más espacio desde la parte superior */
-  right: 1.5rem; /* Más espacio desde la derecha */
-  background-color: rgba(var(--color-accent-rgb), 0.8); /* Color de acento semitransparente */
-  color: var(--color-primary);
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
   border: none;
-  border-radius: 50%;
-  width: 2.5rem; /* Botón más grande */
-  height: 2.5rem; /* Botón más grande */
-  font-size: 1.2rem; /* Icono de cierre más grande */
+  font-size: 1.5rem;
+  color: var(--color-dark);
   cursor: pointer;
-  transition: background-color var(--transition-duration) var(--transition-timing-function),
-              transform var(--transition-duration) var(--transition-timing-function);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Nuevo: estado de cierre */
+.fadeOut {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Ya existe fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Nuevo fadeOut */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Mejora al botón de cierre */
+.modalCloseButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .modalCloseButton:hover {
-  background-color: var(--color-accent);
-  transform: scale(1.1); /* Ligeramente más grande al hacer hover */
+  transform: scale(1.2);
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.carouselImage {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.navButton {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Ajuste para scroll interno del modal */
+.modalContent {
+  max-height: 90vh;
+  overflow-y: auto;
 }

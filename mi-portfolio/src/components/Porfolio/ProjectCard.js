@@ -1,14 +1,23 @@
 // @ts-nocheck
-import React from 'react';
-import styles from '../../styles/components/portfolio/projectCard.module.css'; // Use Portfolio.module.css
-import Button from '../common/Button'; // Assuming you have a Button component
-import { Link } from 'react-router-dom'; // If using ProjectDetailPage
+import React, { useState, useEffect } from 'react';
+import styles from '../../styles/components/portfolio/projectCard.module.css';
+import Button from '../common/Button';
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, onClick }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [project.thumbnail, project.thumbnailAlt || project.thumbnail];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <div className={styles.projectCard}>
       <img
-        src={project.thumbnail}
+        src={images[currentImageIndex]}
         alt={project.title}
         className={styles.projectThumbnail}
       />
@@ -20,13 +29,8 @@ function ProjectCard({ project }) {
             <li key={tech}>{tech}</li>
           ))}
         </ul>
-        {/* Option 1: Link to ProjectDetailPage */}
-        <Link to={`/portfolio/${project.id}`}>
-          <Button>Ver Detalles</Button>
-        </Link>
 
-        {/* Option 2: Button to open ProjectDetailModal */}
-        {/* <Button onClick={() => openModal(project.id)}>Ver Detalles</Button> */}
+        <Button onClick={() => onClick(project)}>Ver Detalles</Button>
       </div>
     </div>
   );

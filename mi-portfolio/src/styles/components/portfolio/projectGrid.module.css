@@ -1,24 +1,47 @@
-/* src/components/Portfolio/ProjectGrid.module.css */
-
 .projectGrid {
-  padding: 4rem 2.5rem; /* Más espacio vertical */
   font-family: var(--font-main);
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 4rem 3rem;
+}
+
+@media (min-width: 1024px) {
+  .projectGrid {
+    padding: 4rem 6rem;
+  }
 }
 
 .projectGrid h2 {
   font-family: var(--font-headings);
   color: var(--color-accent);
   text-align: center;
-  font-size: 2.5rem; /* Título más grande */
-  margin-bottom: 3rem; /* Más espacio debajo del título */
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .projectsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tarjetas de proyecto un poco más anchas */
-  gap: 2.5rem; /* Más espacio entre las tarjetas */
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas siempre en desktop */
+  gap: 4rem;
+}
+
+@media (max-width: 768px) {
+  .projectsContainer {
+    grid-template-columns: 1fr; /* En móvil, 1 sola columna */
+    gap: 2rem;
+  }
+}
+.projectCard {
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
