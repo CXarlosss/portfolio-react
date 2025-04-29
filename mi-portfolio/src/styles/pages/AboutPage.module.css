@@ -1,18 +1,18 @@
 /* src/pages/AboutPage.module.css */
 
 .aboutPage {
-  padding: 3rem 2rem; /* Más espacio general */
-  max-width: 1300px; /* Ancho máximo un poco mayor */
+  padding: 3rem 2rem;
+  max-width: 1300px;
   margin: 0 auto;
   font-family: var(--font-main);
-  background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo suave con ligera transparencia */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  background-color: rgba(var(--color-primary-rgb), 0.9);
+  backdrop-filter: blur(10px);
 }
 
 .aboutMain {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem; /* Más espacio entre las secciones principales */
+  gap: 3rem;
 }
 
 /* Diseño para pantallas medianas y grandes */
@@ -28,24 +28,24 @@
     grid-area: introduction;
     padding: 2rem;
     border-radius: 1rem;
-    background-color: rgba(var(--color-secondary-rgb), 0.7); /* Fondo suave para la introducción */
+    background-color: rgba(var(--color-secondary-rgb), 0.7);
     box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
   }
 
   .secondarySection {
     grid-area: secondary;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Tarjetas más anchas */
-    gap: 2.5rem; /* Más espacio entre las tarjetas secundarias */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
   }
 
   .skillsSection {
     grid-area: skills;
     position: sticky;
-    top: 3rem; /* Más espacio desde la parte superior */
+    top: 3rem;
     height: fit-content;
     align-self: start;
-    background-color: rgba(var(--color-accent-rgb), 0.1); /* Fondo sutil para la sección de habilidades */
+    background-color: rgba(var(--color-accent-rgb), 0.1);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
@@ -76,21 +76,23 @@
   }
 }
 
-/* Diseño para pantallas grandes (3 columnas) */
+/* Diseño para pantallas grandes (60% - 40%) */
 @media (min-width: 1024px) {
   .aboutMain {
-    grid-template-columns: 2fr 1fr; /* Columna principal más ancha */
+    display: grid;
+    grid-template-columns: 60% 40%; /* Aquí defines el 60/40 */
     grid-template-areas:
       "introduction skills"
       "secondary skills"
       "interests skills";
-    gap: 4rem; /* Más espacio en pantallas grandes */
+    gap: 4rem;
   }
 
   .secondarySection {
-    grid-template-columns: 1fr 1fr; /* Dos columnas en la sección secundaria */
+    grid-template-columns: 1fr 1fr; /* Internamente, secondary tendrá 2 columnas */
   }
 }
+
 
 /* Estilos generales para las secciones secundarias */
 .secondarySection > div,
