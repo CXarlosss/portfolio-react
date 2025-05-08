@@ -1,7 +1,7 @@
 /* src/pages/AboutPage.module.css */
 
 .aboutPage {
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem; /* Ajuste de padding general para móviles */
   max-width: 1300px;
   margin: 0 auto;
   font-family: var(--font-main);
@@ -12,110 +12,36 @@
 .aboutMain {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 2rem; /* Ajuste de gap general para móviles */
 }
 
-/* Diseño para pantallas medianas y grandes */
-@media (min-width: 768px) {
-  .aboutMain {
-    grid-template-areas:
-      "introduction introduction"
-      "secondary skills"
-      "interests interests";
-  }
-
-  .introduction {
-    grid-area: introduction;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: rgba(var(--color-secondary-rgb), 0.7);
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
-  }
-
-  .secondarySection {
-    grid-area: secondary;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-  }
-
-  .skillsSection {
-    grid-area: skills;
-    position: sticky;
-    top: 3rem;
-    height: fit-content;
-    align-self: start;
-    background-color: rgba(var(--color-accent-rgb), 0.1);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
-  }
-
-  .experienceSection {
-    grid-area: experience;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: rgba(var(--color-secondary-rgb), 0.7);
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
-  }
-
-  .educationSection {
-    grid-area: education;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: rgba(var(--color-secondary-rgb), 0.7);
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
-  }
-
-  .interestsSection {
-    grid-area: interests;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: rgba(var(--color-secondary-rgb), 0.7);
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
-  }
-}
-
-/* Diseño para pantallas grandes (60% - 40%) */
-@media (min-width: 1024px) {
-  .aboutMain {
-    display: grid;
-    grid-template-columns: 60% 40%; /* Aquí defines el 60/40 */
-    grid-template-areas:
-    "introduction skills"
-    "education skills"
-    "secondary skills"
-    "interests skills";
-  
-    gap: 4rem;
-  }
-
-  .secondarySection {
-    grid-template-columns: 1fr 1fr; /* Internamente, secondary tendrá 2 columnas */
-  }
-}
-
-
-/* Estilos generales para las secciones secundarias */
+/* Estilos generales para las secciones secundarias (móvil) */
 .secondarySection > div,
 .interestsSection > div {
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 1.5rem; /* Ajuste de padding para móviles */
+  border-radius: 0.75rem; /* Ajuste de border-radius para móviles */
   background-color: rgba(var(--color-secondary-rgb), 0.7);
-  box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06);
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.06); /* Ajuste de sombra para móviles */
 }
 
 .secondarySection h3,
 .interestsSection h3,
 .introduction h2 {
   color: var(--color-accent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Ajuste de margin-bottom para móviles */
   font-weight: 700;
 }
 
+.introduction {
+  padding: 1.5rem; /* Ajuste de padding para móviles */
+  border-radius: 0.75rem; /* Ajuste de border-radius para móviles */
+  background-color: rgba(var(--color-secondary-rgb), 0.7);
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.06); /* Ajuste de sombra para móviles */
+}
+
 .introduction p {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1rem; /* Ajuste de tamaño de fuente para móviles */
+  line-height: 1.6; /* Ajuste de espaciado de línea para móviles */
   color: var(--color-text);
 }
 
@@ -125,7 +51,98 @@
 }
 
 .interestsSection li {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
+  margin-bottom: 0.5rem; /* Ajuste de margin-bottom para móviles */
+  font-size: 0.9rem; /* Ajuste de tamaño de fuente para móviles */
   color: var(--color-dark);
+}
+
+/* Diseño para pantallas medianas (tabletas y algunos desktops pequeños) */
+@media (min-width: 768px) {
+  .aboutPage {
+    padding: 3rem 2rem; /* Restaurar padding para tablets */
+  }
+
+  .aboutMain {
+    grid-template-areas:
+      "introduction introduction"
+      "secondary skills"
+      "interests interests";
+    gap: 3rem; /* Restaurar gap para tablets */
+  }
+
+  .introduction {
+    padding: 2rem; /* Restaurar padding para tablets */
+    border-radius: 1rem; /* Restaurar border-radius para tablets */
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
+  }
+
+  .secondarySection {
+    grid-area: secondary;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem; /* Restaurar gap para tablets */
+  }
+
+  .skillsSection {
+    grid-area: skills;
+    position: sticky;
+    top: 3rem;
+    height: fit-content;
+    align-self: start;
+    background-color: rgba(var(--color-accent-rgb), 0.1);
+    padding: 2rem; /* Restaurar padding para tablets */
+    border-radius: 1rem; /* Restaurar border-radius para tablets */
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
+  }
+
+  .interestsSection {
+    grid-area: interests;
+    padding: 2rem; /* Restaurar padding para tablets */
+    border-radius: 1rem; /* Restaurar border-radius para tablets */
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
+  }
+
+  /* Restaurar estilos generales para secciones secundarias en tablets */
+  .secondarySection > div,
+  .interestsSection > div {
+    padding: 2rem; /* Restaurar padding para tablets */
+    border-radius: 1rem; /* Restaurar border-radius para tablets */
+    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
+  }
+
+  .secondarySection h3,
+  .interestsSection h3,
+  .introduction h2 {
+    margin-bottom: 1rem; /* Restaurar margin-bottom para tablets */
+  }
+
+  .introduction p {
+    font-size: 1.1rem; /* Restaurar tamaño de fuente para tablets */
+    line-height: 1.7; /* Restaurar espaciado de línea para tablets */
+  }
+
+  .interestsSection li {
+    margin-bottom: 0.75rem; /* Restaurar margin-bottom para tablets */
+    font-size: 1rem; /* Restaurar tamaño de fuente para tablets */
+  }
+}
+
+/* Diseño para pantallas grandes (desktops) */
+@media (min-width: 1024px) {
+  .aboutPage {
+    padding: 3rem 6rem; /* Ajuste de padding para desktops */
+  }
+
+  .aboutMain {
+    grid-template-columns: 60% 40%;
+    grid-template-areas:
+      "introduction skills"
+      "secondary skills"
+      "interests skills";
+    gap: 4rem; /* Ajuste de gap para desktops */
+  }
+
+  .secondarySection {
+    grid-template-columns: 1fr 1fr;
+  }
 }

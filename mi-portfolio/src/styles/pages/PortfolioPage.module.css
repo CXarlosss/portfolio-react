@@ -3,12 +3,12 @@
 .portfolioPage {
   font-family: var(--font-main);
   background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo suave con ligera transparencia */
-  padding: 4rem 2rem; /* Aumentando el padding general */
+  padding: 3rem 1.5rem; /* Ajustando padding para móviles */
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3rem; /* Más espacio entre las secciones */
+  gap: 2.5rem; /* Ajustando gap para móviles */
   backdrop-filter: blur(10px); /* Efecto de desenfoque */
 }
 
@@ -16,8 +16,8 @@
   font-family: var(--font-headings);
   color: var(--color-accent);
   text-align: center;
-  font-size: 3rem; /* Título principal más grande */
-  margin-bottom: 3rem;
+  font-size: 2.5rem; /* Ajustando tamaño de título para móviles */
+  margin-bottom: 2.5rem; /* Ajustando margen inferior para móviles */
   font-weight: 700;
   letter-spacing: -0.03em;
 }
@@ -25,16 +25,16 @@
 /* Animación suave de entrada opcional */
 .portfolioPage > * {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(15px); /* Ajustando la distancia del transform para móviles */
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .portfolioPage > *:nth-child(2) { /* Retraso para el segundo elemento */
-  animation-delay: 0.2s;
+  animation-delay: 0.1s; /* Ajustando el retraso para móviles */
 }
 
 .portfolioPage > *:nth-child(3) { /* Retraso para el tercer elemento */
-  animation-delay: 0.4s;
+  animation-delay: 0.2s; /* Ajustando el retraso para móviles */
 }
 
 /* Y así sucesivamente para más elementos */
@@ -46,10 +46,52 @@
   }
 }
 
-/* Padding y espaciado extra en desktop (se mantiene similar) */
+/* Padding y espaciado extra en tablet */
+@media (min-width: 768px) {
+  .portfolioPage {
+    padding: 4rem 2rem;
+    gap: 3rem;
+  }
+
+  .portfolioPage h1 {
+    font-size: 2.8rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .portfolioPage > * {
+    transform: translateY(20px);
+  }
+
+  .portfolioPage > *:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .portfolioPage > *:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+}
+
+/* Padding y espaciado extra en desktop */
 @media (min-width: 1024px) {
   .portfolioPage {
     padding: 5rem 3rem;
     gap: 4rem;
+  }
+
+  .portfolioPage h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .portfolioPage > * {
+    transform: translateY(20px);
+  }
+
+  .portfolioPage > *:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .portfolioPage > *:nth-child(3) {
+    animation-delay: 0.4s;
   }
 }

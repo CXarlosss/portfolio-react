@@ -8,7 +8,6 @@ const ProjectDetailModal = ({ project, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const modalRef = useRef();
 
-  // ✅ handleClose memorizado con useCallback
   const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
@@ -29,7 +28,6 @@ const ProjectDetailModal = ({ project, onClose }) => {
     );
   };
 
-  // ✅ useEffect con dependencia correcta
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') handleClose();
@@ -46,45 +44,48 @@ const ProjectDetailModal = ({ project, onClose }) => {
       className={`${styles.modalOverlay} ${isClosing ? styles.fadeOut : ''}`}
       onClick={handleClose}
     >
-      <div
-        className={styles.modalContent}
-        onClick={(e) => e.stopPropagation()}
-        ref={modalRef}
-      >
-        <button onClick={handleClose} className={styles.modalCloseButton}>
-          ×
-        </button>
+      <div className={styles.modalWrapper} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalInner} ref={modalRef}>
+          <button onClick={handleClose} className={styles.modalCloseButton}>
+            ×
+          </button>
 
-        <h2>{project.title}</h2>
-        <p>{project.longDescription}</p>
-
-        {project.images?.length > 0 && (
-          <div className={styles.carousel}>
-            <button className={styles.navButton} onClick={handlePrev}>‹</button>
-            <img
-              src={project.images[currentImageIndex]}
-              alt={`${project.title} - ${currentImageIndex + 1}`}
-              className={styles.carouselImage}
-            />
-            <button className={styles.navButton} onClick={handleNext}>›</button>
+          <div className={styles.headerSection}>
+            <h2 className={styles.projectTitle}>{project.title}</h2>
+            <p className={styles.projectDescription}>{project.longDescription}</p>
           </div>
-        )}
 
-        <ul className={styles.modalTechnologies}>
-          {project.technologies.map((tech) => (
-            <li key={tech}>{tech}</li>
-          ))}
-        </ul>
+          {project.images?.length > 0 && (
+            <div className={styles.carousel}>
+              <button className={styles.navButton} onClick={handlePrev}>‹</button>
+              <img
+                src={project.images[currentImageIndex]}
+                alt={`${project.title} - ${currentImageIndex + 1}`}
+                className={styles.carouselImage}
+              />
+              <button className={styles.navButton} onClick={handleNext}>›</button>
+            </div>
+          )}
 
-        <div className={styles.modalLinks}>
-          {project.githubLink && (
-            <Button link={project.githubLink}>GitHub</Button>
-          )}
-          {project.liveDemoLink && (
-            <Button link={project.liveDemoLink} variant="secondary">
-              Live Demo
-            </Button>
-          )}
+          <div className={styles.technologiesSection}>
+            <h3 className={styles.subheading}>Tecnologías utilizadas</h3>
+            <ul className={styles.modalTechnologies}>
+              {project.technologies.map((tech) => (
+                <li key={tech}>{tech}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.modalLinks}>
+            {project.githubLink && (
+              <Button link={project.githubLink}>GitHub</Button>
+            )}
+            {project.liveDemoLink && (
+              <Button link={project.liveDemoLink} variant="secondary">
+                Ver Demo
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </div>

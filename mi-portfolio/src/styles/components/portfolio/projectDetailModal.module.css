@@ -1,70 +1,91 @@
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalWrapper {
+  background: #ffffff;
+  border-radius: 1.25rem;
   width: 100%;
-  min-height: 100vh;
-  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro */
-  backdrop-filter: blur(6px); /* Desenfoque */
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.modalWrapper h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-accent, #10b981);
+  margin-bottom: 1rem;
+}
+
+.modalWrapper p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.75rem;
+  color: #333;
+}
+
+.carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  overflow-y: auto;
-  padding: 2rem;
-}
-
-.modalContent {
-  background-color: #fff;
-  border-radius: 1rem;
-  max-width: 800px;
-  width: 100%;
-  padding: 2.5rem;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.3s ease;
-  position: relative;
-}
-
-.modalContent h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--color-accent);
-}
-
-.modalContent p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.modalImages {
-  display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.modalImages img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 0.75rem;
+.carouselImage {
+  max-width: 100%;
+  height: 320px;
+  border-radius: 1rem;
   object-fit: cover;
+  box-shadow: 0 0.75rem 1.25rem rgba(0, 0, 0, 0.15);
+}
+
+.navButton {
+  background: #222;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navButton:hover {
+  background: #444;
 }
 
 .modalTechnologies {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.6rem;
   margin-bottom: 1.5rem;
 }
 
 .modalTechnologies li {
-  background-color: var(--color-accent-light);
-  color: var(--color-dark);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.9rem;
   list-style: none;
+  background-color: #e0f2f1;
+  color: #065f46;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .modalLinks {
@@ -75,35 +96,31 @@
 
 .modalCloseButton {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
   border: none;
-  font-size: 1.5rem;
-  color: var(--color-dark);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #888;
   cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.modalCloseButton:hover {
+  transform: scale(1.2);
+  color: #111;
 }
-/* Nuevo: estado de cierre */
+
+/* Animations */
 .fadeOut {
   animation: fadeOut 0.3s ease forwards;
 }
 
-/* Ya existe fadeIn */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
@@ -111,7 +128,6 @@
   }
 }
 
-/* Nuevo fadeOut */
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -119,61 +135,6 @@
   }
   to {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
-}
-
-/* Mejora al botón de cierre */
-.modalCloseButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  color: var(--color-accent);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.modalCloseButton:hover {
-  transform: scale(1.2);
-}
-
-.carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-  position: relative;
-}
-
-.carouselImage {
-  max-width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
-
-.navButton {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.navButton:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-/* Ajuste para scroll interno del modal */
-.modalContent {
-  max-height: 90vh;
-  overflow-y: auto;
 }

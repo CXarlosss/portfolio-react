@@ -14,11 +14,18 @@ import localMarketThumbnail2 from "../../assets/images/Proyecto1.png";
 import productivityAppThumbnail2 from '../../assets/images/Proyecto2-1.png';
 import movieAppThumbnail2 from '../../assets/images/Proyecto3-1.png';
 import expenseTrackerThumbnail2 from '../../assets/images/Proyecto4-1.png';
+import calorieTrackerThumbnail from '../../assets/images/Proyecto5.png';
+import calorieTrackerThumbnail2 from '../../assets/images/Proyecto5-1.png';
+import propinasCalculatorThumbnail from '../../assets/images/Proyecto6.png';
+import propinasCalculatorThumbnail2 from '../../assets/images/Proyecto6-1.png';
+
+
+
 function ProjectGrid() {
   const [selectedProject, setSelectedProject] = useState(null);
   useEffect(() => {
     if (selectedProject) {
-      document.body.style.overflow = 'hidden'; // bloquea scroll
+      document.body.style.overflow = 'auto'; // bloquea scroll
     } else {
       document.body.style.overflow = 'auto'; // lo vuelve a permitir
     }
@@ -72,7 +79,28 @@ function ProjectGrid() {
       technologies: ['React', 'HTML', 'CSS', 'Node.js', 'Express'],
       githubLink: 'https://github.com/CXarlosss/TripCount',
       liveDemoLink: 'https://harmonious-quokka-4ca436.netlify.app/login'
-    }
+    }, {
+      id: 'calorie-tracker',
+      title: '🥗 Calorie Tracker',
+      description: 'Aplicación para registrar y gestionar comidas, ejercicios y calorías diarias.',
+      longDescription: 'Una aplicación moderna construida con React + TypeScript que permite registrar y gestionar comidas, ejercicios y calorías diarias de manera visual y organizada. Incluye gráficos, historial y funciones CRUD completas.',
+      thumbnail: calorieTrackerThumbnail,
+      images: [calorieTrackerThumbnail, calorieTrackerThumbnail2],
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Recharts', 'UUID', 'Vite', 'PostCSS', 'Autoprefixer'],
+      githubLink: 'https://github.com/CXarlosss/CalorieTraker.git',
+      liveDemoLink: 'https://elegant-crepe-2ef35d.netlify.app/'
+  },
+  {
+      id: 'propinas-calculator',
+      title: '🧮 Calculadora de Propinas y Consumo',
+      description: 'Aplicación para calcular el total a pagar de una orden, incluyendo la propina.',
+      longDescription: 'Aplicación desarrollada con React + TypeScript + TailwindCSS + Vite que permite calcular el total a pagar de una orden, incluyendo la propina, así como gestionar un historial de pedidos por usuario.',
+      thumbnail: propinasCalculatorThumbnail,
+      images: [propinasCalculatorThumbnail, propinasCalculatorThumbnail2],
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Vite', 'ESLint', 'React Refresh'],
+      githubLink: 'https://github.com/CXarlosss/calculador-propinas',
+      liveDemoLink: 'https://mellifluous-mousse-c34f0f.netlify.app/'
+  }
   ];
   ;
 

@@ -1,18 +1,18 @@
 .contactPage {
   display: grid;
   gap: 2rem;
-  padding: 2.5rem 1.5rem;
+  padding: 2rem 1rem; /* Ajuste para móviles */
   max-width: 1200px;
   margin: 0 auto;
   font-family: var(--font-main);
   background-color: var(--color-primary);
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem; /* Ajuste para móviles */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); /* Ajuste para móviles */
   transition: box-shadow 0.3s ease;
 }
 
 .contactPage:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
 }
 
 /* Layout responsive tipo columnas */
@@ -23,6 +23,9 @@
       "form info"
       "map map";
     gap: 2.5rem;
+    padding: 2.5rem 1.5rem; /* Restaurar padding para tablets */
+    border-radius: 1.5rem; /* Restaurar border-radius para tablets */
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05); /* Restaurar sombra para tablets */
   }
 
   .contactPage > :nth-child(1) {
@@ -51,40 +54,40 @@
 
 .contactInfo {
   background-color: var(--color-secondary);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem; /* Ajuste para móviles */
+  border-radius: 0.75rem; /* Ajuste para móviles */
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.06); /* Ajuste para móviles */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1rem; /* Ajuste para móviles */
   color: var(--color-dark);
 }
 
 .contactInfo h3 {
-  font-size: 1.3rem;
+  font-size: 1.1rem; /* Ajuste para móviles */
   color: var(--color-accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem; /* Ajuste para móviles */
 }
 
 .contactInfo p {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.9rem; /* Ajuste para móviles */
+  line-height: 1.5; /* Ajuste para móviles */
   color: var(--color-text);
 }
+
 .contactForm {
   background-color: var(--color-secondary);
-  padding: 2rem 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem; /* Ajuste para móviles */
+  border-radius: 0.75rem; /* Ajuste para móviles */
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.06); /* Ajuste para móviles */
 }
 
 .contactMap {
   width: 100%;
-  height: 300px;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 200px; /* Ajuste para móviles */
+  border-radius: 0.75rem; /* Ajuste para móviles */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Ajuste para móviles */
 }
 
 .contactMap iframe {
