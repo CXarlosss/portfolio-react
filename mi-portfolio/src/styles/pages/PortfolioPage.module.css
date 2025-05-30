@@ -1,43 +1,61 @@
-/* src/pages/PortfolioPage.module.css */
+/* src/styles/pages/PortfolioPage.module.css */
 
 .portfolioPage {
   font-family: var(--font-main);
   background-color: rgba(var(--color-primary-rgb), 0.9); /* Fondo suave con ligera transparencia */
-  padding: 3rem 1.5rem; /* Ajustando padding para móviles */
-  max-width: 1400px;
-  margin: 0 auto;
+  
+  /* Ahora el padding vertical se aplica al contenedor principal */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  
+  width: 100vw; /* ¡ESTO HACE QUE ABARQUE TODO EL ANCHO DEL VIEWPORT! */
+  max-width: none; /* Elimina cualquier límite de ancho en el contenedor externo */
+  margin: 0; /* Asegura que no haya márgenes que impidan que ocupe el 100% */
+  
   display: flex;
   flex-direction: column;
-  gap: 2.5rem; /* Ajustando gap para móviles */
+  /* El 'gap' aquí aplicaría entre .portfolioContentWrapper y otros posibles elementos directos de .portfolioPage.
+     El 'gap' entre h1 y ProjectGrid lo gestionará el wrapper interno. */
+  gap: 2.5rem; /* Ajustando gap general para móviles */
   backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  
+  /* Animación suave de entrada para la página completa (opcional, si no quieres animar los hijos individualmente) */
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.portfolioPage h1 {
+/* NUEVA CLASE: Contenedor para el contenido real de la página */
+.portfolioContentWrapper {
+  max-width: 1400px; /* Define el ancho máximo del contenido (ajusta a tu gusto) */
+  width: 100%; /* Ocupa el 100% del espacio disponible hasta el max-width */
+  margin: 0 auto; /* ¡Centra el contenido horizontalmente! */
+  
+  /* El padding horizontal ahora se aplica a este wrapper, asegurando espacio a los lados */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* Gap entre los elementos internos (h1 y ProjectGrid) */
+}
+
+
+.portfolioPage h1 { /* Cambiado a .portfolioPage h1 para que sea más específico si es necesario */
   font-family: var(--font-headings);
   color: var(--color-accent);
   text-align: center;
   font-size: 2.5rem; /* Ajustando tamaño de título para móviles */
-  margin-bottom: 2.5rem; /* Ajustando margen inferior para móviles */
+  margin-bottom: 0; /* El 'gap' en .portfolioContentWrapper manejará el espacio debajo del título */
   font-weight: 700;
   letter-spacing: -0.03em;
 }
 
-/* Animación suave de entrada opcional */
-.portfolioPage > * {
-  opacity: 0;
-  transform: translateY(15px); /* Ajustando la distancia del transform para móviles */
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.portfolioPage > *:nth-child(2) { /* Retraso para el segundo elemento */
-  animation-delay: 0.1s; /* Ajustando el retraso para móviles */
-}
-
-.portfolioPage > *:nth-child(3) { /* Retraso para el tercer elemento */
-  animation-delay: 0.2s; /* Ajustando el retraso para móviles */
-}
-
-/* Y así sucesivamente para más elementos */
+/* Las animaciones 'fadeInUp' si se aplicaban a los hijos directos de .portfolioPage,
+   ahora se aplicarán a .portfolioContentWrapper si este es el único hijo.
+   Si quieres animaciones individuales para h1 y ProjectGrid, tendrías que ajustar esto:
+   .portfolioContentWrapper > *:nth-child(1) { animation-delay: 0.1s; }
+   .portfolioContentWrapper > *:nth-child(2) { animation-delay: 0.2s; }
+*/
 
 @keyframes fadeInUp {
   to {
@@ -46,52 +64,36 @@
   }
 }
 
-/* Padding y espaciado extra en tablet */
+/* Media Queries para Responsividad */
 @media (min-width: 768px) {
   .portfolioPage {
-    padding: 4rem 2rem;
-    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    gap: 3rem; /* Gap para tablet */
   }
-
+  .portfolioContentWrapper {
+    padding-left: 2rem; /* Padding horizontal para tablet */
+    padding-right: 2rem;
+    gap: 3rem; /* Gap para tablet */
+  }
   .portfolioPage h1 {
     font-size: 2.8rem;
-    margin-bottom: 2.8rem;
-  }
-
-  .portfolioPage > * {
-    transform: translateY(20px);
-  }
-
-  .portfolioPage > *:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-
-  .portfolioPage > *:nth-child(3) {
-    animation-delay: 0.3s;
   }
 }
 
-/* Padding y espaciado extra en desktop */
 @media (min-width: 1024px) {
   .portfolioPage {
-    padding: 5rem 3rem;
-    gap: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    gap: 4rem; /* Gap para desktop */
   }
-
+  .portfolioContentWrapper {
+    padding-left: 3rem; /* Padding horizontal para desktop */
+    padding-right: 3rem;
+    gap: 4rem; /* Gap para desktop */
+    max-width: 1600px; /* Aquí puedes ajustar el max-width para desktop si lo deseas */
+  }
   .portfolioPage h1 {
     font-size: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .portfolioPage > * {
-    transform: translateY(20px);
-  }
-
-  .portfolioPage > *:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .portfolioPage > *:nth-child(3) {
-    animation-delay: 0.4s;
   }
 }

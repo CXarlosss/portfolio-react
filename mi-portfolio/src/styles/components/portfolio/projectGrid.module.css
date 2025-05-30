@@ -1,3 +1,5 @@
+/* src/styles/components/portfolio/projectGrid.module.css */
+
 .projectGrid {
   font-family: var(--font-main);
   max-width: 1400px;
@@ -23,7 +25,7 @@
 
 .projectsContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas siempre en desktop */
+  grid-template-columns: repeat(3, 1fr); /* ¡CAMBIO AQUÍ! Ahora 3 columnas en desktop */
   gap: 4rem;
 }
 
@@ -33,6 +35,8 @@
     gap: 2rem;
   }
 }
+
+/* Mantener el resto del CSS igual */
 .projectCard {
   animation: fadeInUp 0.4s ease forwards;
   opacity: 0;
