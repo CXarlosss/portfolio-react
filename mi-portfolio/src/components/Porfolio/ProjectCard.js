@@ -1,29 +1,29 @@
 // @ts-nocheck
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+
 import styles from '../../styles/components/portfolio/projectCard.module.css';
 import Button from '../common/Button';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'; // Importar iconos de GitHub y enlace externo
 
 function ProjectCard({ project, onClick }) {
-  // Prioriza project.images si existe y tiene elementos, de lo contrario usa thumbnail
-  const allImages = (project.images && project.images.length > 0)
-    ? project.images
-    : [project.thumbnail];
+  // ✅ Corrección: usa useMemo para evitar recalcular en cada render
+  const allImages = useMemo(() => {
+    return (project.images && project.images.length > 0)
+      ? project.images
+      : [project.thumbnail];
+  }, [project.images, project.thumbnail]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    // Si solo hay una imagen, no necesitamos un intervalo
-    if (allImages.length <= 1) {
-      return;
-    }
+    if (allImages.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
-    }, 5000); // Cambia la imagen cada 5 segundos
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [allImages.length, allImages]); // Dependencia en allImages también
+  }, [allImages]); // ✅ Ahora allImages es estable
 
   return (
     <div className={styles.projectCard}>
