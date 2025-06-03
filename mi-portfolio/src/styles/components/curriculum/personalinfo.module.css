@@ -1,61 +1,165 @@
-/* src/components/About/PersonalInfo.module.css */
 
 .personalInfo {
-  font-family: var(--font-main);
-  background-color: rgba(var(--color-secondary-rgb), 0.8); /* Fondo suave con ligera transparencia */
-  padding: 3rem; /* Más espacio interior */
-  border-radius: 1.2rem; /* Bordes más suaves */
-  text-align: center;
-  box-shadow: 0 0.6rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra moderna y sutil */
-  max-width: 750px; /* Ligeramente más estrecho para enfocar el contenido */
-  margin: 3rem auto; /* Más margen superior e inferior */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
-  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.1); /* Borde sutil */
+  background-color: var(--color-primary); /* Fondo blanco para un look limpio */
+  padding: 3.5rem 2.5rem; /* Más padding para una sensación de espacio */
+  border-radius: 1.5rem; /* Bordes más suaves y modernos */
+  /* Sombra más pronunciada y elevada, usando el color oscuro de tu paleta */
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.15);
+  font-family: var(--font-family-main);
+  max-width: 800px; /* Ancho máximo para el componente */
+  margin: 3rem auto; /* Centra el componente y le da margen vertical */
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.5); /* Borde sutil */
+  text-align: center; /* Centra el texto por defecto */
+  display: flex; /* Usar flexbox para el layout principal */
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+  gap: 1.5rem; /* Espacio entre el header y el contacto */
 }
 
-.personalInfo header h1 {
-  font-size: 2.5rem; /* Título principal más grande e impactante */
+.personalInfo:hover {
+  transform: translateY(-0.3rem); /* Ligera elevación al pasar el ratón */
+  box-shadow: 0 1.5rem 3.5rem rgba(var(--color-dark-rgb), 0.2); /* Sombra más intensa al hover */
+}
+
+.personalInfo header {
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
+  padding-bottom: 1rem; /* Espacio debajo del header */
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Línea divisoria */
+  margin-bottom: 0; /* El gap del padre lo maneja */
+}
+
+.personalInfo h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Título principal más grande e impactante */
   color: var(--color-dark);
-  margin-bottom: 0.75rem;
-  font-weight: 700; /* Más énfasis */
+  margin-bottom: 0.5rem; /* Menos margen, el gap lo maneja */
+  font-weight: 700;
   letter-spacing: -0.03em;
+  text-transform: uppercase; /* Mayúsculas para el nombre */
 }
 
 .title {
   color: var(--color-accent);
   font-weight: 600;
-  font-size: 1.2rem; /* Ligeramente más grande */
-  margin-bottom: 1.5rem; /* Más espacio debajo del título */
-  opacity: 0.9; /* Ligeramente más opaco */
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Título de puesto responsivo */
+  margin-bottom: 0; /* El gap del padre lo maneja */
+  opacity: 0.9;
 }
 
 .contact {
-  margin-top: 2rem; /* Más espacio desde el título */
-  font-size: 1rem; /* Mejor legibilidad */
+  margin-top: 0; /* El gap del padre lo maneja */
+  font-size: 1.1rem; /* Mejor legibilidad */
   color: var(--color-text);
-  opacity: 0.8; /* Ligeramente menos prominente */
+  opacity: 0.9; /* Más opaco para mejor legibilidad */
+  display: flex;
+  flex-direction: column; /* Apila los elementos de contacto */
+  gap: 0.8rem; /* Espacio entre cada línea de contacto */
+  width: 100%; /* Ocupa todo el ancho disponible */
 }
 
 .contact p {
-  margin: 0.75rem 0; /* Más espacio entre los párrafos de contacto */
+  margin: 0; /* Resetear margen, el gap lo maneja */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el contenido de cada párrafo */
+  gap: 0.5rem; /* Espacio entre el texto y el icono si lo hay */
+  line-height: 1.5;
+}
+
+.contact p:last-child {
+  /* Estilo específico para los enlaces de redes sociales */
+  margin-top: 1rem; /* Más espacio para separar las redes sociales */
+  gap: 1.5rem; /* Más espacio entre los iconos de redes sociales */
 }
 
 .contact a {
-  margin: 0 0.75rem; /* Más espacio entre los enlaces */
+  color: var(--color-accent); /* Color inicial del enlace */
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              color var(--transition-duration) var(--transition-timing-function);
   display: inline-flex; /* Para centrar el icono verticalmente con el texto */
   align-items: center;
   gap: 0.3rem; /* Espacio entre el icono y el texto */
-  transition: transform var(--transition-duration) var(--transition-timing-function),
-              color var(--transition-duration) var(--transition-timing-function); /* Transición de color */
-  color: var(--color-accent); /* Color inicial del enlace */
 }
 
 .contact a:hover {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Ligero zoom al hacer hover */
   color: var(--color-dark); /* Cambio de color al hacer hover */
 }
 
 .contact svg {
-  /* Estilos para los iconos SVG (si los usas) */
-  font-size: 1.1rem;
+  font-size: 1.3rem; /* Iconos un poco más grandes */
+  color: var(--color-dark); /* Color de los iconos por defecto */
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+
+.contact a:hover svg {
+  color: var(--color-accent); /* Cambia el color del icono al hacer hover en el enlace */
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+  .personalInfo {
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    gap: 1rem;
+  }
+
+  .personalInfo h1 {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .contact {
+    font-size: 1rem;
+    gap: 0.6rem;
+  }
+
+  .contact p:last-child {
+    margin-top: 0.8rem;
+    gap: 1rem;
+  }
+
+  .contact svg {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .personalInfo {
+    padding: 2rem 1rem;
+    border-radius: 0.8rem;
+    max-width: 95%;
+    margin: 1.5rem auto;
+    gap: 0.8rem;
+  }
+
+  .personalInfo h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .contact {
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+
+  .contact p:last-child {
+    margin-top: 0.6rem;
+    gap: 0.8rem;
+  }
+
+  .contact svg {
+    font-size: 1.1rem;
+  }
 }

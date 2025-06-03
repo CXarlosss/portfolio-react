@@ -1,76 +1,180 @@
+
 .projectCard {
-  background-color: var(--color-primary);
-  border-radius: 1.5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  background-color: var(--color-primary); /* Fondo blanco para cada tarjeta */
+  border-radius: 1rem; /* Bordes redondeados */
+  box-shadow: 0 0.6rem 1.5rem rgba(var(--color-dark-rgb), 0.1); /* Sombra sutil */
+  overflow: hidden; /* Asegura que la imagen redondeada no se desborde */
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+  height: 100%; /* Asegura que la tarjeta ocupe toda la altura disponible en la cuadrícula */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+  cursor: pointer; /* Indica que la tarjeta es clickable */
 }
 
 .projectCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-0.8rem); /* Elevación más pronunciada al hover */
+  box-shadow: 0 1.2rem 2.5rem rgba(var(--color-dark-rgb), 0.2); /* Sombra más intensa al hover */
 }
 
 .projectThumbnail {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.projectCard:hover .projectThumbnail {
-  transform: scale(1.03);
+  height: 220px; /* Altura fija para las miniaturas */
+  object-fit: contain; /* ¡CAMBIO AQUÍ! La imagen se ajustará dentro del contenedor */
+  padding: 1rem; /* ¡CAMBIO AQUÍ! Añade un padding para el efecto de "marco" */
+  background-color: var(--color-secondary); /* ¡CAMBIO AQUÍ! Fondo para el área de padding */
+  display: flex; /* ¡CAMBIO AQUÍ! Usar flex para centrar la imagen */
+  justify-content: center; /* ¡CAMBIO AQUÍ! Centrar horizontalmente */
+  align-items: center; /* ¡CAMBIO AQUÍ! Centrar verticalmente */
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Separador visual */
 }
 
 .projectDetails {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  margin-top: 1.5rem;
-  align-self: flex-start;
+  flex-grow: 1; /* Permite que los detalles ocupen el espacio restante */
+  text-align: left; /* Alinea el texto a la izquierda dentro de la tarjeta */
 }
 
-
 .projectDetails h3 {
-  color: var(--color-accent);
-  margin-bottom: 0.6rem;
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-family: var(--font-family-headings);
+  font-size: 1.4rem;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
   font-weight: 700;
   line-height: 1.3;
 }
 
 .projectDescription {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--color-text);
   line-height: 1.6;
-  margin-bottom: 1.2rem;
-  flex-grow: 1;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Permite que la descripción ocupe el espacio flexible */
 }
 
 .projectTechnologies {
   list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem; /* Espacio debajo de las tecnologías */
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 0;
-  margin: 0;
+  gap: 0.6rem; /* Espacio entre las píldoras de tecnología */
 }
 
-.projectTechnologies li {
-  background-color: var(--color-secondary);
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
+.techPill { /* Estilo para cada tecnología individual (píldora) */
+  background-color: var(--color-secondary); /* Fondo suave para la píldora */
+  color: var(--color-text); /* Color de texto */
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px; /* Forma de píldora */
   font-size: 0.85rem;
-  color: var(--color-dark);
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  border: 1px solid rgba(var(--color-dark-rgb), 0.05); /* Borde sutil */
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.projectTechnologies li:hover {
-  background-color: var(--color-accent);
-  color: var(--color-primary);
-  cursor: default;
+.techPill:hover {
+  background-color: var(--color-accent); /* Color de acento al hover */
+  color: var(--color-primary); /* Texto blanco al hover */
+}
+
+.projectActions {
+  display: flex;
+  justify-content: space-between; /* Espacia el botón y los enlaces */
+  align-items: center;
+  margin-top: auto; /* Empuja los elementos al final de la tarjeta */
+  padding-top: 1rem; /* Espacio superior */
+  border-top: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Línea divisoria */
+}
+
+.externalLinks {
+  display: flex;
+  gap: 0.8rem; /* Espacio entre los iconos de enlace */
+}
+
+.projectLink {
+  color: var(--color-dark); /* Color oscuro para los iconos */
+  transition: color var(--transition-duration) var(--transition-timing-function),
+              transform var(--transition-duration) var(--transition-timing-function);
+  display: flex; /* Para centrar el SVG */
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem; /* Área de click más grande */
+  border-radius: 50%; /* Para un fondo circular si se añade */
+}
+
+.projectLink:hover {
+  color: var(--color-accent); /* Color de acento al hover */
+  transform: scale(1.1); /* Ligero zoom al hover */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 1024px) {
+  .projectThumbnail {
+    height: 200px;
+  }
+
+  .projectDetails {
+    padding: 1.2rem;
+  }
+
+  .projectDetails h3 {
+    font-size: 1.3rem;
+  }
+
+  .projectDescription {
+    font-size: 0.9rem;
+  }
+
+  .techPill {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .projectLink svg {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectThumbnail {
+    height: 180px;
+  }
+
+  .projectDetails {
+    padding: 1rem;
+  }
+
+  .projectDetails h3 {
+    font-size: 1.2rem;
+  }
+
+  .projectDescription {
+    font-size: 0.85rem;
+  }
+
+  .projectTechnologies {
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+  }
+
+  .techPill {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .projectActions {
+    flex-direction: column; /* Apila el botón y los enlaces en móviles */
+    gap: 0.8rem;
+    padding-top: 0.8rem;
+  }
+
+  .externalLinks {
+    gap: 0.6rem;
+  }
+
+  .projectLink svg {
+    font-size: 16px;
+  }
 }

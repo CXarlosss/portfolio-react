@@ -1,63 +1,203 @@
+
 .education {
-  background-color: var(--color-primary);
-  padding: 3rem 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  font-family: var(--font-main);
-  max-width: 860px;
-  margin: 3rem auto;
-  transition: box-shadow 0.3s ease;
+  background-color: var(--color-secondary); /* Fondo suave para la sección principal */
+  padding: 3.5rem; /* Más padding para una sensación de espacio */
+  border-radius: 1.5rem; /* Bordes suaves */
+  /* Sombra más pronunciada pero sutil para la sección principal */
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.1);
+  font-family: var(--font-family-main);
+  max-width: 900px; /* Ancho máximo para la sección */
+  margin: 3rem auto; /* Centra la sección y le da margen vertical */
+  display: flex; /* Para organizar el título y los ítems */
+  flex-direction: column;
+  gap: 2.5rem; /* Espacio entre el título principal y el contenedor de ítems */
 }
 
 .education:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1.2rem 3rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
 }
 
-.education h2 {
-  color: var(--color-accent);
-  font-family: var(--font-headings);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  margin-bottom: 2rem;
+.mainTitle { /* Estilo para el h2 principal */
+  color: var(--color-dark); /* Color oscuro para el título principal */
+  font-family: var(--font-family-headings);
+  font-size: clamp(2rem, 4vw, 2.5rem); /* Título responsivo y más grande */
+  margin-bottom: 0; /* El gap del padre lo maneja */
   text-align: center;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  padding-bottom: 1rem; /* Espacio para la línea */
+  position: relative; /* Para la línea decorativa */
 }
 
-.educationItem {
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 2rem;
-  border-left: 2px solid var(--color-accent);
-}
-
-.educationItem::before {
+.mainTitle::after {
   content: '';
   position: absolute;
-  left: -0.6rem;
-  top: 0.25rem;
-  width: 1rem;
-  height: 1rem;
-  background-color: var(--color-accent);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--color-primary);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px; /* Ancho de la línea */
+  height: 4px; /* Grosor de la línea */
+  background-color: var(--color-accent); /* Color de acento para la línea */
+  border-radius: 2px;
 }
 
-.educationItem h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.15rem;
-  color: var(--color-dark);
-  font-weight: 600;
+.educationItemsContainer {
+  display: grid;
+  /* Dos columnas en desktop, una en móvil. Ajusta minmax según prefieras */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* Espacio entre las tarjetas de educación */
 }
 
-.date {
-  font-size: 0.9rem;
-  color: #777;
-  margin: 0.2rem 0 0.8rem;
+.educationItem { /* Cada tarjeta de educación */
+  background-color: var(--color-primary); /* Fondo blanco para la tarjeta */
+  padding: 2rem; /* Padding interno de la tarjeta */
+  border-radius: 1rem; /* Bordes redondeados de la tarjeta */
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Borde sutil */
+  box-shadow: 0 0.5rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra para la tarjeta */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+  display: flex; /* Para organizar el contenido interno de la tarjeta */
+  flex-direction: column;
+  gap: 0.6rem; /* Espacio entre elementos dentro de la tarjeta */
+  position: relative; /* Para el acento de color */
+  overflow: hidden; /* Para que el pseudo-elemento no se desborde */
 }
 
-.description {
+.educationItem::before { /* Acento de color en la parte superior de la tarjeta */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px; /* Grosor de la línea de acento */
+  background-color: var(--color-accent); /* Color de acento */
+  border-top-left-radius: 1rem; /* Bordes redondeados para la línea de acento */
+  border-top-right-radius: 1rem;
+}
+
+.educationItem:hover {
+  transform: translateY(-0.5rem); /* Elevación más notable al hover */
+  box-shadow: 0 0.8rem 1.8rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
+}
+
+.educationTitle { /* Título del curso/formación */
+  margin: 0; /* Resetear margen */
+  font-size: 1.3rem; /* Tamaño de fuente para el título */
+  color: var(--color-dark); /* Color oscuro */
+  font-weight: 700; /* Más negrita */
+  line-height: 1.3;
+  margin-top: 0.5rem; /* Espacio debajo de la línea de acento */
+}
+
+.educationDate { /* Fecha de la formación */
+  font-size: 0.95rem;
+  color: var(--color-text-secondary); /* Color secundario para la fecha */
+  margin: 0; /* Resetear margen */
+  font-weight: 500;
+}
+
+.educationDescription { /* Descripción de la formación */
   font-size: 1rem;
   color: var(--color-text);
   line-height: 1.6;
-  max-width: 70ch;
+  margin-top: 0.8rem; /* Espacio entre la fecha y la descripción */
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 1024px) {
+  .educationItemsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste para tablets grandes */
+  }
+}
+
+@media (max-width: 768px) {
+  .education {
+    padding: 2.5rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .mainTitle::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .educationItemsContainer {
+    grid-template-columns: 1fr; /* Una sola columna en móviles y tablets */
+    gap: 1.5rem;
+  }
+
+  .educationItem {
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .educationItem::before {
+    height: 6px;
+  }
+
+  .educationTitle {
+    font-size: 1.2rem;
+  }
+
+  .educationDate {
+    font-size: 0.9rem;
+  }
+
+  .educationDescription {
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .education {
+    padding: 2rem;
+    border-radius: 0.8rem;
+    max-width: 95%;
+    margin: 1.5rem auto;
+    gap: 1.5rem;
+  }
+
+  .mainTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .mainTitle::after {
+    width: 50px;
+    height: 3px;
+  }
+
+  .educationItem {
+    padding: 1.2rem;
+    border-radius: 0.6rem;
+  }
+
+  .educationItem::before {
+    height: 5px;
+  }
+
+  .educationTitle {
+    font-size: 1.1rem;
+  }
+
+  .educationDate {
+    font-size: 0.85rem;
+  }
+
+  .educationDescription {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
 }

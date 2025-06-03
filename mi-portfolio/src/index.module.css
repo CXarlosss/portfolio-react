@@ -1,14 +1,21 @@
 /* En index.css o un archivo global */
 :root {
-    --color-primary: #ffffff;       /* Blanco */
-    --color-secondary: #e0f2f1;   /* Azul muy claro */
-    --color-accent: #03a9f4;        /* Azul claro */
-    --color-dark: #1e88e5;         /* Azul más oscuro */
-    --color-text: #333333;        /* Gris oscuro para el texto */
-    --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
-  }/* En index.css o un archivo global */
+    --color-primary: #ffffff;      
+    --color-secondary: #e0f2f1;  
+    --color-accent: #03a9f4;        
+    --color-dark: #1e88e5;         
+    --color-text: #333333;        
+    --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+
+  
+    --color-dark-rgb: 30, 136, 229;   
+    --color-accent-rgb: 3, 169, 244; 
+
+    --transition-duration: 0.3s;
+    --transition-timing-function: ease-in-out;
+  }
 html {
-    scroll-behavior: smooth; /* Para el scroll suave */
+    scroll-behavior: smooth; 
   }
   
   body {
@@ -18,3 +25,38 @@ html {
     margin: 0;
     padding: 0;
   }
+  
+
+.appContainer {
+  display: flex;
+  flex-direction: column; /* Apila Navbar, Main y Footer verticalmente */
+  min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la altura de la ventana */
+  background-color: var(--color-primary); /* Fondo blanco por defecto */
+  color: var(--color-text); /* Color de texto por defecto */
+  font-family: var(--font-family-main);
+  overflow-x: hidden; /* Evita el scroll horizontal en caso de desbordamiento */
+}
+
+.mainContent {
+  flex-grow: 1; /* Permite que el contenido principal ocupe todo el espacio disponible */
+  padding: 1.5rem 1rem; /* Padding general para el contenido, ajustado para móviles */
+  max-width: 1400px; /* Ancho máximo para el contenido principal en pantallas grandes */
+  margin: 0 auto; /* Centra el contenido principal */
+  width: 100%; /* Asegura que ocupe el 100% del ancho disponible hasta el max-width */
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Para pantallas de tamaño tablet (ej. 768px y más) */
+@media (min-width: 768px) {
+  .mainContent {
+    padding: 2rem 1.5rem; /* Aumenta el padding en tablets */
+  }
+}
+
+/* Para pantallas de tamaño desktop (ej. 1024px y más) */
+@media (min-width: 1024px) {
+  .mainContent {
+    padding: 3rem 2rem; /* Aumenta el padding en desktop */
+  }
+}

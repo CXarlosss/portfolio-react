@@ -44,14 +44,16 @@ function RecentWorkPreview() {
 
   return (
     <section className={styles.recentWork}>
-      <h2>Proyectos Recientes</h2>
+      <h2 className={styles.mainTitle}>Proyectos Recientes</h2> {/* Añadida clase para el título principal */}
       <div className={styles.projectsGrid}>
         {projects.map((project, index) => (
           <ProjectThumbnail key={index} {...project} />
         ))}
       </div>
-      <div className={styles.projectsButton}>
-        <Button link="/portfolio">Ver Todos los Proyectos</Button>
+      <div className={styles.projectsButtonContainer}> {/* Nuevo contenedor para el botón */}
+        <Button link="/portfolio" variant="secondary"> {/* Usando el variant 'secondary' del botón */}
+          Ver Todos los Proyectos
+        </Button>
       </div>
     </section>
   );

@@ -1,203 +1,204 @@
+
 .modalOverlay {
   position: fixed;
-  inset: 0; /* Asegura que cubra todo el viewport (top, right, bottom, left a 0) */
-  background: rgba(0, 0, 0, 0.9); /* Fondo más oscuro y opaco */
-  backdrop-filter: blur(15px); /* Aumenta el desenfoque para un efecto más inmersivo */
-  z-index: 1000;
+  inset: 0; /* Ensures it covers the entire viewport */
+  background: rgba(0, 0, 0, 0.8); /* Darker, more opaque background */
+  backdrop-filter: blur(18px); /* Increased blur for a more immersive effect */
+  z-index: 1000; /* High z-index to be on top */
   
   display: flex;
-  justify-content: center; /* Centra horizontalmente el modalWrapper */
-  align-items: center; /* Centra verticalmente el modalWrapper */
+  justify-content: center; /* Centers modalWrapper horizontally */
+  align-items: center; /* Centers modalWrapper vertically */
   
-  padding: 1.5rem; /* Pequeño padding para que el modal no toque los bordes en pantallas muy pequeñas */
-  animation: fadeIn 0.3s ease forwards;
+  padding: 2rem; /* Padding for the modal not to touch edges on small screens */
+  animation: fadeIn 0.4s ease forwards; /* Smoother fade-in animation */
   
-  /* IMPORTANTE: Permitir que el overlay tenga scroll si el contenido del modal es más alto que el viewport.
-     Esto asegura que siempre puedas ver todo el modal, incluso si es muy largo. */
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* Para un scroll más suave en dispositivos iOS */
+  overflow-y: auto; /* Allow overlay to scroll if modal content is taller than viewport */
+  -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS devices */
 }
 
 .modalWrapper {
-  background: #ffffff;
-  border-radius: 1.5rem;
-  width: 100%; /* El modalWrapper ocupa el 100% del espacio disponible por el padding del overlay */
-  max-width: 900px; /* Mantén un ancho máximo razonable para el contenido */
+  background: var(--color-primary); /* White background for the modal */
+  border-radius: 1.5rem; /* Softer rounded corners */
+  width: 100%; /* Occupies 100% of available space within overlay padding */
+  max-width: 950px; /* Increased max-width for more content space */
   
-  /* Esenciales para el centrado vertical robusto y el scroll interno: */
-  max-height: 90vh; /* Limita la altura del modal al 90% del viewport */
-  overflow-y: auto; /* Permite scroll solo si el contenido es largo dentro del modal */
-  flex-shrink: 0; /* Evita que el modal se encoja si el espacio es limitado */
-  margin: auto; /* Junto con align-items: center en el padre, ayuda a un centrado fuerte incluso con contenido largo */
+  max-height: 90vh; /* Limits modal height to 90% of viewport */
+  overflow-y: auto; /* Allows internal scrolling if content is long */
+  flex-shrink: 0; /* Prevents modal from shrinking if space is limited */
+  margin: auto; /* Helps with robust vertical centering */
 
-  padding: 2.5rem;
+  padding: 3rem; /* More generous padding inside the modal */
   position: relative;
-  box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.4); /* Sombra más intensa para destacar */
-  animation: slideInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); /* More intense shadow for prominence */
+  animation: slideInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smoother slide-in animation */
 }
 
-/* --- Resto del CSS (sin cambios significativos para el posicionamiento) --- */
-
+/* --- Close Button --- */
 .modalCloseButton {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background: none;
   border: none;
-  font-size: 2.5rem;
+  font-size: 3rem; /* Larger for easier clicking */
   font-weight: 300;
-  color: #a0a0a0;
+  color: var(--color-dark); /* Darker color for better visibility */
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
   padding: 0.25rem;
   line-height: 1;
+  z-index: 10; /* Ensure it's above other content */
 }
 
 .modalCloseButton:hover {
-  transform: scale(1.15) rotate(90deg);
-  color: #333;
+  transform: scale(1.2) rotate(90deg); /* More pronounced scale and rotation */
+  color: var(--color-accent); /* Changes to accent color on hover */
 }
 
+/* --- Header Section --- */
 .headerSection {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem; /* More space below the header */
+  padding-bottom: 1.5rem; /* Space for the line */
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Subtle separator line */
 }
 
 .projectTitle {
-  font-size: 2.5rem; /* Ajuste para un mejor equilibrio */
-  font-weight: 800; /* Más negrita */
-  color: var(--color-accent, #10b981); /* Mantén tu color de acento */
-  margin-bottom: 0.75rem;
+  font-size: clamp(2.2rem, 4vw, 3rem); /* Responsive and larger title */
+  font-weight: 800; /* Extra bold */
+  color: var(--color-dark); /* Darker color for impact */
+  margin-bottom: 0.8rem; /* Space below title */
   line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 
 .projectDescription {
-  font-size: 1.05rem; /* Ligeramente más pequeño para la descripción larga */
+  font-size: clamp(1rem, 1.8vw, 1.15rem); /* Responsive font size for description */
   line-height: 1.7;
-  margin-bottom: 1.5rem;
-  color: #4a4a4a; /* Un gris más suave que el negro puro */
-  max-width: 700px; /* Limita el ancho del texto para mejor legibilidad */
+  color: var(--color-text); /* Standard text color */
+  max-width: 800px; /* Limits text width for better readability */
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.9;
 }
 
 .subheading {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Larger subheading */
   font-weight: 700;
-  color: #333; /* Un poco más oscuro para los subtítulos */
-  margin-bottom: 1rem;
-  text-align: center; /* Centrar también los subtítulos */
+  color: var(--color-dark); /* Darker color for subheadings */
+  margin-bottom: 1.5rem; /* More space below subheading */
+  text-align: center;
+  font-family: var(--font-family-headings); /* Use heading font */
 }
 
-/* --- Carrusel de Imágenes --- */
+/* --- Image Carousel --- */
 .carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem; /* Espaciado un poco más compacto */
-  margin-bottom: 2.5rem; /* Más espacio debajo del carrusel */
-  position: relative; /* Para posicionar los botones de navegación */
+  gap: 1rem; /* More space between image and buttons */
+  margin-bottom: 3rem; /* More space below the carousel */
+  position: relative;
+  width: 100%; /* Occupy full width */
 }
 
 .carouselImage {
-  max-width: 90%; /* Ajuste para que la imagen no ocupe todo el ancho */
-  height: 380px; /* Aumenta la altura para que las imágenes sean más prominentes */
-  border-radius: 1rem;
-  object-fit: contain; /* Cambiado a 'contain' para asegurar que la imagen completa se vea sin recortarse, manteniendo la relación de aspecto. Si prefieres 'cover' y recortar, puedes revertirlo. */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* Sombra más definida para la imagen */
-  transition: transform 0.3s ease; /* Transición suave al cambiar de imagen */
+  max-width: 90%; /* Image takes up to 90% of carousel width */
+  height: 450px; /* Increased height for more prominent images */
+  border-radius: 1.2rem; /* Softer rounded corners for images */
+  object-fit: contain; /* Ensures the full image is visible without cropping */
+  background-color: var(--color-secondary); /* Background for the 'contain' area */
+  box-shadow: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.25); /* More defined shadow */
+  transition: transform 0.3s ease;
+  padding: 1rem; /* Padding inside the image container to create a frame effect */
 }
 
 .navButton {
-  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente oscuro */
-  color: white;
+  background: rgba(var(--color-dark-rgb), 0.6); /* Darker semi-transparent background */
+  color: var(--color-primary); /* White arrows */
   border: none;
-  font-size: 2.5rem; /* Más grande para ser más fácil de tocar */
-  width: 3.5rem; /* Mayor tamaño para el botón */
-  height: 3.5rem; /* Mayor tamaño para el botón */
+  font-size: 3rem; /* Larger arrows */
+  width: 4rem; /* Larger buttons */
+  height: 4rem; /* Larger buttons */
   border-radius: 50%;
   cursor: pointer;
-  display: flex; /* Para centrar el símbolo */
+  display: flex;
   justify-content: center;
   align-items: center;
   transition: background 0.2s ease, transform 0.2s ease;
-  flex-shrink: 0; /* Asegura que no se encoja */
+  flex-shrink: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* Shadow for buttons */
 }
 
 .navButton:hover {
-  background: rgba(0, 0, 0, 0.7); /* Más oscuro al hover */
-  transform: scale(1.05); /* Un ligero efecto de escala */
+  background: var(--color-accent); /* Accent color on hover */
+  transform: scale(1.1); /* More pronounced scale effect */
+  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-accent-rgb), 0.3); /* Accent shadow */
 }
 
-/* --- Sección de Tecnologías --- */
+/* --- Technologies Section (Pills) --- */
 .technologiesSection {
-  margin-top: 2rem; /* Espacio superior */
-  margin-bottom: 2.5rem; /* Espacio inferior */
-  text-align: center; /* Centrar las aptitudes */
+  margin-top: 2.5rem; /* More space above */
+  margin-bottom: 3rem; /* More space below */
+  text-align: center;
 }
 
 .modalTechnologies {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centra las etiquetas de tecnología */
-  gap: 0.8rem; /* Un poco más de espacio entre etiquetas */
-  margin-bottom: 0; /* Ya no es necesario margin-bottom aquí */
+  justify-content: center;
+  gap: 1rem; /* More space between tech pills */
+  margin-top: 1.5rem; /* Space below subheading */
 }
 
 .modalTechnologies li {
-  list-style: none; /* Eliminar viñetas */
-  background-color: var(--color-accent, #10b981); /* Usar tu color de acento */
-  color: white; /* Texto blanco para contraste */
-  padding: 0.6rem 1.2rem; /* Más padding para que sean más grandes */
-  border-radius: 9999px; /* Píldoras completamente redondas */
-  font-size: 0.9rem; /* Un poco más grande y legible */
+  list-style: none;
+  background-color: var(--color-accent); /* Accent color for pills */
+  color: var(--color-primary); /* White text for contrast */
+  padding: 0.7rem 1.4rem; /* More padding for larger pills */
+  border-radius: 9999px; /* Fully rounded pills */
+  font-size: 1rem; /* Clearer font size */
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  transition: transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow for pills */
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .modalTechnologies li:hover {
-  transform: translateY(-2px); /* Pequeño efecto hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+  background-color: var(--color-dark); /* Darker color on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
 }
 
-/* --- Enlaces de Acción --- */
+/* --- Action Links (Buttons) --- */
 .modalLinks {
   display: flex;
-  flex-wrap: wrap; /* Para que se adapten en pantallas pequeñas */
-  justify-content: center; /* Centrar los botones */
-  gap: 1.2rem; /* Más espacio entre botones */
-  margin-top: 2.5rem; /* Espacio encima de los botones */
-  margin-bottom: 0; /* Eliminar margen inferior si es el último elemento */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem; /* More space between buttons */
+  margin-top: 3rem; /* More space above buttons */
+  margin-bottom: 0;
 }
 
-/* --- Animaciones --- */
+/* --- Animations --- */
 .fadeOut {
   animation: fadeOut 0.3s ease forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
-/* Nueva animación para la entrada del modal */
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(50px) scale(0.9);
+    transform: translateY(100px) scale(0.9); /* Starts lower and slightly smaller */
   }
   to {
     opacity: 1;
@@ -205,35 +206,150 @@
   }
 }
 
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 768px) {
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 1024px) {
   .modalWrapper {
-    padding: 1.5rem; /* Menos padding en móviles */
-    max-width: 95vw; /* Ocupa más ancho en pantallas pequeñas */
+    padding: 2.5rem;
+    max-width: 90vw;
   }
 
   .modalCloseButton {
+    font-size: 2.8rem;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+
+  .projectTitle {
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+  }
+
+  .projectDescription {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  }
+
+  .subheading {
+    font-size: 1.6rem;
+  }
+
+  .carouselImage {
+    height: 380px;
+  }
+
+  .navButton {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2.5rem;
+  }
+
+  .modalTechnologies li {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .modalLinks {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modalWrapper {
+    padding: 2rem;
+    border-radius: 1.2rem;
+    max-height: 95vh; /* Allow more height on smaller screens */
+  }
+
+  .modalCloseButton {
+    font-size: 2.2rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .headerSection {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .projectTitle {
     font-size: 2rem;
+  }
+
+  .projectDescription {
+    font-size: 0.9rem;
+  }
+
+  .subheading {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .carouselImage {
+    height: 300px; /* Further adjust image height */
+  }
+
+  .navButton {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+
+  .modalTechnologies {
+    gap: 0.8rem;
+  }
+
+  .modalTechnologies li {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .modalLinks {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalWrapper {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .modalCloseButton {
+    font-size: 1.8rem;
     top: 0.75rem;
     right: 0.75rem;
   }
 
   .projectTitle {
-    font-size: 1.8rem; /* Título más pequeño en móviles */
+    font-size: 1.8rem;
   }
 
   .projectDescription {
-    font-size: 0.95rem; /* Descripción más pequeña en móviles */
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .subheading {
+    font-size: 1.2rem;
   }
 
   .carouselImage {
-    height: 250px; /* Ajusta la altura de la imagen en móviles */
+    height: 220px; /* Even smaller on very small devices */
   }
 
   .navButton {
     width: 2.5rem;
     height: 2.5rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .modalTechnologies {
+    gap: 0.6rem;
   }
 
   .modalTechnologies li {
@@ -242,22 +358,6 @@
   }
 
   .modalLinks {
-    flex-direction: column; /* Botones apilados en móviles */
-    align-items: center; /* Centrar los botones apilados */
-  }
-}
-
-@media (max-width: 480px) {
-  .modalWrapper {
-    padding: 1rem;
-    border-radius: 1rem;
-  }
-
-  .projectTitle {
-    font-size: 1.5rem;
-  }
-
-  .carouselImage {
-    height: 200px; /* Aún más pequeña en dispositivos muy pequeños */
+    gap: 0.8rem;
   }
 }

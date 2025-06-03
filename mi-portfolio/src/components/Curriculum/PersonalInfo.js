@@ -1,4 +1,4 @@
-// @ts-nocheck // You might not need this if your setup is correct
+// @ts-nocheck
 import React from 'react';
 import styles from "../../styles/components/curriculum/personalinfo.module.css"; // Corrected import (using .module.css)
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
@@ -20,16 +20,18 @@ function PersonalInfo() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin size={24} color="#0077b5" /> {/* Example styling */}
+            {/* Eliminado el color hardcodeado para que el CSS lo controle */}
+            <FaLinkedin size={24} /> 
           </a>
-          |
+          {/* Eliminado el separador '|' ya que el CSS maneja el espaciado */}
           <a
             href="https://github.com/CXarlosss"
             aria-label="GitHub"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub size={24} color="#171515" /> {/* Example styling */}
+            {/* Eliminado el color hardcodeado para que el CSS lo controle */}
+            <FaGithub size={24} /> 
           </a>
         </p>
       </div>

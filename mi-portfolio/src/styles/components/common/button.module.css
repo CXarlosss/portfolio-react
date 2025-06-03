@@ -1,18 +1,29 @@
+/* src/styles/components/common/button.module.css */
+
 .button {
-  font-family: var(--font-main);
-  padding: 0.75rem 1.75rem;
+  font-family: var(--font-family-main);
+  padding: 0.8rem 2rem;
   border-radius: 0.75rem;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  display: inline-block;
-  box-shadow: 0 2px 10px rgba(243, 241, 241, 0.04);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1.2;
   user-select: none;
+
+  /* Transiciones suaves para todos los cambios */
+  transition: background-color var(--transition-duration) var(--transition-timing-function),
+              color var(--transition-duration) var(--transition-timing-function),
+              transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+  
+  /* Sombra base más visible y consistente con tu tema */
+  box-shadow: 0 4px 12px rgba(var(--color-dark-rgb), 0.1);
 }
 
 /* Botón primario */
@@ -21,23 +32,40 @@
   color: var(--color-primary);
 }
 
-.primary:hover {
-  background-color: #3b6b99;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 107, 153, 0.2);
+.primary:hover { /* ¡Esta es la regla que debe funcionar! */
+  background-color: var(--color-dark); /* Un azul más oscuro de tu paleta al hover */
+  color: var(--color-primary); /* Mantiene el texto blanco */
+  transform: translateY(-3px); /* Elevación más pronunciada */
+  /* Sombra más fuerte y consistente con el color oscuro al elevarse */
+  box-shadow: 0 8px 20px rgba(var(--color-dark-rgb), 0.3);
 }
 
-/* Botón secundario */
+/* Botón secundario (outline) */
 .secondary {
   background-color: transparent;
   color: var(--color-accent);
   border: 2px solid var(--color-accent);
+  box-shadow: none;
 }
 
-.secondary:hover {
+.secondary:hover { /* ¡Esta es la regla que debe funcionar! */
   background-color: var(--color-accent);
   color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(var(--color-accent-rgb), 0.25);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }

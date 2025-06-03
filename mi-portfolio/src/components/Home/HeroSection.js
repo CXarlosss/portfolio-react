@@ -10,7 +10,9 @@ function HeroSection() {
       <div className={styles.heroContent}>
         <h1>Carlos de Petronila Rodríguez</h1>
         <p className={styles.heroSubtitle}>Desarrollador Web</p>
-        <img src={profileImage} alt="Carlos de Petronila Rodríguez" className={styles.heroImage} />
+        <div className={styles.imageContainer}> {/* Nuevo contenedor para la imagen */}
+          <img src={profileImage} alt="Carlos de Petronila Rodríguez" className={styles.heroImage} />
+        </div>
         <p className={styles.heroDescription}>
           Soy un desarrollador web apasionado por crear soluciones innovadoras y
           eficientes. Con experiencia en Front-end y Back-end, me encanta transformar

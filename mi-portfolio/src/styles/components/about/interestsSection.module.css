@@ -1,45 +1,113 @@
-/* src/components/About/InterestSection.module.css */
-
-.interestSection {
-  padding: 2rem;
+.interestsSection {
+  padding: 3rem 2rem;
   background-color: var(--color-primary);
-  border-radius: 1rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin: 2rem 0;
+  transition: var(--transition);
 }
 
-.interestSection h2 {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+.interestsSection:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.sectionTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   color: var(--color-dark);
   margin-bottom: 1.5rem;
-  text-align: left;
-  border-bottom: 2px solid var(--color-secondary);
-  padding-bottom: 0.5rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.75rem;
 }
 
-.interestList {
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.introText {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.interestsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.interestCard {
+  background-color: var(--color-primary);
+  border: 1px solid rgba(3, 169, 244, 0.1);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: var(--transition);
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.interestItem {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
+.interestCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-color: rgba(3, 169, 244, 0.2);
+}
+
+.interestIcon {
+  font-size: 2rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  background: rgba(3, 169, 244, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interestName {
+  font-size: 1.2rem;
+  color: var(--color-dark);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.interestDescription {
   font-size: 0.95rem;
-  font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  cursor: default;
-  user-select: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
-.interestItem:hover {
-  background-color: var(--color-accent);
-  color: #fff;
-  transform: translateY(-2px);
+/* Responsive */
+@media (max-width: 768px) {
+  .interestsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .interestCard {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interestsGrid {
+    grid-template-columns: 1fr;
+  }
 }

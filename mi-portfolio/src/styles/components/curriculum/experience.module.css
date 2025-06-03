@@ -1,63 +1,230 @@
-/* src/components/About/Experience.module.css */
+
 
 .experience {
-  background-color: rgba(var(--color-secondary-rgb), 0.75); /* Fondo suave con ligera transparencia */
-  padding: 3rem; /* Más espacio interior */
-  border-radius: 1.2rem; /* Bordes más suaves */
-  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-dark-rgb), 0.08); /* Sombra moderna y sutil */
-  font-family: var(--font-main);
-  max-width: 900px; /* Ligeramente más ancho para contenido extenso */
-  margin: 3rem auto; /* Más margen superior e inferior */
-  backdrop-filter: blur(12px); /* Efecto de desenfoque */
-  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.15); /* Borde sutil */
+  background-color: var(--color-secondary); /* Fondo suave para la sección principal */
+  padding: 3.5rem; /* Más padding para una sensación de espacio */
+  border-radius: 1.5rem; /* Bordes suaves */
+  /* Sombra más pronunciada pero sutil para la sección principal */
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.1);
+  font-family: var(--font-family-main);
+  max-width: 900px; /* Ancho máximo para la sección */
+  margin: 3rem auto; /* Centra la sección y le da margen vertical */
+  display: flex; /* Para organizar el título y los ítems */
+  flex-direction: column;
+  gap: 2.5rem; /* Espacio entre el título principal y el contenedor de ítems */
 }
 
-.experience h2 {
-  color: var(--color-accent);
-  font-family: var(--font-headings);
-  margin-bottom: 2rem; /* Más espacio debajo del título */
+.experience:hover {
+  box-shadow: 0 1.2rem 3rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
+}
+
+.mainTitle { /* Estilo para el h2 principal */
+  color: var(--color-dark); /* Color oscuro para el título principal */
+  font-family: var(--font-family-headings);
+  font-size: clamp(2rem, 4vw, 2.5rem); /* Título responsivo y más grande */
+  margin-bottom: 0; /* El gap del padre lo maneja */
   text-align: center;
-  font-size: 2.2rem; /* Título más grande */
   font-weight: 700;
   letter-spacing: -0.03em;
+  padding-bottom: 1rem; /* Espacio para la línea */
+  position: relative; /* Para la línea decorativa */
 }
 
-.experienceItem {
-  margin-bottom: 1.8rem; /* Más espacio entre los elementos */
-  padding-left: 1.2rem; /* Ligeramente más espacio para la línea vertical */
-  border-left: 0.2rem solid var(--color-accent); /* Línea vertical más delgada y moderna */
-  position: relative; /* Para el pseudo-elemento del punto */
-}
-
-.experienceItem::before {
+.mainTitle::after {
   content: '';
   position: absolute;
-  left: -0.5rem; /* Ajusta la posición del punto */
-  top: 0.3rem; /* Ajusta la posición vertical del punto */
-  width: 0.8rem;
-  height: 0.8rem;
-  background-color: var(--color-accent);
-  border-radius: 50%; /* Crea un círculo */
-  opacity: 0.7; /* Ligera transparencia para el punto */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px; /* Ancho de la línea */
+  height: 4px; /* Grosor de la línea */
+  background-color: var(--color-accent); /* Color de acento para la línea */
+  border-radius: 2px;
 }
 
-.experienceItem h3 {
-  margin: 0 0 0.3rem 0; /* Espacio inferior para el título */
-  font-size: 1.2rem; /* Título un poco más grande */
-  color: var(--color-dark);
+.experienceItemsContainer {
+  display: grid;
+  /* Dos columnas en desktop, una en móvil. Ajusta minmax según prefieras */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* Espacio entre las tarjetas de experiencia */
+}
+
+.experienceItem { /* Cada tarjeta de experiencia */
+  background-color: var(--color-primary); /* Fondo blanco para la tarjeta */
+  padding: 2rem; /* Padding interno de la tarjeta */
+  border-radius: 1rem; /* Bordes redondeados de la tarjeta */
+  border: 1px solid rgba(var(--color-dark-rgb), 0.1); /* Borde sutil */
+  box-shadow: 0 0.5rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra para la tarjeta */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+  display: flex; /* Para organizar el contenido interno de la tarjeta */
+  flex-direction: column;
+  gap: 0.5rem; /* Espacio entre elementos dentro de la tarjeta */
+  position: relative; /* Para el acento de color lateral */
+  overflow: hidden; /* Para que el pseudo-elemento no se desborde */
+}
+
+.experienceItem::before { /* Acento de color en el lado izquierdo de la tarjeta */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px; /* Grosor de la línea de acento */
+  height: 100%; /* Ocupa toda la altura */
+  background-color: var(--color-accent); /* Color de acento */
+  border-top-left-radius: 1rem; /* Bordes redondeados para la línea de acento */
+  border-bottom-left-radius: 1rem;
+}
+
+.experienceItem:hover {
+  transform: translateY(-0.5rem); /* Elevación más notable al hover */
+  box-shadow: 0 0.8rem 1.8rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
+}
+
+.experienceTitle { /* Título del puesto */
+  margin: 0; /* Resetear margen */
+  font-size: 1.4rem; /* Tamaño de fuente para el título del puesto */
+  color: var(--color-dark); /* Color oscuro */
+  font-weight: 700; /* Más negrita */
+  line-height: 1.3;
+  margin-left: 1.2rem; /* Espacio para el acento lateral */
+}
+
+.experienceCompany { /* Nombre de la empresa */
+  font-size: 1.1rem;
+  color: var(--color-accent); /* Color de acento para la empresa */
+  margin: 0; /* Resetear margen */
   font-weight: 600;
+  margin-left: 1.2rem; /* Espacio para el acento lateral */
 }
 
-.date {
-  font-size: 0.95rem; /* Ligeramente más grande para mejor legibilidad */
-  color: rgba(var(--color-dark-rgb), 0.6); /* Tono de gris más suave */
-  margin-top: 0.3rem;
-  font-style: italic; /* Añadiendo un toque de estilo */
+.experienceDate { /* Fecha de la experiencia */
+  font-size: 0.95rem;
+  color: var(--color-text-secondary); /* Color secundario para la fecha */
+  margin: 0; /* Resetear margen */
+  font-weight: 500;
+  margin-left: 1.2rem; /* Espacio para el acento lateral */
 }
 
-.description {
-  margin-top: 0.8rem;
+.experienceDescription { /* Descripción de la experiencia */
   font-size: 1rem;
   color: var(--color-text);
-  line-height: 1.6; /* Mejor legibilidad para el texto */
+  line-height: 1.6;
+  margin-top: 0.8rem; /* Espacio entre la fecha y la descripción */
+  margin-left: 1.2rem; /* Espacio para el acento lateral */
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 1024px) {
+  .experienceItemsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste para tablets grandes */
+  }
+}
+
+@media (max-width: 768px) {
+  .experience {
+    padding: 2.5rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .mainTitle::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .experienceItemsContainer {
+    grid-template-columns: 1fr; /* Una sola columna en móviles y tablets */
+    gap: 1.5rem;
+  }
+
+  .experienceItem {
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .experienceItem::before {
+    width: 6px;
+  }
+
+  .experienceTitle {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+  }
+
+  .experienceCompany {
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+
+  .experienceDate {
+    font-size: 0.9rem;
+    margin-left: 1rem;
+  }
+
+  .experienceDescription {
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience {
+    padding: 2rem;
+    border-radius: 0.8rem;
+    max-width: 95%;
+    margin: 1.5rem auto;
+    gap: 1.5rem;
+  }
+
+  .mainTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .mainTitle::after {
+    width: 50px;
+    height: 3px;
+  }
+
+  .experienceItem {
+    padding: 1.2rem;
+    border-radius: 0.6rem;
+  }
+
+  .experienceItem::before {
+    width: 5px;
+  }
+
+  .experienceTitle {
+    font-size: 1.1rem;
+    margin-left: 0.8rem;
+  }
+
+  .experienceCompany {
+    font-size: 0.95rem;
+    margin-left: 0.8rem;
+  }
+
+  .experienceDate {
+    font-size: 0.85rem;
+    margin-left: 0.8rem;
+  }
+
+  .experienceDescription {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-left: 0.8rem;
+  }
 }

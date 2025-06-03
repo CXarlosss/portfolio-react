@@ -1,35 +1,16 @@
 .homePage {
-  font-family: var(--font-main);
+  font-family: var(--font-family-main);
   background-color: var(--color-primary);
   display: flex;
   flex-direction: column;
-  gap: 3rem; /* Ajuste para móviles */
-  padding: 2rem 1rem; /* Ajuste para móviles */
+  gap: 3rem;
+  padding: 2rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-duration) var(--transition-timing-function);
 }
 
-/* Animaciones suaves de entrada */
-.homePage > * {
-  opacity: 0;
-  transform: translateY(20px); /* Ajuste para móviles */
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.homePage > *:nth-child(2) {
-  animation-delay: 0.1s; /* Ajuste para móviles */
-}
-.homePage > *:nth-child(3) {
-  animation-delay: 0.2s; /* Ajuste para móviles */
-}
-.homePage > *:nth-child(4) {
-  animation-delay: 0.3s; /* Ajuste para móviles */
-}
-.homePage > *:nth-child(5) {
-  animation-delay: 0.4s; /* Ajuste para móviles */
-}
-
+/* ✨ Animación de entrada genérica */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -37,32 +18,36 @@
   }
 }
 
-/* Responsive spacing para tablet */
+.homePage > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 🎯 Delay progresiva: más limpia y reutilizable */
+.homePage > *:nth-child(2) { animation-delay: 0.1s; }
+.homePage > *:nth-child(3) { animation-delay: 0.2s; }
+.homePage > *:nth-child(4) { animation-delay: 0.3s; }
+.homePage > *:nth-child(5) { animation-delay: 0.4s; }
+
+/* 📱 Tablets */
 @media (min-width: 768px) {
   .homePage {
     padding: 4rem 2rem;
-    gap: 4rem; /* Ajuste para tablet */
+    gap: 4rem;
   }
 
   .homePage > * {
-    transform: translateY(25px); /* Ajuste para tablet */
+    transform: translateY(25px);
   }
 
-  .homePage > *:nth-child(2) {
-    animation-delay: 0.15s; /* Ajuste para tablet */
-  }
-  .homePage > *:nth-child(3) {
-    animation-delay: 0.3s; /* Ajuste para tablet */
-  }
-  .homePage > *:nth-child(4) {
-    animation-delay: 0.45s; /* Ajuste para tablet */
-  }
-  .homePage > *:nth-child(5) {
-    animation-delay: 0.6s; /* Ajuste para tablet */
-  }
+  .homePage > *:nth-child(2) { animation-delay: 0.15s; }
+  .homePage > *:nth-child(3) { animation-delay: 0.3s; }
+  .homePage > *:nth-child(4) { animation-delay: 0.45s; }
+  .homePage > *:nth-child(5) { animation-delay: 0.6s; }
 }
 
-/* Responsive spacing para desktop */
+/* 🖥️ Desktop */
 @media (min-width: 1200px) {
   .homePage {
     padding: 6rem 4rem;
@@ -70,19 +55,11 @@
   }
 
   .homePage > * {
-    transform: translateY(30px); /* Restaurar valor desktop */
+    transform: translateY(30px);
   }
 
-  .homePage > *:nth-child(2) {
-    animation-delay: 0.2s; /* Restaurar valor desktop */
-  }
-  .homePage > *:nth-child(3) {
-    animation-delay: 0.4s; /* Restaurar valor desktop */
-  }
-  .homePage > *:nth-child(4) {
-    animation-delay: 0.6s; /* Restaurar valor desktop */
-  }
-  .homePage > *:nth-child(5) {
-    animation-delay: 0.8s; /* Restaurar valor desktop */
-  }
+  .homePage > *:nth-child(2) { animation-delay: 0.2s; }
+  .homePage > *:nth-child(3) { animation-delay: 0.4s; }
+  .homePage > *:nth-child(4) { animation-delay: 0.6s; }
+  .homePage > *:nth-child(5) { animation-delay: 0.8s; }
 }

@@ -1,48 +1,219 @@
-/* src/components/About/Languages.module.css */
 
-.languages {
-  background-color: rgba(var(--color-primary-rgb), 0.85); /* Fondo blanco suave con ligera transparencia */
-  padding: 2.5rem; /* Un poco más de espacio interior */
-  border-radius: 1.2rem; /* Bordes más suaves */
-  box-shadow: 0 0.5rem 1rem rgba(var(--color-dark-rgb), 0.07); /* Sombra moderna y sutil */
-  font-family: var(--font-main);
-  max-width: 650px; /* Ligeramente más ancho */
-  margin: 3rem auto; /* Más margen superior e inferior para destacar */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
-  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.1); /* Borde sutil */
+
+.languagesSection {
+  background-color: var(--color-secondary); /* Fondo suave para la sección principal */
+  padding: 3.5rem; /* Más padding para una sensación de espacio */
+  border-radius: 1.5rem; /* Bordes suaves */
+  /* Sombra más pronunciada pero sutil para la sección principal */
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.1);
+  font-family: var(--font-family-main);
+  max-width: 900px; /* Ancho máximo para la sección */
+  margin: 3rem auto; /* Centra la sección y le da margen vertical */
+  display: flex; /* Para organizar el título y los ítems */
+  flex-direction: column;
+  gap: 2.5rem; /* Espacio entre el título principal y el contenedor de ítems */
 }
 
-.languages h2 {
-  color: var(--color-accent);
-  font-family: var(--font-headings);
+.languagesSection:hover {
+  box-shadow: 0 1.2rem 3rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
+}
+
+.mainTitle { /* Estilo para el h2 principal */
+  color: var(--color-dark); /* Color oscuro para el título principal */
+  font-family: var(--font-family-headings);
+  font-size: clamp(2rem, 4vw, 2.5rem); /* Título responsivo y más grande */
+  margin-bottom: 0; /* El gap del padre lo maneja */
   text-align: center;
-  margin-bottom: 1.5rem; /* Más espacio debajo del título */
-  font-size: 2rem; /* Título más grande */
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  padding-bottom: 1rem; /* Espacio para la línea */
+  position: relative; /* Para la línea decorativa */
 }
 
-.languages ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.languages li {
-  margin-bottom: 1rem; /* Más espacio entre los elementos de la lista */
-  font-size: 1.1rem; /* Ligeramente más grande para mejor legibilidad */
-  color: var(--color-text);
-  font-weight: 500;
-  position: relative; /* Para el pseudo-elemento decorativo */
-  padding-left: 1.2rem; /* Espacio para el pseudo-elemento */
-}
-
-.languages li::before {
-  content: '✓'; /* Un checkmark como decoración */
+.mainTitle::after {
+  content: '';
   position: absolute;
-  left: 0;
-  top: 0.1rem; /* Ajuste vertical */
-  color: var(--color-accent);
-  font-size: 1.2rem;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px; /* Ancho de la línea */
+  height: 4px; /* Grosor de la línea */
+  background-color: var(--color-accent); /* Color de acento para la línea */
+  border-radius: 2px;
+}
+
+.languagesGrid {
+  display: grid;
+  /* Cuadrícula flexible: 3 columnas en desktop, 2 en tablet, 1 en móvil */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustado minmax para las nuevas tarjetas */
+  gap: 1.8rem; /* Espacio entre las tarjetas de idiomas */
+  justify-content: center; /* Centra las tarjetas si no llenan la fila */
+}
+
+.languagePill { /* Cada "píldora" de idioma ahora es una tarjeta compacta */
+  background-color: var(--color-primary); /* Fondo blanco para la tarjeta */
+  padding: 1.5rem; /* Padding interno de la tarjeta */
+  border-radius: 1rem; /* Bordes redondeados para la tarjeta */
+  border: 1px solid rgba(var(--color-dark-rgb), 0.1); /* Borde sutil */
+  box-shadow: 0 0.4rem 1rem rgba(var(--color-dark-rgb), 0.06); /* Sombra sutil */
+  display: flex;
+  flex-direction: column; /* Apila el encabezado y la descripción */
+  align-items: flex-start; /* Alinea el contenido a la izquierda */
+  gap: 1rem; /* Espacio entre el encabezado y la descripción */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function),
+              background-color var(--transition-duration) var(--transition-timing-function);
+  cursor: default; /* No es clickable, así que cursor por defecto */
+}
+
+.languagePill:hover {
+  transform: translateY(-0.5rem); /* Elevación más notable al hover */
+  box-shadow: 0 0.8rem 1.8rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
+  background-color: var(--color-accent); /* Fondo de acento al hover */
+  /* No cambiamos el color del texto de la píldora aquí directamente,
+     sino en las clases anidadas para más control. */
+}
+
+/* Nuevo estilo para el contenedor del nombre y nivel del idioma */
+.languageHeader {
+  display: flex;
+  justify-content: space-between; /* Espacia el nombre y el nivel */
+  align-items: center;
+  width: 100%; /* Ocupa todo el ancho de la píldora */
+  padding-bottom: 0.8rem; /* Espacio debajo del encabezado */
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Línea divisoria sutil */
+}
+
+.languagePill:hover .languageName,
+.languagePill:hover .languageLevel {
+  color: var(--color-primary); /* Asegura que el texto dentro del header sea blanco al hover */
+}
+
+.languageName {
+  font-size: 1.2rem; /* Tamaño de fuente para el nombre del idioma */
+  color: var(--color-dark); /* Color oscuro para el nombre del idioma */
+  font-weight: 700; /* Más negrita */
+  text-transform: uppercase;
+}
+
+.languageLevel {
+  font-size: 0.95rem;
+  color: var(--color-accent); /* Color de acento para el nivel */
+  font-weight: 700;
+  padding: 0.3rem 0.7rem; /* Padding para el badge de nivel */
+  background-color: rgba(var(--color-accent-rgb), 0.1); /* Fondo suave para el nivel */
+  border-radius: 0.5rem; /* Bordes redondeados para el badge */
+  flex-shrink: 0; /* Evita que el nivel se encoja */
+}
+
+/* Nuevo estilo para la descripción del idioma */
+.languageDescription {
+  font-size: 0.95rem; /* Tamaño de fuente para la descripción */
+  color: var(--color-text); /* Color de texto para la descripción */
+  line-height: 1.6;
+  text-align: left; /* Asegura que la descripción se alinee a la izquierda */
+  margin-top: 0; /* El gap lo maneja */
+}
+
+.languagePill:hover .languageDescription {
+  color: var(--color-primary); /* Asegura que la descripción sea blanca al hover */
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 1024px) {
+  .languagesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ajuste para tablets grandes */
+  }
+}
+
+@media (max-width: 768px) {
+  .languagesSection {
+    padding: 2.5rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .mainTitle::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .languagesGrid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles y tablets */
+    gap: 1.2rem;
+  }
+
+  .languagePill {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    gap: 0.8rem;
+  }
+
+  .languageHeader {
+    padding-bottom: 0.6rem;
+  }
+
+  .languageName {
+    font-size: 1.1rem;
+  }
+
+  .languageLevel {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .languageDescription {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .languagesSection {
+    padding: 2rem;
+    border-radius: 0.8rem;
+    max-width: 95%;
+    margin: 1.5rem auto;
+    gap: 1.5rem;
+  }
+
+  .mainTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .mainTitle::after {
+    width: 50px;
+    height: 3px;
+  }
+
+  .languagePill {
+    padding: 1rem;
+    border-radius: 0.6rem;
+  }
+
+  .languageHeader {
+    padding-bottom: 0.5rem;
+  }
+
+  .languageName {
+    font-size: 1rem;
+  }
+
+  .languageLevel {
+    font-size: 0.8rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .languageDescription {
+    font-size: 0.85rem;
+  }
 }

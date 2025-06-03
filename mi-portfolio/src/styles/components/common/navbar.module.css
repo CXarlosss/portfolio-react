@@ -1,19 +1,18 @@
-/* src/components/Navbar/Navbar.module.css */
 
 .navbar {
   background-color: rgba(var(--color-primary-rgb), 0.95); /* Blanco con ligera transparencia */
   color: var(--color-text);
-  font-family: var(--font-main);
+  font-family: var(--font-family-main); /* Corregido: usar --font-family-main */
   padding: 1.2rem 2.5rem; /* Aumentando ligeramente el padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.08rem solid var(--color-border); /* Borde más sutil */
+  border-bottom: 0.08rem solid var(--color-secondary); /* Usar color-secondary para el borde */
   box-shadow: 0 0.2rem 0.5rem rgba(var(--color-dark-rgb), 0.08); /* Sombra suave y moderna */
   position: sticky;
   top: 0;
-  z-index: 100; /* Asegurando que esté por encima de otros elementos */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque para un look moderno (puede no ser soportado por todos los navegadores) */
+  z-index: 1000; /* Asegurando que esté por encima de otros elementos, ajustado a 1000 */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
 }
 
 .logo {
@@ -21,14 +20,34 @@
   font-weight: 700; /* Más énfasis en el logo */
   color: var(--color-accent);
   letter-spacing: -0.02em; /* Ajuste fino para la apariencia */
+  z-index: 1001; /* Asegura que el logo esté por encima del menú móvil */
+}
+
+/* Estilos para el botón de hamburguesa (visible solo en móviles) */
+.menuToggle {
+  display: none; /* Oculto por defecto en desktop */
+  background: none;
+  border: none;
+  font-size: 2rem; /* Tamaño del icono */
+  color: var(--color-dark); /* Color del icono */
+  cursor: pointer;
+  z-index: 1001; /* Asegura que el botón esté por encima del menú móvil */
+  transition: color var(--transition-duration);
+}
+
+.menuToggle:hover {
+  color: var(--color-accent);
+}.menuToggleOpen {
+  color: var(--color-primary); /* ¡Color blanco para la 'X' cuando el menú está abierto! */
 }
 
 .navLinks {
   list-style: none;
-  display: flex;
+  display: flex; /* Por defecto, en fila para desktop */
   gap: 2rem; /* Mayor espacio entre los enlaces */
   margin: 0;
   padding: 0;
+  transition: transform var(--transition-duration) var(--transition-timing-function); /* Transición para el menú móvil */
 }
 
 .navLinks li a {
@@ -37,6 +56,7 @@
   font-weight: 500;
   position: relative; /* Para la pseudo-clase del hover */
   transition: color var(--transition-duration) var(--transition-timing-function);
+  padding: 0.5rem 0; /* Padding para el área de clic */
 }
 
 .navLinks li a:hover {
@@ -71,4 +91,86 @@
   width: 100%;
   height: 0.15rem;
   background-color: var(--color-accent);
+}
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem; /* Menos padding en móviles */
+  }
+
+  .menuToggle {
+    display: block; /* Muestra el botón de hamburguesa en móviles */
+  }
+
+  .navLinks {
+    flex-direction: column; /* Apila los enlaces verticalmente */
+    position: fixed; /* Posiciona el menú sobre el contenido */
+    top: 0;
+    right: 0;
+    width: 70%; /* Ancho del menú móvil */
+    max-width: 300px; /* Ancho máximo para el menú móvil */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: rgba(var(--color-dark-rgb), 0.98); /* Fondo oscuro para el menú móvil */
+    color: var(--color-primary); /* Texto blanco en el menú móvil */
+    padding: 6rem 2rem 2rem; /* Padding para el menú (espacio para el logo/botón de cierre) */
+    box-shadow: -0.5rem 0 1.5rem rgba(0, 0, 0, 0.3); /* Sombra a la izquierda */
+    transform: translateX(100%); /* Oculta el menú por defecto (fuera de la pantalla) */
+    z-index: 999; /* Asegura que el menú esté debajo del logo y el botón de alternar */
+    align-items: flex-start; /* Alinea los enlaces a la izquierda */
+    gap: 1.5rem; /* Espacio entre los enlaces en el menú móvil */
+  }
+
+  .navLinksOpen {
+    transform: translateX(0); /* Muestra el menú al abrirlo */
+  }
+
+  .navLinks li a {
+    color: var(--color-primary); /* Enlaces blancos en el menú móvil */
+    font-size: 1.2rem; /* Tamaño de fuente más grande para enlaces móviles */
+    padding: 0.8rem 0; /* Más padding para los enlaces */
+    width: 100%; /* Asegura que el área de clic sea más grande */
+  }
+
+  .navLinks li a:hover {
+    color: var(--color-accent); /* Color de acento al hover */
+  }
+
+  /* Ajustes para la línea de hover/active en el menú móvil */
+  .navLinks li a::after {
+    background-color: var(--color-accent); /* Línea de acento */
+    height: 0.1rem; /* Más delgada en móvil */
+    bottom: 0; /* Posición de la línea */
+  }
+
+  .active {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    z-index: 10001;
+    
+  }
+
+  .menuToggle {
+    font-size: 1.8rem;
+  }
+
+  .navLinks {
+    width: 80%; /* Un poco más ancho en móviles muy pequeños */
+    padding: 5rem 1.5rem 1.5rem;
+  }
+
+  .navLinks li a {
+    font-size: 1.1rem;
+  }
 }

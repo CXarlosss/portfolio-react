@@ -2,35 +2,81 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/components/portfolio/projectCard.module.css';
 import Button from '../common/Button';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'; // Importar iconos de GitHub y enlace externo
 
 function ProjectCard({ project, onClick }) {
+  // Prioriza project.images si existe y tiene elementos, de lo contrario usa thumbnail
+  const allImages = (project.images && project.images.length > 0)
+    ? project.images
+    : [project.thumbnail];
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [project.thumbnail, project.thumbnailAlt || project.thumbnail];
 
   useEffect(() => {
+    // Si solo hay una imagen, no necesitamos un intervalo
+    if (allImages.length <= 1) {
+      return;
+    }
+
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+      setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
+    }, 5000); // Cambia la imagen cada 5 segundos
+
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [allImages.length, allImages]); // Dependencia en allImages también
 
   return (
     <div className={styles.projectCard}>
       <img
-        src={images[currentImageIndex]}
+        src={allImages[currentImageIndex]}
         alt={project.title}
         className={styles.projectThumbnail}
+        // Fallback para la imagen si no carga
+        onError={(e) => {
+          e.target.onerror = null; // Evita bucles infinitos
+          e.target.src = "https://placehold.co/400x300/e0e0e0/333333?text=Imagen+no+disponible"; // Imagen de placeholder
+        }}
       />
       <div className={styles.projectDetails}>
         <h3>{project.title}</h3>
         <p className={styles.projectDescription}>{project.description}</p>
-        <ul className={styles.projectTechnologies}>
-          {project.technologies.map((tech) => (
-            <li key={tech}>{tech}</li>
-          ))}
-        </ul>
+        
+        {project.technologies && project.technologies.length > 0 && (
+          <ul className={styles.projectTechnologies}>
+            {project.technologies.map((tech) => (
+              <li key={tech} className={styles.techPill}>{tech}</li> 
+            ))}
+          </ul>
+        )}
 
-        <Button onClick={() => onClick(project)}>Ver Detalles</Button>
+        <div className={styles.projectActions}> {/* Contenedor para botones y enlaces */}
+          <Button onClick={() => onClick(project)}>Ver Detalles</Button>
+          
+          <div className={styles.externalLinks}>
+            {project.githubLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.projectLink}
+                aria-label={`Ver código de ${project.title} en GitHub`}
+              >
+                <FaGithub size={20} />
+              </a>
+            )}
+            {project.liveDemoLink && (
+              <a
+                href={project.liveDemoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.projectLink}
+                aria-label={`Ver demo en vivo de ${project.title}`}
+              >
+                <FaExternalLinkAlt size={20} />
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

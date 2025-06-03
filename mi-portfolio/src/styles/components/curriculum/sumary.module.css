@@ -1,47 +1,137 @@
-/* src/components/About/Summary.module.css */
 
 .summary {
-  font-family: var(--font-main);
-  background-color: rgba(var(--color-primary-rgb), 0.85); /* Fondo blanco suave con ligera transparencia */
-  padding: 3rem; /* Más espacio interior para una mejor lectura */
-  border-radius: 1.2rem; /* Bordes más suaves */
-  box-shadow: 0 0.5rem 1rem rgba(var(--color-dark-rgb), 0.07); /* Sombra moderna y sutil */
-  max-width: 750px; /* Ancho ligeramente ajustado para mejor legibilidad en textos largos */
-  margin: 3rem auto; /* Más margen superior e inferior para destacar */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
-  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.1); /* Borde sutil */
+  font-family: var(--font-family-main); /* Using --font-family-main for consistency */
+  background-color: var(--color-primary); /* Solid background for a cleaner look */
+  padding: 3.5rem; /* More space inside */
+  border-radius: 1.5rem; /* Softer, more modern rounded corners */
+  /* Enhanced shadow for a lifted, prominent effect */
+  box-shadow: 0 1.2rem 3rem rgba(var(--color-dark-rgb), 0.15);
+  max-width: 850px; /* Wider for better text flow */
+  margin: 3.5rem auto; /* More vertical margin to stand out */
+  text-align: center; /* Center align for the title */
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.6); /* Subtle border for definition */
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
 }
 
-.summary h2 {
-  color: var(--color-accent);
-  font-family: var(--font-headings);
-  margin-bottom: 1.5rem; /* Más espacio debajo del título */
-  text-align: center;
-  font-size: 2.2rem; /* Título más grande para mayor impacto */
+.summary:hover {
+  transform: translateY(-0.5rem); /* Lift effect on hover */
+  box-shadow: 0 1.8rem 4rem rgba(var(--color-dark-rgb), 0.25); /* More pronounced shadow on hover */
+}
+
+.summaryTitle { /* Specific style for the h2 title */
+  color: var(--color-dark); /* Darker color for impact */
+  font-family: var(--font-family-headings);
+  font-size: clamp(2.2rem, 4vw, 3rem); /* Responsive and larger title */
   font-weight: 700;
   letter-spacing: -0.03em;
+  margin-bottom: 1.5rem; /* Space below the title */
+  position: relative; /* For the decorative line */
+  padding-bottom: 0.8rem; /* Space for the line below the title */
 }
 
-.summary p {
-  font-size: 1.1rem; /* Ligeramente más grande para mejor legibilidad */
-  line-height: 1.7; /* Aumentando el interlineado para facilitar la lectura */
-  color: var(--color-text);
-  text-align: justify; /* Justificado para una apariencia más formal */
-  margin-bottom: 1rem; /* Espacio entre párrafos */
-  opacity: 0.9; /* Ligeramente más opaco para mejor contraste */
+.summaryTitle::after { /* Decorative underline for the title */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px; /* Length of the line */
+  height: 5px; /* Thickness of the line */
+  background-color: var(--color-accent); /* Accent color for the line */
+  border-radius: 2.5px; /* Rounded ends for the line */
 }
 
-.summary p:last-child {
-  margin-bottom: 0; /* Eliminar el margen inferior del último párrafo */
+.summaryText { /* Specific style for the paragraph text */
+  font-size: clamp(1.05rem, 1.8vw, 1.15rem); /* Responsive font size for readability */
+  line-height: 1.8; /* Increased line height for better readability */
+  color: var(--color-text); /* Standard text color */
+  text-align: justify; /* Justified text for a formal and clean block */
+  margin-top: 2rem; /* Space above the paragraph from the title */
+  opacity: 0.95; /* High opacity for strong readability */
 }
 
-.summary p strong {
-  color: var(--color-accent);
-  font-weight: 700; /* Aumentando el énfasis */
+/* Enhancements for strong and emphasis within the paragraph */
+.summaryText strong {
+  color: var(--color-accent); /* Accent color for strong text */
+  font-weight: 700;
 }
 
-.summary p em {
-  color: var(--color-secondary-dark); /* Un tono más oscuro del secundario para destacar */
+.summaryText em {
+  color: var(--color-dark); /* Darker color for emphasized text */
   font-style: italic;
-  font-weight: 600; /* Ligeramente más peso para el énfasis */
+  font-weight: 600;
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 1024px) {
+  .summary {
+    padding: 3rem 2.5rem;
+    max-width: 90%;
+  }
+
+  .summaryTitle {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  }
+
+  .summaryTitle::after {
+    width: 80px;
+    height: 4px;
+  }
+
+  .summaryText {
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary {
+    padding: 2.5rem 2rem;
+    border-radius: 1.2rem;
+    margin: 2.5rem auto;
+  }
+
+  .summaryTitle {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .summaryTitle::after {
+    width: 70px;
+    height: 3px;
+  }
+
+  .summaryText {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary {
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    margin: 2rem auto;
+  }
+
+  .summaryTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .summaryTitle::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .summaryText {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+  }
 }

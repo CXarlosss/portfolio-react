@@ -1,31 +1,40 @@
-/* src/styles/global.css */
 
 :root {
-  --color-primary: #ffffff; /* Blanco */
-  --color-secondary: #f0f8ff; /* Azul muy claro (AliceBlue) */
-  --color-accent: #4682B4; /* Azul Acero */
-  --color-dark: #2F4F4F; /* Gris Oscuro (DarkSlateGray) */
-  --color-text: #333; /* Gris muy oscuro */
-  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-headings: 'Roboto', sans-serif; /* Fuente para títulos */
+  /* Paleta de Colores */
+  --color-primary: #ffffff;       /* Blanco */
+  --color-secondary: #f0f8ff;   /* Azul muy claro (AliceBlue) */
+  --color-accent: #4682B4;        /* Azul Acero (SteelBlue) */
+  --color-dark: #2F4F4F;         /* Gris Oscuro (DarkSlateGray) */
+  --color-text: #333333;        /* Gris muy oscuro */
+
+  /* Fuentes */
+  --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-headings: 'Roboto', sans-serif; /* Fuente para títulos */
+
+  /* Transiciones */
   --transition-duration: 0.3s;
   --transition-timing-function: ease-in-out;
 
-  /* Valores RGB para usar con rgba() */
+  /* Valores RGB para usar con rgba() - CRUCIALES para sombras y transparencias */
   --color-primary-rgb: 255, 255, 255;
   --color-secondary-rgb: 240, 248, 255;
   --color-accent-rgb: 70, 130, 180;
   --color-dark-rgb: 47, 79, 79;
   --color-text-rgb: 51, 51, 51;
 
-  /* Color para bordes sutiles */
-  --color-border: #e0e0e0;
-  --color-text-secondary: #777;
+  /* Colores de Utilidad */
+  --color-border: #e0e0e0; /* Color para bordes sutiles */
+  --color-text-secondary: #777777; /* Color para texto secundario o de menor importancia */
+
+  /* Configuración de tamaño de fuente base para REMs (1rem = 10px) */
+  font-size: 62.5%; /* 1rem = 10px, 1.6rem = 16px (default browser font size) */
 }
 
+/* Reset de Box-sizing para todos los elementos */
 html {
   scroll-behavior: smooth;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho/alto */
+  font-size: 62.5%; /* Base para rems: 1rem = 10px */
 }
 
 *,
@@ -36,28 +45,32 @@ html {
   padding: 0;
 }
 
+/* Estilos generales del Body */
 body {
-  font-family: var(--font-main);
+  font-family: var(--font-family-main);
   background-color: var(--color-primary);
   color: var(--color-text);
   line-height: 1.7; /* Ligeramente aumentado para mejor legibilidad */
   -webkit-font-smoothing: antialiased; /* Mejora el renderizado de fuentes en webkit */
   -moz-osx-font-smoothing: grayscale; /* Mejora el renderizado de fuentes en Firefox */
+  font-size: 1.6rem; /* Equivalente a 16px, para que el texto base sea legible */
 }
 
+/* Estilos para Títulos (H1-H6) */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-headings);
+  font-family: var(--font-family-headings);
   color: var(--color-dark);
   margin-bottom: 0.75em; /* Más espacio inferior para los títulos */
   font-weight: 700; /* Títulos más marcados */
   line-height: 1.2; /* Mejor interlineado para títulos */
 }
 
+/* Estilos para Enlaces */
 a {
   color: var(--color-accent);
   text-decoration: none;
@@ -69,27 +82,16 @@ a:hover {
   text-decoration: underline; /* Añadiendo un subrayado al pasar el ratón */
 }
 
-button {
-  font-family: var(--font-main);
-  cursor: pointer;
-  border: none;
-  transition: background-color var(--transition-duration) var(--transition-timing-function),
-              color var(--transition-duration) var(--transition-timing-function),
-              box-shadow var(--transition-duration) var(--transition-timing-function); /* Añadiendo transición para la sombra */
-  box-shadow: 0 0.15rem 0.3rem rgba(var(--color-dark-rgb), 0.05); /* Sombra sutil para los botones */
-}
 
-button:hover {
-  box-shadow: 0 0.3rem 0.6rem rgba(var(--color-dark-rgb), 0.1); /* Sombra más pronunciada al hacer hover */
-}
-
-/* Estilos para listas */
+/* Estilos para Listas */
 ul,
 ol {
   list-style-type: none; /* Elimina los puntos/números por defecto */
   padding-left: 0;
+  margin: 0; /* Asegura que no haya margen por defecto */
 }
 
+/* Estilos para Imágenes */
 img {
   max-width: 100%;
   height: auto;
@@ -98,18 +100,21 @@ img {
   box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.04); /* Sombra sutil para las imágenes */
 }
 
+/* Estilos para Secciones */
 section {
   padding-block: 4rem; /* Aumentando el padding vertical para las secciones */
 }
 
+/* El elemento main es un bloque por defecto, esta regla es redundante a menos que se sobrescriba */
 main {
   display: block;
 }
 
+/* Estilos para Inputs y Textareas */
 input,
 textarea {
-  font-family: var(--font-main);
-  font-size: 1rem;
+  font-family: var(--font-family-main);
+  font-size: 1.6rem; /* Ajuste a 1rem = 10px base */
   border: 0.1rem solid var(--color-border); /* Borde más sutil */
   border-radius: 0.6rem; /* Bordes más redondeados para los inputs */
   padding: 0.8rem 1.2rem; /* Más padding interno */
@@ -123,12 +128,12 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: var(--color-accent);
-  outline: none;
+  outline: none; /* Elimina el contorno azul por defecto del navegador */
   box-shadow: 0 0.2rem 0.4rem rgba(var(--color-accent-rgb), 0.1); /* Sombra al enfocar */
 }
 
-/* Texto secundario o de menor importancia */
+/* Clases de Utilidad */
 .text-secondary {
   color: var(--color-text-secondary);
-  font-size: 0.9rem;
+  font-size: 1.4rem; /* Ajuste a 1rem = 10px base */
 }

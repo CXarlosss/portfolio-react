@@ -1,64 +1,143 @@
-/* src/components/About/ExperienceSection.module.css */
+
 
 .experienceSection {
-  padding: 2.5rem; /* Aún más espacio para respirar */
+  padding: 3rem; /* Más espacio para respirar */
   background-color: var(--color-secondary); /* Usando un tono suave del global */
-  border-radius: 0.8rem; /* Más redondeado y suave */
-  box-shadow: 0 0.6rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra sutil con color oscuro global */
+  border-radius: 1rem; /* Un poco más redondeado */
+  box-shadow: 0 0.8rem 1.6rem rgba(var(--color-dark-rgb), 0.08); /* Sombra más pronunciada pero sutil */
   transition: transform var(--transition-duration) var(--transition-timing-function),
               box-shadow var(--transition-duration) var(--transition-timing-function);
+  display: flex; /* Usar flexbox para el layout interno */
+  flex-direction: column;
+  gap: 2.5rem; /* Espacio entre el título principal y los items */
 }
 
 .experienceSection:hover {
-  transform: translateY(-0.3rem); /* Elevación más notable */
-  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-dark-rgb), 0.12);
+  transform: translateY(-0.5rem); /* Elevación más notable */
+  box-shadow: 0 1rem 2rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
 }
 
 .experienceSection h2 {
-  font-size: 2rem; /* Mayor impacto visual */
+  font-size: 2.2rem; /* Mayor impacto visual */
   color: var(--color-accent); /* Usando el color de acento para destacar */
-  margin-bottom: 1.8rem;
-  text-align: left;
+  margin-bottom: 0; /* El gap de .experienceSection lo manejará */
+  text-align: center; /* Centrar el título de la sección */
   border-bottom: 0.15rem solid rgba(var(--color-accent-rgb), 0.3); /* Línea de acento más suave */
-  padding-bottom: 0.8rem;
+  padding-bottom: 1rem; /* Más padding para la línea */
   font-weight: 700;
   letter-spacing: -0.04em;
+  width: 100%; /* Asegura que el borde inferior abarque todo el ancho */
 }
 
 .experienceItem {
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  margin-bottom: 0; /* El gap de .experienceSection lo manejará */
+  padding-bottom: 2rem; /* Espacio debajo de cada ítem antes del borde */
   border-bottom: 0.08rem solid rgba(var(--color-dark-rgb), 0.1); /* Borde muy sutil */
+  display: flex; /* Usar flexbox para el contenido del ítem */
+  flex-direction: column;
+  gap: 0.5rem; /* Espacio entre los elementos dentro de un ítem */
 }
 
 .experienceItem:last-child {
   border-bottom: none;
-  margin-bottom: 0;
   padding-bottom: 0;
 }
 
 .experienceTitle {
-  font-size: 1.2rem; /* Un poco más grande */
-  color: var(--color-dark);
-  margin-bottom: 0.3rem;
-  font-weight: 600;
+  font-size: 1.4rem; /* Un poco más grande para el puesto */
+  color: var(--color-dark); /* Color oscuro principal */
+  margin-bottom: 0; /* El gap lo maneja */
+  font-weight: 700; /* Más negrita para destacar el puesto */
 }
 
 .experienceCompany {
-  font-size: 1.05rem;
+  font-size: 1.1rem; /* Tamaño para el nombre de la empresa */
   color: rgba(var(--color-dark-rgb), 0.7); /* Tono ligeramente más claro del oscuro */
-  font-style: normal;
-  margin-bottom: 0.4rem;
+  font-style: italic; /* Itálica para la empresa */
+  margin-bottom: 0; /* El gap lo maneja */
 }
 
 .experienceDates {
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* Más pequeño para la fecha */
   color: rgba(var(--color-dark-rgb), 0.5); /* Tono aún más claro */
-  margin-bottom: 1rem;
+  margin-bottom: 0; /* El gap lo maneja */
+  font-weight: 500; /* Ligeramente más negrita */
 }
 
 .experienceDescription {
   font-size: 1.05rem;
   color: var(--color-text);
-  line-height: 1.6; /* Ligeramente mayor para mejor lectura */
+  line-height: 1.7; /* Ligeramente mayor para mejor lectura */
+  margin-top: 0.8rem; /* Un poco más de espacio entre la fecha y la descripción */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 2rem;
+    border-radius: 0.8rem;
+    gap: 2rem;
+  }
+
+  .experienceSection h2 {
+    font-size: 1.8rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .experienceItem {
+    padding-bottom: 1.5rem;
+    gap: 0.4rem;
+  }
+
+  .experienceTitle {
+    font-size: 1.2rem;
+  }
+
+  .experienceCompany {
+    font-size: 1rem;
+  }
+
+  .experienceDates {
+    font-size: 0.9rem;
+  }
+
+  .experienceDescription {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-top: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experienceSection {
+    padding: 1.5rem;
+    border-radius: 0.6rem;
+    gap: 1.5rem;
+  }
+
+  .experienceSection h2 {
+    font-size: 1.6rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .experienceItem {
+    padding-bottom: 1rem;
+  }
+
+  .experienceTitle {
+    font-size: 1.1rem;
+  }
+
+  .experienceCompany {
+    font-size: 0.95rem;
+  }
+
+  .experienceDates {
+    font-size: 0.85rem;
+  }
+
+  .experienceDescription {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
 }

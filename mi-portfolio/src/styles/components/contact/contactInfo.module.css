@@ -1,51 +1,144 @@
-/* src/components/Contact/ContactInfo.module.css */
 
 .contactInfo {
-  background-color: rgba(var(--color-secondary-rgb), 0.8); /* Fondo suave con ligera transparencia */
+  background-color: var(--color-primary); /* Fondo blanco para un look más limpio */
   color: var(--color-text);
-  font-family: var(--font-main);
-  padding: 2.5rem; /* Un poco más de espacio interior */
-  border-radius: 1.2rem; /* Bordes más suaves */
-  box-shadow: 0 0.6rem 1.2rem rgba(var(--color-dark-rgb), 0.1); /* Sombra moderna y sutil */
-  max-width: 650px; /* Ligeramente más ancho */
-  margin: 3rem auto; /* Más margen superior e inferior para destacar */
-  backdrop-filter: blur(15px); /* Efecto de desenfoque para un look moderno */
-  border: 0.05rem solid rgba(var(--color-secondary-dark-rgb), 0.2); /* Borde sutil */
+  font-family: var(--font-family-main); /* Usar la variable correcta */
+  padding: 3rem; /* Más espacio interior para una sensación premium */
+  border-radius: 1.5rem; /* Bordes más suaves y modernos */
+  /* Sombra más pronunciada y elevada, usando el color oscuro de tu paleta */
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.15);
+  max-width: 700px; /* Un poco más ancho para mejor legibilidad */
+  margin: 3rem auto; /* Centra el componente y le da margen vertical */
+  /* Eliminado backdrop-filter aquí si el fondo es sólido, o mantenlo si hay transparencia en el contenedor padre */
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.5); /* Borde sutil */
+  transition: box-shadow var(--transition-duration) var(--transition-timing-function),
+              transform var(--transition-duration) var(--transition-timing-function); /* Añadida transición para hover */
+}
+
+.contactInfo:hover {
+  transform: translateY(-0.3rem); /* Ligera elevación al pasar el ratón */
+  box-shadow: 0 1.5rem 3.5rem rgba(var(--color-dark-rgb), 0.2); /* Sombra más intensa al hover */
 }
 
 .contactInfo h2 {
-  color: var(--color-accent);
-  font-family: var(--font-headings);
-  margin-bottom: 1.5rem; /* Más espacio debajo del título */
+  color: var(--color-dark); /* Color oscuro para el título principal */
+  font-family: var(--font-family-headings); /* Usar la variable correcta */
+  margin-bottom: 2rem; /* Más espacio debajo del título */
   text-align: center;
-  font-size: 2rem; /* Título un poco más grande */
-  font-weight: 700; /* Más énfasis en el título */
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4vw, 2.5rem); /* Título responsivo y más grande */
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  padding-bottom: 1rem; /* Espacio para la línea */
+  position: relative; /* Para la línea decorativa */
+}
+
+.contactInfo h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px; /* Ancho de la línea */
+  height: 4px; /* Grosor de la línea */
+  background-color: var(--color-accent); /* Color de acento para la línea */
+  border-radius: 2px;
 }
 
 .contactInfo p {
-  margin: 1rem 0; /* Más espacio vertical entre los párrafos */
-  font-size: 1.05rem; /* Ligeramente más grande para mejor lectura */
+  margin: 1.2rem 0; /* Más espacio vertical entre los párrafos de información */
+  font-size: 1.1rem; /* Ligeramente más grande para mejor lectura */
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* Un poco más de espacio entre el icono y el texto */
+  gap: 1rem; /* Más espacio entre el icono y el texto */
+  color: var(--color-text); /* Color de texto principal */
+  line-height: 1.6;
+  padding-bottom: 0.8rem; /* Espacio antes del borde inferior */
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Borde sutil para separar items */
+}
+
+.contactInfo p:last-child {
+  border-bottom: none; /* Elimina el borde del último párrafo */
+  padding-bottom: 0;
 }
 
 .contactInfo svg {
-  /* Estilos para los iconos SVG (si los usas) */
-  font-size: 1.2rem;
-  color: var(--color-accent);
+  font-size: 1.5rem; /* Iconos más grandes para mayor visibilidad */
+  color: var(--color-accent); /* Color de acento para los iconos */
+  flex-shrink: 0; /* Evita que el icono se encoja */
 }
 
 .contactInfo a {
   color: var(--color-accent);
   text-decoration: none;
-  font-weight: 500; /* Ligeramente más énfasis en los enlaces */
+  font-weight: 600; /* Más énfasis en los enlaces */
   transition: color var(--transition-duration) var(--transition-timing-function),
-              text-decoration var(--transition-duration) var(--transition-timing-function); /* Transición suave para el subrayado */
+              text-decoration var(--transition-duration) var(--transition-timing-function);
 }
 
 .contactInfo a:hover {
   text-decoration: underline;
-  color: var(--color-dark);
+  color: var(--color-dark); /* Cambia a color oscuro al hover */
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+  .contactInfo {
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+  }
+
+  .contactInfo h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .contactInfo h2::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .contactInfo p {
+    font-size: 1rem;
+    margin: 1rem 0;
+    gap: 0.8rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .contactInfo svg {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactInfo {
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    max-width: 95%;
+    margin: 1.5rem auto;
+  }
+
+  .contactInfo h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .contactInfo h2::after {
+    width: 50px;
+    height: 3px;
+  }
+
+  .contactInfo p {
+    font-size: 0.95rem;
+    margin: 0.8rem 0;
+    gap: 0.6rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .contactInfo svg {
+    font-size: 1.2rem;
+  }
 }

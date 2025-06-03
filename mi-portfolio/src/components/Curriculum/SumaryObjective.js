@@ -1,12 +1,12 @@
 // @ts-nocheck
 import React from 'react';
-import styles from "../../styles/components/curriculum/sumary.module.css";
+import styles from "../../styles/components/curriculum/sumary.module.css"; 
 
 function SummaryObjective() {
   return (
     <div className={styles.summary}>
-      <h2>Perfil Profesional</h2>
-      <p>
+      <h2 className={styles.summaryTitle}>Perfil Profesional</h2> 
+      <p className={styles.summaryText}> 
         Soy un desarrollador web de 24 años con gran pasión por la programación,
         especialmente en el desarrollo de aplicaciones web. Además de mis
         conocimientos técnicos, destaco por mi motivación, ganas de aprender y

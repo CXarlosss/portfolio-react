@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import styles from "../../styles/components/curriculum/education.module.css";
+import styles from '../../styles/components/curriculum/education.module.css';
 
 function EducationList() {
   const education = [
@@ -23,14 +23,16 @@ function EducationList() {
 
   return (
     <div className={styles.education}>
-      <h2>Formación Académica</h2>
-      {education.map((item, index) => (
-        <div key={index} className={styles.educationItem}>
-          <h3>{item.title}</h3>
-          <p className={styles.date}>{item.date}</p>
-          <p className={styles.description}>{item.description}</p>
-        </div>
-      ))}
+      <h2 className={styles.mainTitle}>Formación Académica</h2> {/* Añadida clase para el título principal */}
+      <div className={styles.educationItemsContainer}> {/* Nuevo contenedor para la cuadrícula/lista de ítems */}
+        {education.map((item, index) => (
+          <div key={index} className={styles.educationItem}>
+            <h3 className={styles.educationTitle}>{item.title}</h3> {/* Clase específica para el título del curso */}
+            <p className={styles.educationDate}>{item.date}</p> {/* Clase específica para la fecha */}
+            <p className={styles.educationDescription}>{item.description}</p> {/* Clase específica para la descripción */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
