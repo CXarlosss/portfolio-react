@@ -1,4 +1,5 @@
 
+
 .navbar {
   background-color: rgba(var(--color-primary-rgb), 0.95); /* Blanco con ligera transparencia */
   color: var(--color-text);
@@ -20,7 +21,7 @@
   font-weight: 700; /* Más énfasis en el logo */
   color: var(--color-accent);
   letter-spacing: -0.02em; /* Ajuste fino para la apariencia */
-  z-index: 1001; /* Asegura que el logo esté por encima del menú móvil */
+  z-index: -1; /* Asegura que el logo esté por encima del menú móvil */
 }
 
 /* Estilos para el botón de hamburguesa (visible solo en móviles) */
@@ -166,7 +167,7 @@
   }
 
   .navLinks {
-    width: 80%; /* Un poco más ancho en móviles muy pequeños */
+    width: 40%; /* Un poco más ancho en móviles muy pequeños */
     padding: 5rem 1.5rem 1.5rem;
   }
 

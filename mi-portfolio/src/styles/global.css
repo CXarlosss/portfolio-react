@@ -31,11 +31,11 @@
 }
 
 /* Reset de Box-sizing para todos los elementos */
-html {
-  scroll-behavior: smooth;
-  box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho/alto */
-  font-size: 62.5%; /* Base para rems: 1rem = 10px */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
+
 
 *,
 *::before,
@@ -47,6 +47,9 @@ html {
 
 /* Estilos generales del Body */
 body {
+  position: relative;
+  width: 100%;
+
   font-family: var(--font-family-main);
   background-color: var(--color-primary);
   color: var(--color-text);

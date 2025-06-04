@@ -7,16 +7,19 @@ import styles from '../../styles/components/common/navbar.module.css';
 import { FaBars, FaTimes } from 'react-icons/fa'; 
 
 function Navbar() {
-  // Estado para controlar si el menú móvil está abierto o cerrado
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Función para alternar el estado del menú
   const toggleMenu = () => {
+    if (isMenuOpen) {
+      document.body.classList.remove('nav-open');
+    } else {
+      document.body.classList.add('nav-open');
+    }
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Función para cerrar el menú cuando se hace clic en un enlace
   const closeMenu = () => {
+    document.body.classList.remove('nav-open');
     setIsMenuOpen(false);
   };
 
