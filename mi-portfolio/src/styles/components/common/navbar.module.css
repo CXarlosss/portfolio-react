@@ -1,177 +1,210 @@
-
-
+/* Nuevo diseño del navbar - Estilo moderno minimalista */
 .navbar {
-  background-color: rgba(var(--color-primary-rgb), 0.95); /* Blanco con ligera transparencia */
-  color: var(--color-text);
-  font-family: var(--font-family-main); /* Corregido: usar --font-family-main */
-  padding: 1.2rem 2.5rem; /* Aumentando ligeramente el padding */
+  background-color: rgba(255, 255, 255, 0.98);
+  color: #333;
+  font-family: 'Inter', sans-serif;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.08rem solid var(--color-secondary); /* Usar color-secondary para el borde */
-  box-shadow: 0 0.2rem 0.5rem rgba(var(--color-dark-rgb), 0.08); /* Sombra suave y moderna */
   position: sticky;
   top: 0;
-  z-index: 1000; /* Asegurando que esté por encima de otros elementos, ajustado a 1000 */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 70px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-  font-size: 1.75rem; /* Logo un poco más grande */
-  font-weight: 700; /* Más énfasis en el logo */
-  color: var(--color-accent);
-  letter-spacing: -0.02em; /* Ajuste fino para la apariencia */
-  z-index: -1; /* Asegura que el logo esté por encima del menú móvil */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Estilos para el botón de hamburguesa (visible solo en móviles) */
+.logo-icon {
+  font-size: 1.8rem;
+}
+
+/* Botón de hamburguesa - Estilo circular */
 .menuToggle {
-  display: none; /* Oculto por defecto en desktop */
+  display: none;
   background: none;
   border: none;
-  font-size: 2rem; /* Tamaño del icono */
-  color: var(--color-dark); /* Color del icono */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  z-index: 1001; /* Asegura que el botón esté por encima del menú móvil */
-  transition: color var(--transition-duration);
+  transition: all 0.3s ease;
+  z-index: 1001;
 }
 
 .menuToggle:hover {
-  color: var(--color-accent);
-}.menuToggleOpen {
-  color: var(--color-primary); /* ¡Color blanco para la 'X' cuando el menú está abierto! */
+  background-color: rgba(37, 99, 235, 0.1);
 }
 
+.menuToggleOpen {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Enlaces de navegación - Estilo moderno */
 .navLinks {
   list-style: none;
-  display: flex; /* Por defecto, en fila para desktop */
-  gap: 2rem; /* Mayor espacio entre los enlaces */
+  display: flex;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
-  transition: transform var(--transition-duration) var(--transition-timing-function); /* Transición para el menú móvil */
+  height: 100%;
+}
+
+.navLinks li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .navLinks li a {
   text-decoration: none;
-  color: var(--color-text);
+  color: #333;
   font-weight: 500;
-  position: relative; /* Para la pseudo-clase del hover */
-  transition: color var(--transition-duration) var(--transition-timing-function);
-  padding: 0.5rem 0; /* Padding para el área de clic */
+  font-size: 0.95rem;
+  padding: 0 0.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .navLinks li a:hover {
-  color: var(--color-accent);
+  color: #2563eb;
+}
+
+.active {
+  color: #2563eb !important;
+  font-weight: 600;
 }
 
 .navLinks li a::after {
   content: '';
   position: absolute;
-  bottom: -0.2rem; /* Ajusta la posición de la línea */
+  bottom: 20px;
   left: 0;
-  width: 0%;
-  height: 0.15rem; /* Grosor de la línea */
-  background-color: var(--color-accent);
-  transition: width var(--transition-duration) var(--transition-timing-function);
+  width: 0;
+  height: 3px;
+  background-color: #2563eb;
+  transition: width 0.3s ease;
+  border-radius: 2px 2px 0 0;
 }
 
-.navLinks li a:hover::after {
-  width: 100%;
-}
-
-.active {
-  color: var(--color-accent);
-  font-weight: 600;
-}
-
+.navLinks li a:hover::after,
 .active::after {
-  content: '';
-  position: absolute;
-  bottom: -0.2rem;
-  left: 0;
   width: 100%;
-  height: 0.15rem;
-  background-color: var(--color-accent);
 }
 
-/* --- Media Queries para Responsividad --- */
-
+/* Menú móvil - Estilo moderno */
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem 1.5rem; /* Menos padding en móviles */
+    padding: 0 1.5rem;
+    height: 60px;
   }
 
   .menuToggle {
-    display: block; /* Muestra el botón de hamburguesa en móviles */
+    display: flex;
   }
 
   .navLinks {
-    flex-direction: column; /* Apila los enlaces verticalmente */
-    position: fixed; /* Posiciona el menú sobre el contenido */
+    position: fixed;
     top: 0;
     right: 0;
-    width: 70%; /* Ancho del menú móvil */
-    max-width: 300px; /* Ancho máximo para el menú móvil */
-    height: 100vh; /* Ocupa toda la altura de la ventana */
-    background-color: rgba(var(--color-dark-rgb), 0.98); /* Fondo oscuro para el menú móvil */
-    color: var(--color-primary); /* Texto blanco en el menú móvil */
-    padding: 6rem 2rem 2rem; /* Padding para el menú (espacio para el logo/botón de cierre) */
-    box-shadow: -0.5rem 0 1.5rem rgba(0, 0, 0, 0.3); /* Sombra a la izquierda */
-    transform: translateX(100%); /* Oculta el menú por defecto (fuera de la pantalla) */
-    z-index: 999; /* Asegura que el menú esté debajo del logo y el botón de alternar */
-    align-items: flex-start; /* Alinea los enlaces a la izquierda */
-    gap: 1.5rem; /* Espacio entre los enlaces en el menú móvil */
+    bottom: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    padding: 80px 2rem 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    gap: 0;
+    z-index: 999;
+    pointer-events: none; /* No interactuable cuando está cerrado */
   }
 
   .navLinksOpen {
-    transform: translateX(0); /* Muestra el menú al abrirlo */
+    transform: translateX(0);
+    pointer-events: auto; /* Interactuable cuando está abierto */
+  }
+
+  .navLinks li {
+    height: auto;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .navLinks li a {
-    color: var(--color-primary); /* Enlaces blancos en el menú móvil */
-    font-size: 1.2rem; /* Tamaño de fuente más grande para enlaces móviles */
-    padding: 0.8rem 0; /* Más padding para los enlaces */
-    width: 100%; /* Asegura que el área de clic sea más grande */
+    padding: 1rem 0;
+    width: 100%;
+    height: auto;
+    font-size: 1rem;
   }
 
-  .navLinks li a:hover {
-    color: var(--color-accent); /* Color de acento al hover */
-  }
-
-  /* Ajustes para la línea de hover/active en el menú móvil */
   .navLinks li a::after {
-    background-color: var(--color-accent); /* Línea de acento */
-    height: 0.1rem; /* Más delgada en móvil */
-    bottom: 0; /* Posición de la línea */
+    height: 2px;
+    bottom: -1px;
   }
 
-  .active {
-    color: var(--color-accent);
-    font-weight: 600;
+  .menuToggleOpen {
+    position: fixed;
+    right: 1.5rem;
+    top: 10px;
   }
 }
 
+/* Ajustes para móviles pequeños */
 @media (max-width: 480px) {
   .navbar {
-    padding: 1rem 1rem;
+    padding: 0 1rem;
   }
 
   .logo {
-    font-size: 1.5rem;
-    z-index: 10001;
-    
-  }
-
-  .menuToggle {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
 
   .navLinks {
-    width: 40%; /* Un poco más ancho en móviles muy pequeños */
-    padding: 5rem 1.5rem 1.5rem;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 80px 2rem 2rem;
+    box-shadow: none;
+    
+    z-index: 999;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out, visibility 0.4s ease-in-out;
   }
 
-  .navLinks li a {
-    font-size: 1.1rem;
+  .navLinksOpen {
+    transform: translateX(0);
+    pointer-events: auto;
+    visibility: visible;
   }
+}
+
+/* Cuando el menú está abierto bloquea el body */
+body.nav-open {
+  overflow: hidden;
+  height: 100vh;
 }
