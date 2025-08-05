@@ -22,6 +22,10 @@ import calculadorGastosThumbnail from "../../assets/images/Proyecto7.png";
 import calculadorGastosThumbnail2 from "../../assets/images/Proyecto7-1.png";
 import optaskThumbnail from "../../assets/images/Proyecto8.png";
 import optaskThumbnail2 from "../../assets/images/Proyecto8-1.png";
+import nutricionistaThumbnail from "../../assets/images/Proyecto9.png";
+import nutricionistaThumbnail2 from "../../assets/images/Proyecto9-1.png";
+import nutricionistaThumbnail3 from "../../assets/images/Proyecto9-2.png";
+import nutricionistaThumbnail4 from "../../assets/images/Proyecto9-3.png";
 
 function ProjectGrid() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -80,7 +84,31 @@ function ProjectGrid() {
       ],
       githubLink: "https://github.com/CXarlosss/Productividad-app",
       liveDemoLink: "https://harmonious-fudge-8adaba.netlify.app/",
-    },{ 
+    }
+    ,{
+  id: "pagina-nutricionista",
+  title: "🧠 Página de Nutricionista",
+  description:
+    "Web profesional de nutrición con enfoque en SEO, escalabilidad y diseño moderno.",
+  longDescription:
+    "Proyecto profesional realizado con Next.js, Tailwind CSS y TypeScript. Incluye estructura optimizada con App Router, blog con sistema de rutas dinámicas para artículos, recetas y pódcast, diseño responsive y enfoque en velocidad de carga y posicionamiento SEO. La web destaca por su limpieza visual, modularidad del código y escalabilidad para futuro contenido profesional.",
+  thumbnail: nutricionistaThumbnail,
+  images: [nutricionistaThumbnail, nutricionistaThumbnail2, nutricionistaThumbnail3, nutricionistaThumbnail4],
+  technologies: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "App Router",
+    "SEO Optimizado",
+    "Vercel",
+    "Markdown",
+    "Framer Motion",
+    "Lucide React"
+  ],
+  githubLink: "https://github.com/CXarlosss/Pagina_De_Nutricionista",
+  liveDemoLink: "https://pagina-de-nutricionista-2j9ud676x-carlos-projects-ac914b64.vercel.app/",
+},
+{ 
       id: "op-task-management", 
       title: "🧩 Gestión de Proyectos con Tareas",
       description:
@@ -106,6 +134,7 @@ function ProjectGrid() {
       githubLink: "https://github.com/CXarlosss/OP_Task",
       liveDemoLink: "https://spiffy-youtiao-e5d23a.netlify.app/",
     },
+
     {
       id: "movies",
       title: "App de Películas",
