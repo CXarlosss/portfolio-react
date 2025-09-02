@@ -1,4 +1,5 @@
-/* Nuevo diseño del navbar - Estilo moderno minimalista */
+/* ===== Navbar Moderno (mejorado en tipografía y legibilidad) ===== */
+
 .navbar {
   background-color: rgba(255, 255, 255, 0.98);
   color: #333;
@@ -12,13 +13,13 @@
   z-index: 1000;
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  height: 70px;
+  height: 72px; /* un poco más alto */
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.65rem; /* un poco más grande */
+  font-weight: 800; /* más fuerte */
   color: #2563eb;
   letter-spacing: -0.5px;
   display: flex;
@@ -27,16 +28,16 @@
 }
 
 .logo-icon {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
 }
 
-/* Botón de hamburguesa - Estilo circular */
+/* Botón de hamburguesa */
 .menuToggle {
   display: none;
   background: none;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -54,11 +55,11 @@
   color: white;
 }
 
-/* Enlaces de navegación - Estilo moderno */
+/* Enlaces */
 .navLinks {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* más espacio entre enlaces */
   margin: 0;
   padding: 0;
   height: 100%;
@@ -74,8 +75,8 @@
 .navLinks li a {
   text-decoration: none;
   color: #333;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600; /* más marcado */
+  font-size: 1.05rem; /* más grande */
   padding: 0 0.5rem;
   height: 100%;
   display: flex;
@@ -90,13 +91,13 @@
 
 .active {
   color: #2563eb !important;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .navLinks li a::after {
   content: '';
   position: absolute;
-  bottom: 20px;
+  bottom: 18px;
   left: 0;
   width: 0;
   height: 3px;
@@ -110,11 +111,11 @@
   width: 100%;
 }
 
-/* Menú móvil - Estilo moderno */
+/* Menú móvil */
 @media (max-width: 768px) {
   .navbar {
     padding: 0 1.5rem;
-    height: 60px;
+    height: 64px;
   }
 
   .menuToggle {
@@ -130,18 +131,18 @@
     height: 100vh;
     background-color: white;
     flex-direction: column;
-    padding: 80px 2rem 2rem;
+    padding: 90px 2rem 2rem; /* más aire arriba */
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
     transition: transform 0.3s ease;
     gap: 0;
     z-index: 999;
-    pointer-events: none; /* No interactuable cuando está cerrado */
+    pointer-events: none;
   }
 
   .navLinksOpen {
     transform: translateX(0);
-    pointer-events: auto; /* Interactuable cuando está abierto */
+    pointer-events: auto;
   }
 
   .navLinks li {
@@ -151,10 +152,10 @@
   }
 
   .navLinks li a {
-    padding: 1rem 0;
+    padding: 1.2rem 0;
     width: 100%;
     height: auto;
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .navLinks li a::after {
@@ -165,45 +166,36 @@
   .menuToggleOpen {
     position: fixed;
     right: 1.5rem;
-    top: 10px;
+    top: 12px;
   }
 }
 
-/* Ajustes para móviles pequeños */
+/* Ajustes móviles pequeños */
 @media (max-width: 480px) {
   .navbar {
     padding: 0 1rem;
   }
 
   .logo {
-    font-size: 1.3rem;
+    font-size: 1.45rem;
   }
 
   .navLinks {
     width: 100%;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     padding: 80px 2rem 2rem;
     box-shadow: none;
-    
-    z-index: 999;
-    pointer-events: none;
     visibility: hidden;
     transform: translateX(100%);
-    transition: transform 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    transition: transform 0.35s ease-in-out, visibility 0.35s ease-in-out;
   }
 
   .navLinksOpen {
     transform: translateX(0);
-    pointer-events: auto;
     visibility: visible;
   }
 }
 
-/* Cuando el menú está abierto bloquea el body */
+/* Bloqueo body al abrir menú */
 body.nav-open {
   overflow: hidden;
   height: 100vh;

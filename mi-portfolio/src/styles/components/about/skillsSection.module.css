@@ -4,7 +4,7 @@
   max-width: 980px;
   margin: clamp(1.5rem, 3vw, 3rem) auto;
   padding: clamp(1.5rem, 2.5vw, 3rem);
-  background-color: var(--color-secondary, #e0f2f1);
+  background: var(--color-primary);
   border-radius: 1rem;
   box-shadow: 0 2px 6px rgba(var(--color-dark-rgb, 30,136,229), .06);
   display: flex;
@@ -77,23 +77,53 @@
   list-style: none;
 }
 
+/* Chips */
 .skillItem {
-  background-color: var(--color-primary, #fff);
-  color: var(--color-dark, #1e88e5);               /* <-- texto chip en azul oscuro */
-  border: 1px solid rgba(var(--color-dark-rgb, 30,136,229), .16); /* <-- borde algo más azul */
+  background-color: var(--chip-bg, var(--color-primary, #fff));
+  color: var(--chip-fg, var(--color-dark, #1e88e5));
+  border: 1px solid var(--chip-border, rgba(var(--color-dark-rgb, 30,136,229), .16));
   border-radius: 999px;
-  padding: .34rem .7rem;
+  padding: .38rem .8rem;
   font-size: .88rem;
-  font-weight: 600;
+  font-weight: 700;         /* un poco más de peso para legibilidad */
   line-height: 1;
-  transition: background-color .2s ease, border-color .2s ease, transform .2s ease, color .2s ease;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease, color .2s ease, box-shadow .2s ease;
+  cursor: default;          /* cámbialo a pointer si son clicables */
+  user-select: none;
 }
-.skillItem:hover {
-  background-color: rgba(var(--color-accent-rgb, 3,169,244), .06);
-  border-color: rgba(var(--color-accent-rgb, 3,169,244), .28);
-  color: var(--color-dark, #1e88e5);
-  transform: translateY(-1px);
+
+/* Hover (desktop) — contraste claro */
+@media (hover:hover) and (pointer:fine) {
+  .skillItem:hover {
+    --chip-bg: var(--hover-bg, var(--color-accent, #03a9f4));
+    --chip-fg: var(--hover-fg, var(--color-primary, #fff));
+    --chip-border: var(--hover-border, var(--color-accent, #03a9f4));
+    color: var(--chip-fg);
+    background-color: var(--chip-bg);
+    border-color: var(--chip-border);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(var(--color-accent-rgb, 3,169,244), .18);
+  }
 }
+
+/* Focus (teclado) — accesible y visible */
+.skillItem:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb, 3,169,244), .35);
+  outline-offset: 2px;
+}
+
+/* Active (click/touch) — feedback rápido */
+.skillItem:active {
+  transform: translateY(0);        /* cancela el levantado */
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* Variante compacta si la usas */
+.skillList.isCompact .skillItem {
+  padding: .3rem .6rem;
+  font-size: .82rem;
+}
+
 .skillItem:focus-visible {
   outline: 3px solid rgba(var(--color-accent-rgb, 3,169,244), .25);
   outline-offset: 2px;

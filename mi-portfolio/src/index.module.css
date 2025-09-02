@@ -1,23 +1,42 @@
 /* ============ Design Tokens ============ */
 :root {
-  /* Paleta base */
-  --color-primary: #ffffff;        /* fondo tarjetas/sections claras */
-  --color-secondary: #e0f2f1;      /* fondo suave */
-  --color-surface: #f7fbfb;        /* superficie intermedia (opcional) */
-  --color-accent: #03a9f4;
-  --color-dark: #1e88e5;           /* títulos/acentos oscuros */
-  --color-text: #333333;           /* texto cuerpo */
+  /* ===== Paleta base (Light) ===== */
+  --color-primary: #ffffff;      /* Tarjetas/sections claras */
+  --color-secondary: #e0f2f1;    /* Fondo suave */
+  --color-surface: #f7fbfb;      /* Superficie intermedia */
+  --color-background: #f0f6fb;   /* Fondo global de la app */
 
-  /* RGBs para transparencias */
-  --color-dark-rgb: 30, 136, 229;
-  --color-accent-rgb: 3, 169, 244;
+  --color-accent: #03a9f4;       /* Azul acento */
+  --color-dark: #1e88e5;         /* Titulares / énfasis */
+  --color-text: #333333;         /* Texto cuerpo */
 
-  /* Tipografía */
+  /* ===== RGB (para usar con rgba()) ===== */
+  --color-primary-rgb: 255,255,255;
+  --color-secondary-rgb: 224,242,241;
+  --color-surface-rgb: 247,251,251;
+  --color-background-rgb: 240,246,251;
+
+  --color-accent-rgb: 3,169,244;
+  --color-dark-rgb: 30,136,229;
+  --color-text-rgb: 51,51,51;
+
+  /* ===== Alfas útiles (derivados) ===== */
+  --alpha-04: .04;
+  --alpha-06: .06;
+  --alpha-08: .08;
+  --alpha-10: .10;
+  --alpha-12: .12;
+  --alpha-16: .16;
+  --alpha-20: .20;
+  --alpha-25: .25;
+  --alpha-35: .35;
+
+  /* ===== Tipografía ===== */
   --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-size-base: 16px;            /* 1rem */
+  --font-size-base: 16px;      /* 1rem */
   --line-height-base: 1.6;
 
-  /* Espaciado */
+  /* ===== Espaciado ===== */
   --space-1: .25rem;
   --space-2: .5rem;
   --space-3: .75rem;
@@ -28,37 +47,83 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
 
-  /* Bordes / sombras */
+  /* ===== Radios ===== */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+
+  /* Compat con módulos existentes */
   --border-radius: 10px;
 
+  /* ===== Sombras ===== */
   --shadow: 0 2px 6px rgba(0,0,0,.06);
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.06);
+  --shadow-md: 0 8px 20px rgba(var(--color-dark-rgb), .12);
+  --shadow-lg: 0 12px 28px rgba(var(--color-dark-rgb), .14);
   --shadow-hover: 0 6px 14px rgba(0,0,0,.10);
 
-  /* Transiciones */
+  /* ===== Bordes ===== */
+  --border-soft: 1px solid rgba(var(--color-dark-rgb), .08);
+  --border-accent: 1px solid rgba(var(--color-accent-rgb), .25);
+
+  /* ===== Transiciones ===== */
   --transition-duration: .25s;
   --transition-timing-function: ease-in-out;
+  --transition: all var(--transition-duration) var(--transition-timing-function);
 
-  /* Contenedores */
-  --container-max: 1200px; /* 1200–1400px funciona bien; elige tu ancho */
+  /* ===== Contenedores / Layout ===== */
+  --container-max: 1200px;   /* 1200–1400px funciona bien; ajusta a gusto */
+  --content-gutter: clamp(1rem, 2vw, 2rem);
+
+  /* ===== Tokens de sección (opcionales) ===== */
+  --skills-bg: #e6f3fb;      /* Azulito suave p/ sección Skills si lo quieres */
+  --experience-bg: #f7f9fc;  /* Gris azulado muy claro p/ Experiencia */
 }
 
-/* Dark mode opcional (si usas prefers-color-scheme) */
+/* ===== Dark Mode (opcional) ===== */
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Paleta */
     --color-primary: #0f172a;
     --color-secondary: #0b1220;
     --color-surface: #0b1324;
-    --color-dark: #e2e8f0;
+    --color-background: #0b1220;
+
+    --color-accent: #38bdf8;     /* Acento más luminoso en dark */
+    --color-dark: #e2e8f0;       /* Titulares claros */
     --color-text: #dbe5f0;
+
+    /* RGB */
+    --color-primary-rgb: 15,23,42;
+    --color-secondary-rgb: 11,18,32;
+    --color-surface-rgb: 11,19,36;
+    --color-background-rgb: 11,18,32;
+
+    --color-accent-rgb: 56,189,248;
+    --color-dark-rgb: 226,232,240;
+    --color-text-rgb: 219,229,240;
+
+    /* Sombras adaptadas */
     --shadow: 0 2px 10px rgba(2,6,23,.5);
+    --shadow-sm: 0 2px 10px rgba(2,6,23,.5);
+    --shadow-md: 0 10px 24px rgba(2,6,23,.55);
+    --shadow-lg: 0 16px 32px rgba(2,6,23,.6);
     --shadow-hover: 0 8px 20px rgba(2,6,23,.6);
+
+    /* Bordes */
+    --border-soft: 1px solid rgba(148,163,184,.18);
+    --border-accent: 1px solid rgba(var(--color-accent-rgb), .35);
+
+    /* Secciones (opcionales) */
+    --skills-bg: rgba(var(--color-accent-rgb), .10);
+    --experience-bg: #0e1526;
   }
 }
+/* =========== Base ============ */
 
-/* ============ Base ============ */
+html, body, #root, #__next {
+  background: var(--color-background);
+}
 html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
@@ -67,7 +132,7 @@ html {
 
 body {
   font-family: var(--font-family-main);
-  background-color: var(--color-primary);
+  background-color: var(--color-background);
   color: var(--color-text);
   margin: 0;
   padding: 0;
@@ -137,11 +202,10 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--color-primary);
+  background: transparent; /* deja ver --color-background */
   color: var(--color-text);
   overflow-x: hidden;
 }
-
 .mainContent {
   flex-grow: 1;
   width: 100%;

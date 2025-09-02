@@ -4,7 +4,7 @@
   max-width: 980px;
   margin: clamp(1.5rem, 3vw, 3rem) auto;
   padding: clamp(1.5rem, 2.5vw, 3rem);
-  background-color: var(--color-secondary); /* se mantiene */
+  background-color: var(--color-primary); /* antes: var(--color-secondary) */
   border-radius: 1rem;
   box-shadow: 0 .8rem 1.6rem rgba(var(--color-dark-rgb), .08);
   display: flex;
@@ -37,6 +37,8 @@
 
 /* Ítem */
 .experienceItem {
+    border-bottom: .08rem solid rgba(var(--color-dark-rgb), .08); /* antes .1 */
+
   display: grid;
   grid-template-columns: 1fr;
   row-gap: .35rem;

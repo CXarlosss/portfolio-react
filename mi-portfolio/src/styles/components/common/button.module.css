@@ -3,7 +3,7 @@
 .button {
   font-family: var(--font-family-main);
   padding: 0.8rem 2rem;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md, 0.75rem);
   border: none;
   cursor: pointer;
   font-size: 1.05rem;
@@ -15,57 +15,78 @@
   justify-content: center;
   line-height: 1.2;
   user-select: none;
-
-  /* Transiciones suaves para todos los cambios */
   transition: background-color var(--transition-duration) var(--transition-timing-function),
               color var(--transition-duration) var(--transition-timing-function),
               transform var(--transition-duration) var(--transition-timing-function),
-              box-shadow var(--transition-duration) var(--transition-timing-function);
-  
-  /* Sombra base más visible y consistente con tu tema */
-  box-shadow: 0 4px 12px rgba(var(--color-dark-rgb), 0.1);
+              box-shadow var(--transition-duration) var(--transition-timing-function),
+              border-color var(--transition-duration) var(--transition-timing-function);
+
+  box-shadow: var(--shadow-sm);
 }
+
+/* ===== Variantes ===== */
 
 /* Botón primario */
 .primary {
   background-color: var(--color-accent);
   color: var(--color-primary);
 }
-
-.primary:hover { /* ¡Esta es la regla que debe funcionar! */
-  background-color: var(--color-dark); /* Un azul más oscuro de tu paleta al hover */
-  color: var(--color-primary); /* Mantiene el texto blanco */
-  transform: translateY(-3px); /* Elevación más pronunciada */
-  /* Sombra más fuerte y consistente con el color oscuro al elevarse */
-  box-shadow: 0 8px 20px rgba(var(--color-dark-rgb), 0.3);
+.primary:hover {
+  background-color: var(--color-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.primary:focus-visible {
+  outline: 3px solid rgba(var(--accent-rgb), .35);
+  outline-offset: 2px;
 }
 
-/* Botón secundario (outline) */
+/* Secundario (outline) */
 .secondary {
   background-color: transparent;
   color: var(--color-accent);
   border: 2px solid var(--color-accent);
   box-shadow: none;
 }
-
-.secondary:hover { /* ¡Esta es la regla que debe funcionar! */
+.secondary:hover {
   background-color: var(--color-accent);
   color: var(--color-primary);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(var(--color-accent-rgb), 0.25);
+  box-shadow: var(--shadow-sm);
+}
+.secondary:focus-visible {
+  outline: 3px solid rgba(var(--accent-rgb), .35);
+  outline-offset: 2px;
 }
 
-/* Media Queries para Responsividad */
+/* Ghost (texto con fondo suave) */
+.ghost {
+  background-color: rgba(var(--accent-rgb), .08);
+  color: var(--color-accent);
+}
+.ghost:hover {
+  background-color: rgba(var(--accent-rgb), .15);
+  transform: translateY(-2px);
+}
+
+/* Danger (para acciones críticas) */
+.danger {
+  background-color: #ef4444;
+  color: #fff;
+}
+.danger:hover {
+  background-color: #dc2626;
+  box-shadow: 0 8px 20px rgba(239,68,68,.35);
+}
+
+/* Tamaños */
+.sm { padding: 0.5rem 1rem; font-size: 0.9rem; border-radius: var(--radius-sm); }
+.lg { padding: 1rem 2.5rem; font-size: 1.15rem; border-radius: var(--radius-lg); }
+
+/* ===== Responsividad ===== */
 @media (max-width: 768px) {
-  .button {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.95rem;
-  }
+  .button { padding: 0.7rem 1.5rem; font-size: 0.95rem; }
 }
-
 @media (max-width: 480px) {
-  .button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
+  .button { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
 }

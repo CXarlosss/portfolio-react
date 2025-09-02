@@ -1,41 +1,131 @@
-/* src/components/Footer/Footer.module.css */
-
+/* ===== Footer profesional, accesible y consistente ===== */
 .footer {
-  background-color: var(--color-dark);
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
   color: var(--color-primary);
-  padding: 3rem 2rem; /* Aumentando el padding vertical */
-  text-align: center;
-  font-family: var(--font-main);
-  box-shadow: 0 -0.5rem 1rem rgba(var(--color-dark-rgb), 0.2); /* Sombra más suave y moderna */
+  padding: clamp(2rem, 4vw, 3rem) 1.5rem;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, .4);
 }
 
-.footerContent {
-  max-width: 1200px; /* Ancho máximo más común para contenido */
+
+
+/* Contenedor */
+.container {
+  max-width: var(--container-max, 1200px);
   margin: 0 auto;
-  padding: 1rem 0; /* Añadiendo un poco de padding vertical al contenido */
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  align-items: start;
 }
 
-.footerContent p {
-  margin: 0.75rem 0; /* Espaciado vertical ligeramente mayor */
-  font-size: 1rem; /* Mejor legibilidad */
-  opacity: 0.8; /* Ligera transparencia para suavizar el texto */
+/* Marca */
+.brand {
+  display: grid;
+  gap: .35rem;
+}
+.owner {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.owner span { color: #fff; }
+.tagline {
+  margin: 0;
+  opacity: .85;
+  font-size: .98rem;
 }
 
-.socialLinks {
-  margin-top: 1.5rem; /* Más espacio entre el texto y los iconos */
+/* Nav secundario */
+.footerNav {
   display: flex;
+  flex-wrap: wrap;
+  gap: .6rem 1rem;
+  align-items: center;
   justify-content: center;
-  gap: 1.5rem; /* Mayor espacio entre los iconos */
+  list-style: none;
+}
+.footerNav a {
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .98rem;
+  padding: .25rem .4rem;
+  border-radius: .5rem;
+  transition: color var(--transition-duration, .25s) var(--transition-timing-function, ease-in-out),
+              background-color var(--transition-duration, .25s) var(--transition-timing-function, ease-in-out);
+}
+.footerNav a:hover {
+  color: #fff;
+  background: rgba(var(--color-accent-rgb, 3,169,244), .15);
+}
+.footerNav a:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb, 3,169,244), .5);
+  outline-offset: 2px;
 }
 
-.socialLinks a {
-  color: var(--color-primary);
-  font-size: 1.75rem; /* Iconos un poco más grandes */
-  transition: color var(--transition-duration) var(--transition-timing-function),
-              transform var(--transition-duration) var(--transition-timing-function); /* Añadiendo transición a la transformación */
+/* Redes */
+.social {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.socialLink {
+  color: #fff;
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+.socialLink:hover {
+  transform: translateY(-2px);
+  background: rgba(var(--color-accent-rgb, 3,169,244), .22);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.socialLink:focus-visible {
+  outline: 3px solid rgba(255,255,255,.6);
+  outline-offset: 2px;
 }
 
-.socialLinks a:hover {
-  color: var(--color-accent);
-  transform: translateY(-0.2rem); /* Ligera elevación al hacer hover */
+/* Barra inferior */
+.bottomBar {
+  max-width: var(--container-max, 1200px);
+  margin: clamp(1.25rem, 2.5vw, 2rem) auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.legal {
+  opacity: .8;
+  font-size: .9rem;
+}
+.backToTop {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  padding: .35rem .65rem;
+  border-radius: .5rem;
+  background: rgba(255,255,255,.06);
+  transition: background-color .2s ease, transform .2s ease;
+}
+.backToTop:hover { background: rgba(var(--color-accent-rgb, 3,169,244), .25); transform: translateY(-1px); }
+.backToTop:focus-visible { outline: 3px solid rgba(255,255,255,.6); outline-offset: 2px; }
+
+/* Responsive */
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 1.2fr 1fr auto;
+    align-items: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .socialLink, .backToTop, .footerNav a { transition: none !important; transform: none !important; }
 }

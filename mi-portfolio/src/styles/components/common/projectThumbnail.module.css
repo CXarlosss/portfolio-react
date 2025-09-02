@@ -1,66 +1,137 @@
+/* ===== ProjectThumbnail (refinado) ===== */
+
 .projectThumbnail {
   display: block;
   background-color: var(--color-secondary);
-  border-radius: 1.25rem;
-  text-decoration: none;
   color: var(--color-text);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  border-radius: 1.25rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
   position: relative;
+  isolation: isolate;               /* para sombras internas limpias */
+  overflow: hidden;                 /* redondeo real de las imágenes */
+  border: 1px solid rgba(0,0,0,.04);
 }
 
 .projectThumbnail:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
 }
+
+.projectThumbnail:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), .35);
+  outline-offset: 4px;
+}
+
+/* ===== Carrusel horizontal con scroll-snap ===== */
 
 .imageContainer {
   display: flex;
+  gap: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) transparent;
+
+  /* hint visual de “desliza” en bordes */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
 
-.imageContainer::-webkit-scrollbar {
-  height: 6px;
-}
-
+/* scrollbars webkit */
+.imageContainer::-webkit-scrollbar { height: 6px; }
 .imageContainer::-webkit-scrollbar-thumb {
   background-color: var(--color-accent);
   border-radius: 3px;
 }
 
-.imageContainer img {
+/* Altura responsiva de las imágenes (mejor que 200px fijo) */
+.imageContainer img,
+.thumbnailImage {
   width: 100%;
-  height: 200px;
+  height: clamp(180px, 28vw, 260px);
   object-fit: cover;
   flex-shrink: 0;
   scroll-snap-align: start;
-  transition: transform 0.3s ease;
+  transition: transform .35s ease;
+  will-change: transform;
 }
 
-.imageContainer img:hover {
+/* zoom suave al hover/focus */
+.imageContainer img:hover,
+.thumbnailImage:hover {
+  transform: scale(1.03);
+}
+
+/* Sutileza extra: al hover de la card, un pelín de zoom general en la imagen visible */
+.projectThumbnail:hover .imageContainer img,
+.projectThumbnail:hover .thumbnailImage {
   transform: scale(1.02);
 }
 
+/* ===== Info del proyecto ===== */
+
 .projectInfo {
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   background-color: var(--color-primary);
+  border-top: 1px solid rgba(0,0,0,.04);
 }
 
-.projectInfo h3 {
-  font-family: var(--font-headings);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-  margin: 0 0 0.75rem;
+.projectInfo h3,
+.projectTitle {
+  font-family: var(--font-headings, inherit);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);  /* un poco más grande */
+  margin: 0 0 .5rem;
   color: var(--color-dark);
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
-.projectInfo p {
-  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+.projectInfo p,
+.projectDescription {
+  font-size: clamp(1rem, 1.6vw, 1.06rem);
   margin: 0;
   color: var(--color-text);
   line-height: 1.6;
+
+  /* line clamp opcional (2 líneas) */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== Placeholder por si no hay imágenes ===== */
+
+.imagePlaceholder {
+  width: 100%;
+  height: clamp(180px, 28vw, 260px);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(var(--color-accent-rgb), .08), rgba(0,0,0,.02));
+  color: var(--color-dark);
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+/* ===== Responsive pequeños ajustes ===== */
+
+@media (max-width: 480px) {
+  .projectInfo { padding: 1rem 1.1rem; }
+}
+
+/* ===== Reduce motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .projectThumbnail,
+  .imageContainer img,
+  .thumbnailImage {
+    transition: none !important;
+    transform: none !important;
+    scroll-behavior: auto !important;
+  }
 }

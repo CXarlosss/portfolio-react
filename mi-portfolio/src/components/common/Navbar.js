@@ -1,75 +1,121 @@
 // @ts-nocheck
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../../styles/components/common/navbar.module.css';
-// Importamos un icono de hamburguesa (puedes usar Heroicons, Font Awesome, etc.)
-// Por ejemplo, de react-icons/fa si ya lo tienes instalado
-import { FaBars, FaTimes } from 'react-icons/fa'; 
+import { FaBars, FaTimes } from 'react-icons/fa';
 
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const menuId = 'primary-navigation';
 
-  const toggleMenu = () => {
+  const openMenu = () => setIsMenuOpen(true);
+  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen(v => !v);
+
+  // Bloquear scroll y clase en <body> cuando el menú móvil está abierto
+  React.useEffect(() => {
     if (isMenuOpen) {
-      document.body.classList.remove('nav-open');
-    } else {
       document.body.classList.add('nav-open');
+    } else {
+      document.body.classList.remove('nav-open');
     }
-    setIsMenuOpen(!isMenuOpen);
-  };
+    return () => document.body.classList.remove('nav-open');
+  }, [isMenuOpen]);
 
-  const closeMenu = () => {
-    document.body.classList.remove('nav-open');
-    setIsMenuOpen(false);
-  };
+  // Cerrar con tecla Esc
+  React.useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        {/* Optional Logo */}
-        Carlos de Petronila
-      </div>
+    <header className={styles.header}>
+      <nav
+        className={styles.navbar}
+        role="navigation"
+        aria-label="Menú principal"
+      >
+        <div className={styles.logo} aria-label="Inicio">
+          Carlos de Petronila
+        </div>
 
-      {/* Botón de hamburguesa para móviles */}
-      <button
-  className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleOpen : ''}`}
-  onClick={toggleMenu}
-  aria-label="Toggle navigation menu"
->
-        {isMenuOpen ? <FaTimes /> : <FaBars />} {/* Cambia el icono según el estado */}
-      </button>
+        {/* Toggle hamburguesa */}
+        <button
+          className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleOpen : ''}`}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+          aria-expanded={isMenuOpen}
+          aria-controls={menuId}
+        >
+          {isMenuOpen ? <FaTimes aria-hidden="true" /> : <FaBars aria-hidden="true" />}
+        </button>
 
-      {/* Lista de enlaces de navegación */}
-      {/* Añadimos una clase condicional para mostrar/ocultar el menú en móviles */}
-      <ul className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`}>
-        <li>
-          <NavLink to="/" className={({ isActive }) => isActive ? styles.active : undefined} onClick={closeMenu}>
-            Inicio
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/about" className={({ isActive }) => isActive ? styles.active : undefined} onClick={closeMenu}>
-            Sobre Mí
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/portfolio" className={({ isActive }) => isActive ? styles.active : undefined} onClick={closeMenu}>
-            Portfolio
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/curriculum" className={({ isActive }) => isActive ? styles.active : undefined} onClick={closeMenu}>
-            Curriculum
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact" className={({ isActive }) => isActive ? styles.active : undefined} onClick={closeMenu}>
-            Contacto
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+        {/* Lista de enlaces */}
+        <ul
+          id={menuId}
+          className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`}
+          aria-hidden={!isMenuOpen}
+        >
+          <li>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) => isActive ? styles.active : undefined}
+              onClick={closeMenu}
+            >
+              Inicio
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => isActive ? styles.active : undefined}
+              onClick={closeMenu}
+            >
+              Sobre Mí
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/portfolio"
+              className={({ isActive }) => isActive ? styles.active : undefined}
+              onClick={closeMenu}
+            >
+              Portfolio
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/curriculum"
+              className={({ isActive }) => isActive ? styles.active : undefined}
+              onClick={closeMenu}
+            >
+              Curriculum
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => isActive ? styles.active : undefined}
+              onClick={closeMenu}
+            >
+              Contacto
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Overlay móvil para cerrar al hacer click fuera */}
+      {isMenuOpen && (
+        <button
+          className={styles.backdrop}
+          aria-label="Cerrar menú"
+          onClick={closeMenu}
+        />
+      )}
+    </header>
   );
 }
-
-export default Navbar;
