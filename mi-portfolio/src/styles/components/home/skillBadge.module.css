@@ -1,59 +1,133 @@
-/* src/components/About/SkillsHighlight.module.css */
+/* src/styles/components/home/skillBadge.module.css */
 
+/* ===== Sección con fondo suave tipo glass ===== */
 .skillsHighlight {
-  background-color: rgba(var(--color-secondary-rgb), 0.8); /* Fondo suave con ligera transparencia */
-  padding: 4rem 2.5rem; /* Más espacio vertical */
-  font-family: var(--font-main);
+  /* capa base suave en tonos azulados */
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(var(--color-accent-rgb), .10), transparent 60%),
+    radial-gradient(1000px 500px at 110% 0%, rgba(var(--color-accent-rgb), .08), transparent 55%),
+    rgba(var(--color-secondary-rgb), .78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(var(--color-accent-rgb), .12);
+  border-radius: 1.25rem;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.25rem, 3vw, 2.5rem);
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
   text-align: center;
-  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  font-family: var(--font-family-main, var(--font-main));
 }
 
-.skillsHighlight h2 {
-  font-family: var(--font-headings);
+/* ===== Cabecera ===== */
+.header { max-width: 70ch; margin: 0 auto clamp(1.25rem, 3vw, 2rem); }
+.kicker {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
   color: var(--color-accent);
-  font-size: 2.5rem; /* Título más grande */
-  margin-bottom: 2.5rem; /* Más espacio debajo del título */
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  margin-bottom: .25rem;
 }
-
-.skillsGrid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3rem; /* Más espacio entre los elementos de la grid */
-  margin-bottom: 3rem; /* Más espacio debajo de la grid */
-}
-
-.skillItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1rem; /* Ligeramente más grande */
+.title {
+  font-family: var(--font-family-headings, var(--font-headings));
   color: var(--color-dark);
-  transition: transform var(--transition-duration) var(--transition-timing-function); /* Transición suave para el hover */
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  letter-spacing: -.02em;
+  font-weight: 800;
+  margin: 0 0 .6rem;
 }
-
-.skillItem:hover {
-  transform: translateY(-0.3rem); /* Ligeramente elevado al hacer hover */
-}
-
-.skillIcon {
-  font-size: 3.5rem; /* Iconos un poco más grandes */
-  margin-bottom: 0.75rem; /* Más espacio debajo del icono */
-  color: var(--color-accent); /* Iconos con el color de acento */
-  transition: transform var(--transition-duration) var(--transition-timing-function);
-}
-
-.skillIcon:hover {
-  transform: scale(1.2);
-}
-
-.skillsDescription {
-  max-width: 700px; /* Ancho ligeramente mayor para el texto */
-  margin: 2rem auto 0 auto; /* Más margen superior */
+.subtitle {
   color: var(--color-text);
-  font-size: 1.1rem; /* Ligeramente más grande */
-  line-height: 1.7; /* Mejor interlineado */
-  opacity: 0.9; /* Ligeramente más opaco */
+  opacity: .9;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+/* ===== Grid fluido ===== */
+.grid {
+  --min: 160px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin: clamp(1.25rem, 3vw, 2rem) 0 clamp(1.25rem, 3vw, 2rem);
+  padding: 0;
+  list-style: none;
+}
+
+/* ===== Tarjeta “glass” ===== */
+.card {
+  /* Antes era blanco translúcido → ahora acento translúcido */
+  background: rgba(var(--color-accent-rgb), 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.25);
+  border-radius: 1rem;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  display: grid;
+  place-items: center;
+  gap: .5rem;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+  color: var(--color-primary); /* texto blanco en tarjetas */
+}
+
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.12);
+  border-color: rgba(var(--color-accent-rgb), .25);
+  background: linear-gradient(180deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,.6) 100%);
+}
+.card:focus-within {
+  outline: 3px solid rgba(var(--color-accent-rgb), .35);
+  outline-offset: 3px;
+}
+
+/* Icono */
+.iconWrap {
+  display: grid;
+  place-items: center;
+  width: 64px; height: 64px;
+  border-radius: 14px;
+  background: rgba(var(--color-accent-rgb), .12);
+  border: 1px solid rgba(var(--color-accent-rgb), .22);
+  box-shadow: 0 6px 14px rgba(0,0,0,.06) inset;
+  transition: transform .18s ease, background-color .18s ease, border-color .18s ease;
+  color: var(--color-accent);
+  font-size: 2rem;
+}
+.card:hover .iconWrap {
+  transform: scale(1.06);
+  background: rgba(var(--color-accent-rgb), .18);
+  border-color: rgba(var(--color-accent-rgb), .3);
+}
+
+/* Label */
+.label {
+  color: var(--color-dark);
+  font-weight: 700;
+  font-size: clamp(.95rem, 1.4vw, 1.05rem);
+  letter-spacing: .2px;
+}
+
+/* Descripción al pie */
+.description {
+  max-width: 70ch;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.7;
+  opacity: .92;
+}
+
+/* Responsive fino */
+@media (max-width: 480px) {
+  .skillsHighlight { border-radius: 1rem; }
+  .grid { --min: 140px; gap: 1rem; }
+  .iconWrap { width: 56px; height: 56px; font-size: 1.7rem; border-radius: 12px; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .card, .iconWrap { transition: none !important; transform: none !important; }
 }

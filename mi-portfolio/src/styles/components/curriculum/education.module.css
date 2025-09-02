@@ -1,203 +1,150 @@
+/* ===== Educación (formato nuevo, colores antiguos) ===== */
 
 .education {
-  background-color: var(--color-secondary); /* Fondo suave para la sección principal */
-  padding: 3.5rem; /* Más padding para una sensación de espacio */
-  border-radius: 1.5rem; /* Bordes suaves */
-  /* Sombra más pronunciada pero sutil para la sección principal */
-  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.1);
+  background-color: var(--color-secondary);                 /* fondo suave antiguo */
+  padding: clamp(2rem, 3.5vw, 3.5rem);
+  border-radius: 1.5rem;
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), .10);
   font-family: var(--font-family-main);
-  max-width: 900px; /* Ancho máximo para la sección */
-  margin: 3rem auto; /* Centra la sección y le da margen vertical */
-  display: flex; /* Para organizar el título y los ítems */
+  max-width: 960px;
+  margin: clamp(2rem, 3vw, 3rem) auto;
+  display: flex;
   flex-direction: column;
-  gap: 2.5rem; /* Espacio entre el título principal y el contenedor de ítems */
+  gap: 2.25rem;
+  transition: box-shadow .25s ease;
 }
+.education:hover { box-shadow: 0 1.25rem 3rem rgba(var(--color-dark-rgb), .14); }
 
-.education:hover {
-  box-shadow: 0 1.2rem 3rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
-}
-
-.mainTitle { /* Estilo para el h2 principal */
-  color: var(--color-dark); /* Color oscuro para el título principal */
-  font-family: var(--font-family-headings);
-  font-size: clamp(2rem, 4vw, 2.5rem); /* Título responsivo y más grande */
-  margin-bottom: 0; /* El gap del padre lo maneja */
+/* Título principal */
+.mainTitle {
+  color: var(--color-dark);                                 /* título azul antiguo */
+  font-family: var(--font-family-headings, var(--font-family-main));
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   text-align: center;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  padding-bottom: 1rem; /* Espacio para la línea */
-  position: relative; /* Para la línea decorativa */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding-bottom: 1rem;
+  position: relative;
 }
-
 .mainTitle::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
+  left: 50%; bottom: 0;
   transform: translateX(-50%);
-  width: 80px; /* Ancho de la línea */
-  height: 4px; /* Grosor de la línea */
-  background-color: var(--color-accent); /* Color de acento para la línea */
+  width: 84px; height: 4px;
+  background-color: var(--color-accent);                    /* línea de acento antigua */
   border-radius: 2px;
 }
 
+/* Grid de tarjetas */
 .educationItemsContainer {
   display: grid;
-  /* Dos columnas en desktop, una en móvil. Ajusta minmax según prefieras */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem; /* Espacio entre las tarjetas de educación */
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: clamp(1rem, 2.2vw, 2rem);
 }
 
-.educationItem { /* Cada tarjeta de educación */
-  background-color: var(--color-primary); /* Fondo blanco para la tarjeta */
-  padding: 2rem; /* Padding interno de la tarjeta */
-  border-radius: 1rem; /* Bordes redondeados de la tarjeta */
-  border: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Borde sutil */
-  box-shadow: 0 0.5rem 1.2rem rgba(var(--color-dark-rgb), 0.08); /* Sombra para la tarjeta */
-  transition: transform var(--transition-duration) var(--transition-timing-function),
-              box-shadow var(--transition-duration) var(--transition-timing-function);
-  display: flex; /* Para organizar el contenido interno de la tarjeta */
-  flex-direction: column;
-  gap: 0.6rem; /* Espacio entre elementos dentro de la tarjeta */
-  position: relative; /* Para el acento de color */
-  overflow: hidden; /* Para que el pseudo-elemento no se desborde */
+/* Tarjeta */
+.educationItem {
+  background-color: var(--color-primary);                   /* tarjeta blanca (antigua) */
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--color-dark-rgb), .08);
+  box-shadow: 0 .5rem 1.2rem rgba(var(--color-dark-rgb), .08);
+  transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: .65rem;
 }
-
-.educationItem::before { /* Acento de color en la parte superior de la tarjeta */
+.educationItem::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 8px; /* Grosor de la línea de acento */
-  background-color: var(--color-accent); /* Color de acento */
-  border-top-left-radius: 1rem; /* Bordes redondeados para la línea de acento */
-  border-top-right-radius: 1rem;
+  inset: 0 0 auto 0;
+  height: 8px;
+  background: linear-gradient(90deg,
+    rgba(var(--color-accent-rgb), .95) 0%,
+    rgba(var(--color-accent-rgb), .65) 60%,
+    rgba(var(--color-accent-rgb), .45) 100%);
 }
-
-.educationItem:hover {
-  transform: translateY(-0.5rem); /* Elevación más notable al hover */
-  box-shadow: 0 0.8rem 1.8rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
-}
-
-.educationTitle { /* Título del curso/formación */
-  margin: 0; /* Resetear margen */
-  font-size: 1.3rem; /* Tamaño de fuente para el título */
-  color: var(--color-dark); /* Color oscuro */
-  font-weight: 700; /* Más negrita */
-  line-height: 1.3;
-  margin-top: 0.5rem; /* Espacio debajo de la línea de acento */
-}
-
-.educationDate { /* Fecha de la formación */
-  font-size: 0.95rem;
-  color: var(--color-text-secondary); /* Color secundario para la fecha */
-  margin: 0; /* Resetear margen */
-  font-weight: 500;
-}
-
-.educationDescription { /* Descripción de la formación */
-  font-size: 1rem;
-  color: var(--color-text);
-  line-height: 1.6;
-  margin-top: 0.8rem; /* Espacio entre la fecha y la descripción */
-}
-
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 1024px) {
-  .educationItemsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajuste para tablets grandes */
+@media (hover:hover) {
+  .educationItem:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 .9rem 1.8rem rgba(var(--color-dark-rgb), .14);
+    border-color: rgba(var(--color-accent-rgb), .25);
   }
 }
 
+/* Título del curso */
+.educationTitle {
+  margin: .4rem 0 0 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--color-dark);                                  /* azul oscuro antiguo */
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* Meta (centro + fecha) */
+.eduMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .6rem;
+  align-items: center;
+}
+
+.educationInstitution {
+  color: var(--color-accent);                                /* acento antiguo */
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.educationDate {
+  font-size: .9rem;
+  font-weight: 700;
+  color: rgba(var(--color-dark-rgb), .7);
+  background: rgba(var(--color-accent-rgb), .10);
+  border: 1px solid rgba(var(--color-accent-rgb), .25);
+  padding: .22rem .6rem;
+  border-radius: 999px;
+}
+
+/* Descripción */
+.educationDescription {
+  font-size: 1rem;
+  color: var(--color-text);                                  /* texto cuerpo antiguo */
+  line-height: 1.6;
+  margin-top: .35rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .educationItemsContainer { grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
+}
 @media (max-width: 768px) {
   .education {
-    padding: 2.5rem;
+    padding: 2.25rem;
     border-radius: 1rem;
-    max-width: 90%;
-    margin: 2rem auto;
-    gap: 2rem;
+    max-width: min(92%, 720px);
+    gap: 1.8rem;
   }
-
-  .mainTitle {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-  }
-
-  .mainTitle::after {
-    width: 60px;
-    height: 3px;
-  }
-
-  .educationItemsContainer {
-    grid-template-columns: 1fr; /* Una sola columna en móviles y tablets */
-    gap: 1.5rem;
-  }
-
-  .educationItem {
-    padding: 1.5rem;
-    border-radius: 0.8rem;
-    gap: 0.5rem;
-  }
-
-  .educationItem::before {
-    height: 6px;
-  }
-
-  .educationTitle {
-    font-size: 1.2rem;
-  }
-
-  .educationDate {
-    font-size: 0.9rem;
-  }
-
-  .educationDescription {
-    font-size: 0.95rem;
-    margin-top: 0.6rem;
-  }
+  .mainTitle { font-size: 2rem; }
+  .mainTitle::after { width: 64px; height: 3px; }
+  .educationItem { padding: 1.4rem; }
+  .educationTitle { font-size: 1.12rem; }
+  .educationDate { font-size: .88rem; }
+  .educationDescription { font-size: .96rem; }
 }
-
 @media (max-width: 480px) {
   .education {
-    padding: 2rem;
-    border-radius: 0.8rem;
+    padding: 1.75rem;
+    border-radius: .9rem;
     max-width: 95%;
-    margin: 1.5rem auto;
-    gap: 1.5rem;
   }
+  .mainTitle { font-size: 1.75rem; }
+  .mainTitle::after { width: 52px; }
+}
 
-  .mainTitle {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.6rem;
-  }
-
-  .mainTitle::after {
-    width: 50px;
-    height: 3px;
-  }
-
-  .educationItem {
-    padding: 1.2rem;
-    border-radius: 0.6rem;
-  }
-
-  .educationItem::before {
-    height: 5px;
-  }
-
-  .educationTitle {
-    font-size: 1.1rem;
-  }
-
-  .educationDate {
-    font-size: 0.85rem;
-  }
-
-  .educationDescription {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-  }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .education, .educationItem { transition: none !important; transform: none !important; }
 }

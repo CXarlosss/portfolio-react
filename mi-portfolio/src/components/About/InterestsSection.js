@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import styles from "../../styles/components/about/interestsSection.module.css";
-import interests from "../../data/About-interest";
+import interests from "../../data/About/About-interest";
 
 export default function InterestsSection() {
   return (

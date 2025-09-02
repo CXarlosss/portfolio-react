@@ -1,97 +1,67 @@
 .contactPage {
-  display: grid;
-  gap: 2rem;
-  padding: 2rem 1rem; /* Ajuste para móviles */
   max-width: 1200px;
   margin: 0 auto;
-  font-family: var(--font-main);
-  background-color: var(--color-primary);
-  border-radius: 1rem; /* Ajuste para móviles */
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05); /* Ajuste para móviles */
-  transition: box-shadow 0.3s ease;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "form"
+    "info";
+  gap: 2.5rem; /* más espacio vertical en móviles */
+  background: var(--color-primary);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .06);
 }
 
-.contactPage:hover {
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+.pageForm { 
+  grid-area: form;
+  padding-right: 1rem; /* espacio extra interno lado derecho */
 }
 
-/* Layout responsive tipo columnas */
+.pageInfo { 
+  grid-area: info;
+  padding-left: 1rem; /* espacio extra interno lado izquierdo */
+}
+
 @media (min-width: 768px) {
   .contactPage {
-    grid-template-columns: 3fr 2fr; /* → 60% y 40% */
-    grid-template-areas:
-      "form info"
-      "map map";
-    gap: 2.5rem;
-    padding: 2.5rem 1.5rem; /* Restaurar padding para tablets */
-    border-radius: 1.5rem; /* Restaurar border-radius para tablets */
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05); /* Restaurar sombra para tablets */
+    grid-template-columns: 1.7fr 1.3fr; /* form más ancho, info más estrecho */
+    grid-template-areas: "form info";
+    gap: 3.5rem; /* mucho aire entre columnas */
   }
 
-  .contactPage > :nth-child(1) {
-    grid-area: form;
-  }
-
-  .contactPage > :nth-child(2) {
-    grid-area: info;
-  }
-
-  .contactPage > :nth-child(3) {
-    grid-area: map;
-  }
+  .pageForm { padding-right: 2rem; }
+  .pageInfo { padding-left: 2rem; }
 }
-
 
 @media (min-width: 1024px) {
   .contactPage {
-    gap: 3rem;
-    padding: 3.5rem;
-    border-radius: 2rem;
+    gap: 4rem; /* separación aún mayor en pantallas grandes */
+    padding: clamp(3rem, 5vw, 4rem);
   }
+
+  .pageForm { padding-right: 2.5rem; }
+  .pageInfo { padding-left: 2.5rem; }
 }
 
-/* Estilos adicionales recomendados para info/map */
-
-.contactInfo {
-  background-color: var(--color-secondary);
-  padding: 1.5rem; /* Ajuste para móviles */
-  border-radius: 0.75rem; /* Ajuste para móviles */
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.06); /* Ajuste para móviles */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem; /* Ajuste para móviles */
-  color: var(--color-dark);
+/* ====== Tarjeta mapa opcional (no invade estilos de iframe global) ====== */
+.pageMap { }
+.mapCard {
+  background: var(--color-secondary);
+  border: 1px solid rgba(var(--color-dark-rgb), .06);
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  overflow: hidden;
+  min-height: 260px;
 }
-
-.contactInfo h3 {
-  font-size: 1.1rem; /* Ajuste para móviles */
-  color: var(--color-accent);
-  margin-bottom: 0.3rem; /* Ajuste para móviles */
-}
-
-.contactInfo p {
-  font-size: 0.9rem; /* Ajuste para móviles */
-  line-height: 1.5; /* Ajuste para móviles */
-  color: var(--color-text);
-}
-
-.contactForm {
-  background-color: var(--color-secondary);
-  padding: 1.5rem; /* Ajuste para móviles */
-  border-radius: 0.75rem; /* Ajuste para móviles */
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.06); /* Ajuste para móviles */
-}
-
-.contactMap {
+.mapCard iframe {
+  display: block;
   width: 100%;
-  height: 200px; /* Ajuste para móviles */
-  border-radius: 0.75rem; /* Ajuste para móviles */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Ajuste para móviles */
-}
-
-.contactMap iframe {
-  width: 100%;
-  height: 100%;
+  height: min(50vh, 420px);
   border: 0;
+}
+
+/* ====== Ayudas ====== */
+@media (prefers-reduced-motion: reduce) {
+  .contactPage { transition: none !important; }
 }

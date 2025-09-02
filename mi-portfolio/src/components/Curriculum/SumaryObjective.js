@@ -7,12 +7,13 @@ function SummaryObjective() {
     <div className={styles.summary}>
       <h2 className={styles.summaryTitle}>Perfil Profesional</h2> 
       <p className={styles.summaryText}> 
-        Soy un desarrollador web de 24 años con gran pasión por la programación,
-        especialmente en el desarrollo de aplicaciones web. Además de mis
-        conocimientos técnicos, destaco por mi motivación, ganas de aprender y
-        compromiso con el crecimiento profesional. Me desenvuelvo bien en
-        entornos colaborativos, fomentando un buen ambiente de trabajo y
-        enfocándome en el cumplimiento de objetivos.
+        Desarrollador web Full Stack de 24 años con experiencia en la creación de 
+        aplicaciones modernas utilizando tecnologías como <strong>React, Node.js, Express y MongoDB</strong>. 
+        Apasionado por la programación y el aprendizaje continuo, disfruto enfrentando nuevos retos 
+        y aplicando buenas prácticas de desarrollo. Me caracterizo por mi <strong>capacidad de trabajo en equipo, 
+        comunicación clara y enfoque en resultados</strong>, contribuyendo a un entorno colaborativo y productivo. 
+        Busco consolidar mi carrera en el área del desarrollo web aportando soluciones innovadoras, 
+        escalables y centradas en la experiencia de usuario.
       </p>
     </div>
   );

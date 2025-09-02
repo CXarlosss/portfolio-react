@@ -1,152 +1,88 @@
-
+/* === CTA Glass Card === */
 .callToAction {
-  /* Fondo degradado sutil usando tus colores de paleta */
-  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-accent) 100%);
-  color: var(--color-primary); /* Texto blanco para contraste */
+  background: radial-gradient(1200px 800px at 80% -20%, rgba(var(--color-primary-rgb,255,255,255),.25) 0%, rgba(255,255,255,0) 60%),
+              linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.35));
+  color: var(--color-dark);
   text-align: center;
-  padding: 5rem 3rem; /* Más padding para una sensación premium */
-  border-radius: 1.5rem; /* Bordes más suaves y modernos */
-  margin: 4rem auto; /* Centra el componente y le da margen vertical */
-  max-width: 1000px; /* Un poco más ancho para el impacto */
-  font-family: var(--font-family-main); /* Usar la variable correcta */
-  /* Sombra más pronunciada y elevada, usando el color oscuro de tu paleta */
-  box-shadow: 0 1.5rem 3.5rem rgba(var(--color-dark-rgb), 0.25);
-  transition: transform var(--transition-duration) var(--transition-timing-function),
-              box-shadow var(--transition-duration) var(--transition-timing-function);
-  position: relative; /* Necesario para el pseudo-elemento */
-  overflow: hidden; /* Asegura que el pseudo-elemento no se desborde */
-}
-
-.callToAction::before { /* Capa de superposición para un efecto visual */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(var(--color-primary-rgb), 0.05); /* Ligera superposición blanca */
-  border-radius: 1.5rem; /* Coincide con el borde del contenedor */
-  z-index: 1; /* Asegura que esté debajo del contenido */
-}
-
-.callToAction > * { /* Asegura que el contenido esté por encima del pseudo-elemento */
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 1.25rem;
+  margin: 3rem auto;
+  max-width: 1000px;
+  font-family: var(--font-family-main);
+  box-shadow: 0 18px 50px rgba(0,0,0,.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.6);
   position: relative;
-  z-index: 2;
+  overflow: hidden;
 }
 
-.callToAction:hover {
-  transform: translateY(-0.5rem); /* Elevación más notable al hover */
-  box-shadow: 0 2rem 5rem rgba(var(--color-dark-rgb), 0.4); /* Sombra más intensa al hover */
-}
 
 .callToAction h2 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Título más grande e impactante */
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--color-primary); /* Asegura que el título sea blanco */
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 .75rem 0;
+  letter-spacing: -.02em;
+  color: var(--color-dark);
+  font-weight: 800;
 }
 
 .callToAction p {
-  font-size: clamp(1.1rem, 2vw, 1.3rem); /* Ligeramente más grande para mejor legibilidad */
-  margin-bottom: 3rem; /* Más espacio debajo del párrafo */
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin: 0 auto 2rem;
   line-height: 1.7;
-  opacity: 0.95; /* Más opaco para mejor contraste */
-  color: var(--color-primary); /* Asegura que el párrafo sea blanco */
-  max-width: 70ch; /* Limita el ancho del texto para legibilidad */
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 70ch;
+  color: rgba(0,0,0,.8);
 }
 
-/* Estilos para el componente Button dentro de CallToAction */
+/* grupo de botones */
+.ctaButtons {
+  display: inline-flex;
+  gap: .85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* botón principal (blanco elevadito) */
 .ctaButton {
-  /* Sobrescribe o complementa los estilos base de tu componente Button */
-  /* Asegúrate de que tu Button.module.css ya maneje la mayoría de estos estilos */
-  background-color: var(--color-primary); /* Fondo blanco para el botón */
-  color: var(--color-dark); /* Texto oscuro para el botón */
-  padding: 1rem 2.5rem; /* Más padding para un botón más robusto */
-  border-radius: 0.75rem; /* Mantiene el redondeado */
-  font-size: 1.1rem; /* Un poco más grande */
-  font-weight: 700; /* Más negrita */
-  box-shadow: 0 0.4rem 1rem rgba(var(--color-dark-rgb), 0.2); /* Sombra para el botón */
-  transition: background-color var(--transition-duration) var(--transition-timing-function),
-              color var(--transition-duration) var(--transition-timing-function),
-              transform var(--transition-duration) var(--transition-timing-function),
-              box-shadow var(--transition-duration) var(--transition-timing-function);
+  background: #fff;
+  color: var(--color-dark);
+  padding: .9rem 2rem;
+  border-radius: .9rem;
+  font-weight: 800;
+  font-size: 1.05rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  border: 1px solid rgba(0,0,0,.06);
 }
-
 .ctaButton:hover {
-  background-color: var(--color-secondary); /* Cambia a un azul muy claro al hover */
-  color: var(--color-dark); /* Mantiene el texto oscuro */
-  transform: translateY(-0.3rem) scale(1.02); /* Elevación y ligero zoom */
-  box-shadow: 0 0.6rem 1.5rem rgba(var(--color-dark-rgb), 0.3); /* Sombra más intensa al hover */
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.16);
+  background: #f7faff;
 }
 
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 1024px) {
-  .callToAction {
-    padding: 4rem 2rem;
-    border-radius: 1.2rem;
-    margin: 3rem auto;
-  }
-
-  .callToAction h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-  }
-
-  .callToAction p {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    margin-bottom: 2rem;
-  }
-
-  .ctaButton {
-    padding: 0.9rem 2.2rem;
-    font-size: 1rem;
-  }
+/* botón secundario (outline con acento) */
+.ctaButtonSecondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  box-shadow: none;
+}
+.ctaButtonSecondary:hover {
+  background: rgba(var(--color-accent-rgb), .08);
 }
 
-@media (max-width: 768px) {
-  .callToAction {
-    padding: 3rem 1.5rem;
-    border-radius: 1rem;
-    margin: 2.5rem auto;
-  }
-
-  .callToAction h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .callToAction p {
-    font-size: 1.05rem;
-    margin-bottom: 1.8rem;
-  }
-
-  .ctaButton {
-    padding: 0.8rem 2rem;
-    font-size: 0.95rem;
-  }
+/* kicker opcional */
+.kicker {
+  display: block;
+  font-size: .9rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
 }
 
+/* responsive tweaks */
 @media (max-width: 480px) {
-  .callToAction {
-    padding: 2.5rem 1rem;
-    border-radius: 0.8rem;
-    margin: 2rem auto;
-  }
-
-  .callToAction h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .callToAction p {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .ctaButton {
-    padding: 0.7rem 1.8rem;
-    font-size: 0.9rem;
-  }
+  .ctaButtons { gap: .7rem; }
+  .ctaButton { width: 100%; }
 }

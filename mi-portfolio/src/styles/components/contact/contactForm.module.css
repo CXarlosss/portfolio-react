@@ -1,80 +1,97 @@
+/* ===== Contact Form (refinado y accesible) ===== */
+
 .contactForm {
-  background-color: var(--color-primary);
-  padding: 1rem 1.25rem;
+  background: var(--color-primary);
+  padding: clamp(1.5rem, 3vw, 2.5rem); /* más aire alrededor */
   border-radius: 1rem;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  font-family: var(--font-main);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  font-family: var(--font-family-main, system-ui, -apple-system, Segoe UI, Roboto, sans-serif);
+  transition: box-shadow .3s ease, transform .2s ease;
   width: 100%;
+  box-sizing: border-box; /* aseguramos que padding no desborde */
 }
-
 .contactForm:hover {
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 32px rgba(0,0,0,.08);
+  transform: translateY(-1px);
 }
 
-.contactForm h2 {
-  font-family: var(--font-headings);
-  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-  color: var(--color-accent);
-  margin-bottom: 1rem;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-
+/* Layout del formulario */
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem; /* separa inputs del título */
 }
 
+/* Wrapper de cada campo */
+.field { 
+  display: grid; 
+  gap: .45rem; 
+  margin-bottom: .8rem; /* separación uniforme entre inputs */
+}
+
+/* Dos columnas en pantallas medianas+ */
+@media (min-width: 720px) {
+  form { grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; }
+  .field--full { grid-column: 1 / -1; }
+}
+
+/* Etiquetas */
 label {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-dark);
-  font-size: 0.9rem;
-  margin-bottom: 0.2rem;
+  font-size: .95rem;
 }
 
+/* Inputs y textarea */
 input,
 textarea {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border, #ccc);
-  border-radius: 0.65rem;
-  font-family: var(--font-main);
-  font-size: 0.95rem;
-  background-color: #fff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
+  padding: .9rem 1.1rem;
+  border: 1px solid var(--color-border, rgba(0,0,0,.15));
+  border-radius: .65rem;
+  background: #fff;
   color: var(--color-dark);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0; /* evita que metan padding extra no controlado */
+  box-sizing: border-box; /* asegura que respeten su caja */
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
+
+input::placeholder,
+textarea::placeholder { color: rgba(0,0,0,.45); }
+
+input:hover,
+textarea:hover { border-color: rgba(0,0,0,.25); }
 
 input:focus,
 textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px rgba(59, 107, 153, 0.2);
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb, 3,169,244), .25);
   outline: none;
 }
 
-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
+/* Textarea */
+textarea { min-height: 130px; resize: vertical; }
 
+/* Mensajes globales */
 .successMessage,
 .errorMessage {
-  font-size: 0.95rem;
-  border-radius: 0.6rem;
+  font-size: .98rem;
+  border-radius: .65rem;
   text-align: center;
-  padding: 0.75rem;
-  font-weight: 600;
+  padding: .8rem 1rem;
+  font-weight: 700;
+  animation: fadeIn .25s ease both;
+  margin-top: 1rem;
 }
 
-.successMessage {
-  color: var(--color-accent);
-  background-color: rgba(0, 128, 0, 0.05);
+/* Fila de envío */
+.submitRow { 
+  display: flex; 
+  gap: .75rem; 
+  justify-content: flex-end; 
+  margin-top: 1rem; 
 }
-
-.errorMessage {
-  color: red;
-  background-color: rgba(255, 0, 0, 0.05);
-}
+@media (min-width: 720px) { .submitRow { grid-column: 1 / -1; } }

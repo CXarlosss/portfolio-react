@@ -228,3 +228,152 @@
     margin-left: 0.8rem;
   }
 }
+
+/* ====== 1) Manten lo que ya tienes arriba: .experience, .mainTitle, .experienceItemsContainer ====== */
+
+/* ====== 2) Tarjeta ====== */
+.experienceItem {
+  background-color: var(--color-primary);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--color-dark-rgb), 0.1);
+  box-shadow: 0 0.5rem 1.2rem rgba(var(--color-dark-rgb), 0.08);
+  transition: transform var(--transition-duration) var(--transition-timing-function),
+              box-shadow var(--transition-duration) var(--transition-timing-function);
+  display: grid;
+  gap: .5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Acento lateral (como ya tenías) */
+.experienceItem::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;   /* top:0; bottom:0; left:0 */
+  width: 8px;
+  background-color: var(--color-accent);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+/* Offset izquierdo para TODO el contenido de la tarjeta */
+.experienceItem > * {
+  margin-left: 1.2rem;   /* evita repetir en cada selector */
+}
+
+.experienceItem:hover {
+  transform: translateY(-.5rem);
+  box-shadow: 0 0.8rem 1.8rem rgba(var(--color-dark-rgb), 0.15);
+}
+
+/* ====== 3) Títulos/Texto ====== */
+.experienceTitle {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-dark);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.experienceCompany {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* — Sustituye tu .experienceDate anterior por este chip — */
+.experienceDate {
+  margin: 0;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb), .08);
+  border: 1px solid rgba(var(--color-accent-rgb), .22);
+  padding: .18rem .6rem;
+  border-radius: 999px;
+}
+
+/* ====== 4) Meta row (empresa + fecha) — NUEVO ====== */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .75rem;
+  align-items: center;
+}
+
+/* ====== 5) Descripción ====== */
+.experienceDescription {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-top: .4rem;
+}
+
+/* ====== 6) Bullets opcionales (highlights) — NUEVO ====== */
+.experienceHighlights {
+  list-style: none;
+  padding: 0;
+  margin: .25rem 0 0;
+  display: grid;
+  gap: .35rem;
+  color: var(--color-text);
+}
+
+.experienceHighlights li {
+  position: relative;
+  padding-left: 1.2rem;
+  line-height: 1.55;
+  font-size: .98rem;
+  font-weight: 500;
+  opacity: .95;
+  transition: transform .15s ease;
+}
+
+.experienceHighlights li::before {
+  content: "→";
+  position: absolute;
+  left: 0; top: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.experienceHighlights li:hover { transform: translateX(2px); }
+
+/* ====== 7) Responsivo ====== */
+@media (max-width: 768px) {
+  .experience {
+    padding: 2.5rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    gap: 2rem;
+  }
+
+  .experienceItemsContainer { grid-template-columns: 1fr; gap: 1.5rem; }
+  .experienceItem { padding: 1.5rem; border-radius: .8rem; gap: .4rem; }
+  .experienceItem::before { width: 6px; }
+  .experienceTitle { font-size: 1.2rem; }
+  .experienceCompany { font-size: 1rem; }
+  .experienceDate { font-size: .9rem; }
+  .experienceDescription { font-size: .95rem; }
+}
+
+@media (max-width: 480px) {
+  .experience {
+    padding: 2rem;
+    border-radius: .8rem;
+    max-width: 95%;
+    margin: 1.5rem auto;
+    gap: 1.5rem;
+  }
+
+  .experienceItem { padding: 1.2rem; border-radius: .6rem; }
+  .experienceItem::before { width: 5px; }
+  .experienceTitle { font-size: 1.1rem; }
+  .experienceCompany { font-size: .95rem; }
+  .experienceDate { font-size: .85rem; }
+  .experienceDescription { font-size: .9rem; }
+}

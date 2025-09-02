@@ -1,69 +1,73 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import styles from '../../styles/components/contact/contactForm.module.css'; // Create Contact.module.css
-import Button from '../common/Button'; // Assuming you have a Button component
+import styles from '../../styles/components/contact/contactForm.module.css';
+import Button from '../common/Button';
 
-function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+export default function ContactForm() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((s) => ({ ...s, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    // Validación básica
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setFormError('Por favor, completa todos los campos.');
       return;
     }
-
-    // Basic email validation (you can use a more robust library)
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       setFormError('Por favor, introduce un email válido.');
       return;
     }
 
-    // Simulate form submission (replace with actual backend call)
+    // Envío simulado (sustituye por tu backend)
     console.log('Form submitted:', formData);
+
     setFormSubmitted(true);
     setFormError('');
-    // Reset form
     setFormData({ name: '', email: '', message: '' });
   };
 
   return (
-    <div className={styles.contactForm}>
-      <h2>Contáctame</h2>
+    <section className={styles.contactForm} aria-labelledby="contact-title">
+      <h2 id="contact-title">Contáctame</h2>
+
       {formSubmitted ? (
-        <p className={styles.successMessage}>¡Gracias! Tu mensaje ha sido enviado.</p>
+        <p className={styles.successMessage} role="status">
+          ¡Gracias! Tu mensaje ha sido enviado.
+        </p>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           {formError && <p className={styles.errorMessage}>{formError}</p>}
+
           <label htmlFor="name">Nombre</label>
           <input
-            type="text"
             id="name"
             name="name"
+            type="text"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             required
           />
+
           <label htmlFor="email">Email</label>
           <input
-            type="email"
             id="email"
             name="email"
+            type="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
+
           <label htmlFor="message">Mensaje</label>
           <textarea
             id="message"
@@ -72,12 +76,11 @@ function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             required
-          ></textarea>
-          <Button type="submit">Enviar</Button>
+          />
+
+          <Button type="submit" variant="primary">Enviar</Button>
         </form>
       )}
-    </div>
+    </section>
   );
 }
-
-export default ContactForm;

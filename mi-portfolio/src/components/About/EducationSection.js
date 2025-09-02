@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import styles from "../../styles/components/about/educationSection.module.css";
-import education from "../../data/About-experience";
+import education from "../../data/About/About-experience";
 
 function EducationItem({ item }) {
   return (

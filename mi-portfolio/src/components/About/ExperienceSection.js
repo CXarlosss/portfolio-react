@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import styles from "../../styles/components/about/experienceSection.module.css";
-import experience from "../../data/About-experience";
+import experience from "../../data/About/About-experience";
 
 function ExperienceItem({ item }) {
   return (

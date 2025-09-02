@@ -1,40 +1,78 @@
+// @ts-nocheck
 import React from 'react';
-// @ts-ignore
 import styles from '../../styles/components/curriculum/lenguages.module.css';
 
-function LanguagesList() {
-  const languages = [
-    {
-      language: 'ESPAÑOL',
-      level: 'Nativo',
-      description: 'Dominio completo del idioma, tanto oral como escrito, con capacidad para comunicarse de manera fluida y precisa en cualquier contexto.',
-    },
-    {
-      language: 'INGLÉS',
-      level: 'B2',
-      description: 'Nivel intermedio-alto, con capacidad para comprender y producir textos complejos, así como mantener conversaciones fluidas sobre una variedad de temas.',
-    },
-    // Eliminado: {
-    //   language: 'ALEMÁN',
-    //   level: 'A1',
-    // },
-  ];
+// Puedes pasar los datos como prop; si no, usa el fallback.
+const DEFAULT_LANGUAGES = [
+  {
+    code: 'es',
+    language: 'ESPAÑOL',
+    level: 'Nativo',
+    description:
+      'Dominio completo del idioma, tanto oral como escrito, con capacidad para comunicarse de manera fluida y precisa en cualquier contexto.',
+    progress: 100,
+  },
+  {
+    code: 'en',
+    language: 'INGLÉS',
+    level: 'B2',
+    description:
+      'Nivel intermedio-alto, con capacidad para comprender y producir textos complejos, así como mantener conversaciones fluidas sobre una variedad de temas.',
+    progress: 75,
+  },
+];
 
+// Mapeo simple de banderas por si quieres mostrarlas
+const FLAGS = {
+  es: '🇪🇸',
+  en: '🇬🇧',
+};
+
+function LanguagesList({ languages = DEFAULT_LANGUAGES, showFlags = true, showProgress = false }) {
   return (
-    <div className={styles.languagesSection}> {/* Contenedor principal de la sección */}
-      <h2 className={styles.mainTitle}>Idiomas</h2> {/* Título principal */}
-      <div className={styles.languagesGrid}> {/* Contenedor para la cuadrícula/píldoras */}
-        {languages.map((lang, index) => (
-          <div key={index} className={styles.languagePill}> {/* Cada idioma es una "píldora" */}
-            <div className={styles.languageHeader}> {/* Nuevo contenedor para nombre y nivel */}
-              <span className={styles.languageName}>{lang.language}</span>
-              <span className={styles.languageLevel}>{lang.level}</span>
-            </div>
-            <p className={styles.languageDescription}>{lang.description}</p> {/* Nueva descripción */}
-          </div>
-        ))}
-      </div>
-    </div>
+    <section className={styles.languagesSection} aria-labelledby="languages-title">
+      <h2 id="languages-title" className={styles.mainTitle}>
+        Idiomas
+      </h2>
+
+      {/* Lista semántica */}
+      <ul className={styles.languagesGrid} role="list">
+        {languages.map((lang) => {
+          const key = lang.code || lang.language;
+          const flag = showFlags ? FLAGS[lang.code] : null;
+          return (
+            <li key={key} className={styles.languagePill}>
+              <div className={styles.languageHeader}>
+                <span className={styles.languageName}>
+                  {flag && <span aria-hidden="true" style={{ marginRight: '.5rem' }}>{flag}</span>}
+                  <span>{lang.language}</span>
+                </span>
+                <span className={styles.languageLevel} aria-label={`Nivel ${lang.level}`}>
+                  {lang.level}
+                </span>
+              </div>
+
+              {lang.description && (
+                <p className={styles.languageDescription}>{lang.description}</p>
+              )}
+
+              {/* Progreso opcional (no altera estilos si showProgress = false) */}
+              {showProgress && typeof lang.progress === 'number' && (
+                <div style={{ width: '100%' }}>
+                  <meter
+                    min={0}
+                    max={100}
+                    value={lang.progress}
+                    aria-label={`Progreso ${lang.language} ${lang.progress}%`}
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 

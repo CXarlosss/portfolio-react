@@ -1,127 +1,159 @@
+/* ====== Recent Work (refinado) ====== */
 
 .recentWork {
-  padding: 5rem 2.5rem; /* Más espacio vertical para mayor impacto */
-  background-color: var(--color-secondary); /* Fondo suave para la sección */
+  background: var(--color-secondary);
+  color: var(--color-text);
   font-family: var(--font-family-main);
   max-width: 1200px;
-  margin: 3rem auto; /* Centra el componente y le da margen vertical */
+  margin: clamp(2rem, 4vw, 3rem) auto;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.25rem, 3vw, 2.5rem);
   text-align: center;
-  border-radius: 1.5rem; /* Bordes suaves y modernos */
-  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.15); /* Sombra pronunciada */
+  border-radius: 1.5rem;
+  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.15);
   transition: transform var(--transition-duration) var(--transition-timing-function),
               box-shadow var(--transition-duration) var(--transition-timing-function);
+  position: relative;
+  overflow: hidden;
+}
+
+/* brillo sutil */
+.recentWork::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1200px 400px at 15% -10%, rgba(255,255,255,.25), transparent 60%),
+              radial-gradient(900px 300px at 85% 110%, rgba(255,255,255,.18), transparent 60%);
+  pointer-events: none;
 }
 
 .recentWork:hover {
-  transform: translateY(-0.5rem); /* Ligera elevación al hover */
-  box-shadow: 0 1.5rem 3.5rem rgba(var(--color-dark-rgb), 0.25); /* Sombra más intensa al hover */
+  transform: translateY(-6px);
+  box-shadow: 0 1.5rem 3.5rem rgba(var(--color-dark-rgb), 0.25);
 }
 
-.mainTitle { /* Estilo para el h2 principal */
-  font-family: var(--font-family-headings);
-  font-size: clamp(2.2rem, 4.5vw, 3rem); /* Título más grande y responsivo */
-  color: var(--color-dark); /* Color oscuro para el título */
-  margin-bottom: 2.5rem; /* Más espacio debajo del título */
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  padding-bottom: 1rem; /* Espacio para la línea */
-  position: relative; /* Para la línea decorativa */
+/* Cabecera */
+.sectionHeader {
+  margin: 0 auto clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 70ch;
 }
 
-.mainTitle::after { /* Línea decorativa debajo del título */
+.kicker {
+  display: inline-block;
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: .5rem;
+}
+
+.mainTitle {
+  font-family: var(--font-family-headings, inherit);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--color-dark);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  position: relative;
+  padding-bottom: .9rem;
+}
+
+.mainTitle::after {
   content: '';
   position: absolute;
-  bottom: 0;
   left: 50%;
+  bottom: 0;
   transform: translateX(-50%);
-  width: 100px; /* Ancho de la línea */
-  height: 4px; /* Grosor de la línea */
-  background-color: var(--color-accent); /* Color de acento para la línea */
+  width: 100px;
+  height: 4px;
+  background: var(--color-accent);
   border-radius: 2px;
 }
 
+.lead {
+  margin: 0 auto;
+  max-width: 60ch;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--color-text);
+  opacity: .9;
+}
+
+/* Grid de proyectos: 12 cols para control fino */
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tarjetas de proyecto un poco más anchas */
-  gap: 2.5rem; /* Más espacio entre las tarjetas */
-  margin-bottom: 3rem; /* Más espacio debajo de la grid */
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  margin-top: clamp(1.25rem, 2vw, 2rem);
+  margin-bottom: clamp(1.5rem, 3vw, 3rem);
 }
 
-.projectsButtonContainer { /* Contenedor para el botón "Ver Todos los Proyectos" */
-  margin-top: 1.5rem;
-  /* El botón en sí mismo recibirá los estilos de Button.module.css */
+.projectsGrid > * {
+  grid-column: span 12; /* móvil: 1 col */
 }
 
-/* --- Media Queries para Responsividad --- */
+/* tablet: 2 cols */
+@media (min-width: 640px) {
+  .projectsGrid > * { grid-column: span 6; }
+}
+
+/* desktop: 3 cols */
+@media (min-width: 1024px) {
+  .projectsGrid > * { grid-column: span 4; }
+}
+
+/* asegúrate de que las cards llenen altura y tengan aspect ratio coherente */
+.projectsGrid :global(.projectThumbnail) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectsGrid :global(.imageContainer img) {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Contenedor del botón */
+.projectsButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Accesibilidad: foco visible para CTA (si hereda del Button, reforzamos aquí) */
+.projectsButtonContainer :where(a, button):focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), .45);
+  outline-offset: 3px;
+  border-radius: .75rem;
+}
+
+/* Responsivo fino */
 @media (max-width: 1024px) {
-  .recentWork {
-    padding: 4rem 2rem;
-    border-radius: 1.2rem;
-    margin: 2.5rem auto;
-  }
-
-  .mainTitle {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-bottom: 2rem;
-  }
-
-  .mainTitle::after {
-    width: 80px;
-    height: 3px;
-  }
-
-  .projectsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-  }
+  .recentWork { border-radius: 1.2rem; }
+  .mainTitle::after { width: 80px; height: 3px; }
 }
 
 @media (max-width: 768px) {
   .recentWork {
-    padding: 3rem 1.5rem;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 1.5rem);
     border-radius: 1rem;
-    margin: 2rem auto;
   }
-
-  .mainTitle {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-  }
-
-  .mainTitle::after {
-    width: 60px;
-    height: 3px;
-  }
-
-  .projectsGrid {
-    grid-template-columns: 1fr; /* Una sola columna en móviles y tablets */
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
+  .mainTitle { padding-bottom: .7rem; }
+  .mainTitle::after { width: 60px; }
 }
 
 @media (max-width: 480px) {
-  .recentWork {
-    padding: 2.5rem 1rem;
-    border-radius: 0.8rem;
-    margin: 1.5rem auto;
-  }
+  .recentWork { border-radius: .9rem; }
+  .mainTitle { font-size: 1.75rem; }
+  .mainTitle::after { width: 50px; height: 2px; }
+  .projectsGrid { gap: 1.2rem; }
+}
 
-  .mainTitle {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.6rem;
-  }
-
-  .mainTitle::after {
-    width: 50px;
-    height: 2px;
-  }
-
-  .projectsGrid {
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
+/* Respeta preferencias del usuario */
+@media (prefers-reduced-motion: reduce) {
+  .recentWork,
+  .projectsButtonContainer :where(a, button) {
+    transition: none !important;
+    transform: none !important;
   }
 }

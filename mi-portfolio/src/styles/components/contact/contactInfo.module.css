@@ -1,144 +1,113 @@
-
+/* Contenedor principal */
 .contactInfo {
-  background-color: var(--color-primary); /* Fondo blanco para un look más limpio */
+  background: var(--color-primary);
   color: var(--color-text);
-  font-family: var(--font-family-main); /* Usar la variable correcta */
-  padding: 3rem; /* Más espacio interior para una sensación premium */
-  border-radius: 1.5rem; /* Bordes más suaves y modernos */
-  /* Sombra más pronunciada y elevada, usando el color oscuro de tu paleta */
-  box-shadow: 0 1rem 2.5rem rgba(var(--color-dark-rgb), 0.15);
-  max-width: 700px; /* Un poco más ancho para mejor legibilidad */
-  margin: 3rem auto; /* Centra el componente y le da margen vertical */
-  /* Eliminado backdrop-filter aquí si el fondo es sólido, o mantenlo si hay transparencia en el contenedor padre */
-  border: 1px solid rgba(var(--color-secondary-rgb), 0.5); /* Borde sutil */
-  transition: box-shadow var(--transition-duration) var(--transition-timing-function),
-              transform var(--transition-duration) var(--transition-timing-function); /* Añadida transición para hover */
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(var(--color-secondary-rgb, 224,242,241), 0.6);
+  max-width: 760px;
+  margin: clamp(1.25rem, 3vw, 2.5rem) auto;
+  transition: box-shadow .25s ease, transform .25s ease;
 }
-
 .contactInfo:hover {
-  transform: translateY(-0.3rem); /* Ligera elevación al pasar el ratón */
-  box-shadow: 0 1.5rem 3.5rem rgba(var(--color-dark-rgb), 0.2); /* Sombra más intensa al hover */
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
 }
 
-.contactInfo h2 {
-  color: var(--color-dark); /* Color oscuro para el título principal */
-  font-family: var(--font-family-headings); /* Usar la variable correcta */
-  margin-bottom: 2rem; /* Más espacio debajo del título */
+/* Título */
+.title {
+  color: var(--color-dark);
+  margin: 0 0 1.25rem 0;
   text-align: center;
-  font-size: clamp(2rem, 4vw, 2.5rem); /* Título responsivo y más grande */
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  padding-bottom: 1rem; /* Espacio para la línea */
-  position: relative; /* Para la línea decorativa */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  position: relative;
+  padding-bottom: .6rem;
 }
-
-.contactInfo h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px; /* Ancho de la línea */
-  height: 4px; /* Grosor de la línea */
-  background-color: var(--color-accent); /* Color de acento para la línea */
+.title::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:84px;
+  height:4px;
+  background: var(--color-accent);
   border-radius: 2px;
 }
 
-.contactInfo p {
-  margin: 1.2rem 0; /* Más espacio vertical entre los párrafos de información */
-  font-size: 1.1rem; /* Ligeramente más grande para mejor lectura */
-  display: flex;
+/* Lista semántica */
+.list {
+  display: grid;
+  gap: clamp(.75rem, 1.8vw, 1rem);
+  margin: 0;
+}
+.item {
+  display: grid;
+  grid-template-columns: 32px 120px 1fr;
   align-items: center;
-  gap: 1rem; /* Más espacio entre el icono y el texto */
-  color: var(--color-text); /* Color de texto principal */
-  line-height: 1.6;
-  padding-bottom: 0.8rem; /* Espacio antes del borde inferior */
-  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Borde sutil para separar items */
+  gap: .75rem;
+  padding-bottom: .9rem;
+  border-bottom: 1px solid rgba(var(--color-secondary-rgb, 224,242,241), .7);
 }
+.item:last-child { border-bottom: none; padding-bottom: 0; }
 
-.contactInfo p:last-child {
-  border-bottom: none; /* Elimina el borde del último párrafo */
-  padding-bottom: 0;
-}
-
-.contactInfo svg {
-  font-size: 1.5rem; /* Iconos más grandes para mayor visibilidad */
-  color: var(--color-accent); /* Color de acento para los iconos */
-  flex-shrink: 0; /* Evita que el icono se encoja */
-}
-
-.contactInfo a {
+.icon {
+  font-size: 1.35rem;
   color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 600; /* Más énfasis en los enlaces */
-  transition: color var(--transition-duration) var(--transition-timing-function),
-              text-decoration var(--transition-duration) var(--transition-timing-function);
+}
+.term {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-dark);
+  font-size: .98rem;
+}
+.desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
-.contactInfo a:hover {
-  text-decoration: underline;
-  color: var(--color-dark); /* Cambia a color oscuro al hover */
+/* Enlaces */
+.desc a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-underline-offset: 2px;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+.desc a:hover { color: var(--color-dark); text-decoration: underline; }
+.desc a:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb, 3,169,244), .35);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
-/* --- Media Queries para Responsividad --- */
-@media (max-width: 768px) {
-  .contactInfo {
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 90%;
-    margin: 2rem auto;
+/* Responsive */
+@media (max-width: 600px) {
+  .item {
+    grid-template-columns: 28px 1fr;
+    grid-template-areas:
+      "icon label"
+      "icon value";
+    align-items: start;
+    gap: .5rem .75rem;
   }
-
-  .contactInfo h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-  }
-
-  .contactInfo h2::after {
-    width: 60px;
-    height: 3px;
-  }
-
-  .contactInfo p {
-    font-size: 1rem;
-    margin: 1rem 0;
-    gap: 0.8rem;
-    padding-bottom: 0.6rem;
-  }
-
-  .contactInfo svg {
-    font-size: 1.3rem;
-  }
+  .icon { grid-area: icon; }
+  .term { grid-area: label; }
+  .desc { grid-area: value; }
 }
 
-@media (max-width: 480px) {
-  .contactInfo {
-    padding: 1.5rem;
-    border-radius: 0.8rem;
-    max-width: 95%;
-    margin: 1.5rem auto;
-  }
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .contactInfo { transition: none !important; transform: none !important; }
+}
 
-  .contactInfo h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.6rem;
-  }
-
-  .contactInfo h2::after {
-    width: 50px;
-    height: 3px;
-  }
-
-  .contactInfo p {
-    font-size: 0.95rem;
-    margin: 0.8rem 0;
-    gap: 0.6rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .contactInfo svg {
-    font-size: 1.2rem;
-  }
+/* Utilidad para texto oculto accesible si la necesitas */
+.srOnly {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }

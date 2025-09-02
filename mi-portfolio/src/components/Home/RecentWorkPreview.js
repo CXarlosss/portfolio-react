@@ -33,13 +33,7 @@ function RecentWorkPreview() {
       description: 'Aplicación para ver las películas actuales en el cine y obtener información de IBM.',
       images: [movieAppImage1, movieAppImage2],
       link: 'https://chimerical-platypus-822400.netlify.app/',
-    },
-    {
-      title: 'Calculadora de Gastos',
-      description: 'Aplicación para calcular gastos de viajes o gastos compartidos (comunidad).',
-      images: [expenseTrackerImage1, expenseTrackerImage2],
-      link: 'https://harmonious-quokka-4ca436.netlify.app/login',
-    },
+    }
   ];
 
   return (
