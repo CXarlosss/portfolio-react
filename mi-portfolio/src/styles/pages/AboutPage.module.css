@@ -1,148 +1,337 @@
-/* src/pages/AboutPage.module.css */
+/* =========================================================
+   ABOUT PAGE — Sistema de estilos elegante y estructurado
+   ========================================================= */
+
+/* ========== 1) Design Tokens & Base ========== */
+
+:root {
+  /* Paleta base (con fallbacks) */
+  --color-primary: #fff;
+  --color-secondary: #e0e0e0;
+  --color-accent: #03a9f4;
+  --color-dark: #212121;
+  --color-text: #424242;
+
+  --color-primary-rgb: 255, 255, 255;
+  --color-secondary-rgb: 224, 242, 241;
+  --color-accent-rgb: 3, 169, 244;
+  --color-dark-rgb: 33, 33, 33;
+
+  /* Tipografía y ritmo */
+  --fs-title: clamp(1.6rem, 2.3vw, 2.1rem);
+  --fs-subtitle: clamp(1.1rem, 1.5vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-small: .92rem;
+  --lh-body: 1.6;
+
+  /* Radios & sombras */
+  --radius-lg: 1rem;
+  --radius-sm: .5rem;
+  --shadow-sm: 0 4px 8px rgba(0, 0, 0, .08);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, .10);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, .12);
+
+  /* Motion */
+  --t: .22s ease;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  border: 0; clip: rect(0 0 0 0);
+  overflow: hidden; white-space: nowrap;
+}
+
+/* ========== 2) Disposición general (About Page) ========== */
 
 .aboutPage {
-  padding: 2rem 1.5rem; /* Ajuste de padding general para móviles */
   max-width: 1300px;
   margin: 0 auto;
-  font-family: var(--font-main);
-  background-color: rgba(var(--color-primary-rgb), 0.9);
-  backdrop-filter: blur(10px);
+  padding: clamp(1.25rem, 3vw, 3rem) clamp(1rem, 4vw, 4rem);
+  background: rgba(var(--color-primary-rgb), .92);
+  backdrop-filter: blur(6px);
 }
 
 .aboutMain {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem; /* Ajuste de gap general para móviles */
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
 }
 
-/* Estilos generales para las secciones secundarias (móvil) */
-.secondarySection > div,
-.interestsSection > div {
-  padding: 1.5rem; /* Ajuste de padding para móviles */
-  border-radius: 0.75rem; /* Ajuste de border-radius para móviles */
-  background-color: rgba(var(--color-secondary-rgb), 0.7);
-  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.06); /* Ajuste de sombra para móviles */
+/* Columnas */
+.colContent  { display: grid; gap: clamp(1rem, 2vw, 1.5rem); }
+.colSidebar  { display: grid; gap: clamp(1rem, 2vw, 1.1rem); }
+
+/* Targets cómodos para anclas */
+.block { scroll-margin-block-start: 80px; }
+
+/* Sticky robusto (evitar padres con overflow/transform) */
+.aboutPage, .aboutMain, .colSidebar { overflow: visible; transform: none; }
+
+/* ========== 3) Títulos, texto y listas compartidas ========== */
+
+.sectionTitle {
+  font-size: var(--fs-title);
+  color: var(--color-dark);
+  text-align: center;
+  margin: 0 0 .85rem 0;
+  padding-bottom: .6rem;
+  position: relative;
+  font-weight: 800;
+  letter-spacing: -.015em;
+}
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  width: 82px; height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
-.secondarySection h3,
-.interestsSection h3,
-.introduction h2 {
-  color: var(--color-accent);
-  margin-bottom: 0.75rem; /* Ajuste de margin-bottom para móviles */
+.itemTitle {
+  margin: 0;
+  font-size: var(--fs-subtitle);
+  color: var(--color-dark);
   font-weight: 700;
+  line-height: 1.3;
 }
 
-.introduction {
-  padding: 1.5rem; /* Ajuste de padding para móviles */
-  border-radius: 0.75rem; /* Ajuste de border-radius para móviles */
-  background-color: rgba(var(--color-secondary-rgb), 0.7);
-  box-shadow: 0 0.2rem 0.4rem rgba(var(--color-dark-rgb), 0.06); /* Ajuste de sombra para móviles */
+.itemCompany {
+  margin: 0;
+  font-size: calc(var(--fs-body) * .98);
+  color: rgba(var(--color-dark-rgb), .75);
+  font-style: italic;
+  font-weight: 600;
 }
 
-.introduction p {
-  font-size: 1rem; /* Ajuste de tamaño de fuente para móviles */
-  line-height: 1.6; /* Ajuste de espaciado de línea para móviles */
+.itemDates {
+  margin: .15rem 0 0 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: rgba(var(--color-dark-rgb), .6);
+}
+
+.itemList {
+  list-style: none;
+  margin: .5rem 0 0; padding: 0;
   color: var(--color-text);
 }
+.itemList li {
+  position: relative;
+  padding-inline-start: 1.25rem;
+  margin: .35rem 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 500;
+  opacity: .95;
+  transition: transform .15s ease;
+}
+.itemList li::before {
+  content: "→";
+  position: absolute;
+  inset-inline-start: 0; inset-block-start: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+  line-height: 1.6;
+}
+.itemList li:hover { transform: translateX(2px); }
 
-.interestsSection ul {
-  list-style: none;
-  padding: 0;
+/* Chips de skills compartidos */
+/* ====== Habilidades Técnicas (Skills) ====== */
+/* Si tu skillsSection va dentro del sidebarCard puedes darle override */
+.skillsSection,
+.sidebarCard:has(.skillsSection) {
+  background: rgba(var(--color-accent-rgb), 0.08); /* azul claro translúcido */
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
 }
 
-.interestsSection li {
-  margin-bottom: 0.5rem; /* Ajuste de margin-bottom para móviles */
-  font-size: 0.9rem; /* Ajuste de tamaño de fuente para móviles */
+.skillsSection h2 {
+  color: var(--color-accent);
+  border-bottom: 2px solid rgba(var(--color-accent-rgb), 0.35);
+}
+
+/* Chips más contrastados en Skills */
+.skillPill {
+  background: rgba(var(--color-accent-rgb), 0.1);
   color: var(--color-dark);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
+}
+.skillPill:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+/* ========== 4) Secciones principales (tarjetas) ========== */
+
+.educationSection,
+.experienceSection {
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+  transition: box-shadow var(--t), transform var(--t);
+}
+@media (hover:hover) {
+  .educationSection:hover, .experienceSection:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
-/* Diseño para pantallas medianas (tabletas y algunos desktops pequeños) */
+/* Experiencia con contraste suave */
+/* ====== Sección de Experiencia ====== */
+.experienceSection {
+  background: #f7f9fc; /* gris azulado muy claro */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+  transition: box-shadow var(--t), transform var(--t);
+}
+@media (hover:hover) {
+  .experienceSection:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+/* ========== 5) Educación — Timeline con línea + guiones (sin “bolas”) ========== */
+
+.timeline {
+  position: relative;
+  padding-inline-start: 1.25rem; /* respiro a la izquierda */
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--color-dark-rgb), .08) 0%,
+    rgba(var(--color-dark-rgb), .08) 100%
+  );
+  border-radius: 2px;
+}
+
+.educationItem {
+  position: relative;
+  padding-block: 1rem 1.25rem;
+  padding-inline: .25rem 0;
+}
+.educationItem + .educationItem { border-top: 1px dashed rgba(var(--color-dark-rgb), .08); }
+
+/* Marcador con guion largo “—” en lugar de puntos */
+.educationItem::before {
+  content: "—";
+  position: absolute;
+  inset-inline-start: -1.25rem;
+  inset-block-start: .9rem;
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+/* ========== 6) Experiencia — ítems ========== */
+
+.experienceItem {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: .35rem;
+  padding-block-end: 1.2rem;
+  border-bottom: 1px solid rgba(var(--color-dark-rgb), .08);
+}
+.experienceItem:last-child { border-bottom: 0; padding-block-end: 0; }
+
+/* ========== 7) Sidebar (Cards) ========== */
+
+.sidebarCard {
+  background: rgba(var(--color-secondary-rgb), .62);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  transition: box-shadow var(--t), transform var(--t);
+}
+@media (hover:hover) {
+  .sidebarCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+.sidebarCard:not(:last-child) { margin-block-end: clamp(.5rem, 1.5vw, .75rem); }
+
+.sidebarTitle {
+  margin: 0 0 .5rem 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--color-dark);
+  font-weight: 800;
+  border-bottom: 1px solid rgba(var(--color-dark-rgb), .12);
+  padding-bottom: .4rem;
+}
+
+.sidebarList {
+  list-style: none;
+  margin: .5rem 0 0; padding: 0;
+  display: grid; gap: .35rem;
+}
+.sidebarList a {
+  color: var(--color-dark);
+  text-decoration: none;
+  border-radius: .35rem;
+  transition: color var(--t), background-color var(--t);
+}
+.sidebarList a:hover { color: var(--color-accent); }
+.sidebarList a:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), .35);
+  outline-offset: 2px;
+}
+
+/* ========== 8) Responsive ========== */
+
 @media (min-width: 768px) {
-  .aboutPage {
-    padding: 3rem 2rem; /* Restaurar padding para tablets */
-  }
-
   .aboutMain {
-    grid-template-areas:
-      "introduction introduction"
-      "secondary skills"
-      "interests interests";
-    gap: 3rem; /* Restaurar gap para tablets */
+    grid-template-columns: 1.6fr 1fr; /* ~62/38 */
+    gap: clamp(1.25rem, 3vw, 2.5rem);
   }
-
-  .introduction {
-    padding: 2rem; /* Restaurar padding para tablets */
-    border-radius: 1rem; /* Restaurar border-radius para tablets */
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
-  }
-
-  .secondarySection {
-    grid-area: secondary;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem; /* Restaurar gap para tablets */
-  }
-
-  .skillsSection {
-    grid-area: skills;
+  .colSidebar {
     position: sticky;
-    top: 3rem;
-    height: fit-content;
+    top: 2rem;
     align-self: start;
-    background-color: rgba(var(--color-accent-rgb), 0.1);
-    padding: 2rem; /* Restaurar padding para tablets */
-    border-radius: 1rem; /* Restaurar border-radius para tablets */
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
-  }
-
-  .interestsSection {
-    grid-area: interests;
-    padding: 2rem; /* Restaurar padding para tablets */
-    border-radius: 1rem; /* Restaurar border-radius para tablets */
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
-  }
-
-  /* Restaurar estilos generales para secciones secundarias en tablets */
-  .secondarySection > div,
-  .interestsSection > div {
-    padding: 2rem; /* Restaurar padding para tablets */
-    border-radius: 1rem; /* Restaurar border-radius para tablets */
-    box-shadow: 0 0.4rem 0.8rem rgba(var(--color-dark-rgb), 0.06); /* Restaurar sombra para tablets */
-  }
-
-  .secondarySection h3,
-  .interestsSection h3,
-  .introduction h2 {
-    margin-bottom: 1rem; /* Restaurar margin-bottom para tablets */
-  }
-
-  .introduction p {
-    font-size: 1.1rem; /* Restaurar tamaño de fuente para tablets */
-    line-height: 1.7; /* Restaurar espaciado de línea para tablets */
-  }
-
-  .interestsSection li {
-    margin-bottom: 0.75rem; /* Restaurar margin-bottom para tablets */
-    font-size: 1rem; /* Restaurar tamaño de fuente para tablets */
+    height: fit-content;
   }
 }
 
-/* Diseño para pantallas grandes (desktops) */
 @media (min-width: 1024px) {
-  .aboutPage {
-    padding: 3rem 6rem; /* Ajuste de padding para desktops */
-  }
-
   .aboutMain {
-    grid-template-columns: 60% 40%;
-    grid-template-areas:
-      "introduction skills"
-      "secondary skills"
-      "interests skills";
-    gap: 4rem; /* Ajuste de gap para desktops */
+    grid-template-columns: 1.75fr 1fr; /* equilibrio visual mejor */
+    gap: clamp(1.5rem, 3vw, 3rem);
   }
+  .colSidebar { top: 3rem; }
+}
 
- /*  .secondarySection {
-    grid-template-columns: 1fr 1fr;
-  } */
+/* ========== 9) Preferencias usuario & Print ========== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebarCard, .educationSection, .experienceSection, .itemList li {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+@media print {
+  .aboutPage { padding: 0; background: #fff; }
+  .sidebarCard, .educationSection, .experienceSection {
+    box-shadow: none; border-radius: 0; background: #fff;
+  }
+  .experienceItem { break-inside: avoid; }
+  .itemList li { transform: none !important; }
+}
+
+/* ========== 10) Fallbacks & Guards ========== */
+
+@supports not (position: sticky) {
+  .colSidebar { position: static; top: auto; }
 }

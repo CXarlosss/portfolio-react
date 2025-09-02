@@ -1,150 +1,124 @@
+/* ===== Skills Section (refinado, consistente) ===== */
 
 .skillsSection {
-  padding: 3rem; /* Más espacio para respirar */
-  background-color: var(--color-secondary); /* Usando un tono suave del global */
-  border-radius: 1rem; /* Más redondeado y suave */
-  box-shadow: 0 0.8rem 1.6rem rgba(var(--color-dark-rgb), 0.08); /* Sombra sutil con color oscuro global */
-  display: flex; /* Para organizar el título y la cuadrícula */
+  max-width: 980px;
+  margin: clamp(1.5rem, 3vw, 3rem) auto;
+  padding: clamp(1.5rem, 2.5vw, 3rem);
+  background-color: var(--color-secondary, #e0f2f1);
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(var(--color-dark-rgb, 30,136,229), .06);
+  display: flex;
   flex-direction: column;
-  gap: 2.5rem; /* Espacio entre el título y la cuadrícula */
+  gap: 2rem;
+  transition: all var(--transition-duration, .25s) var(--transition-timing-function, ease-in-out);
+}
+.skillsSection:hover { box-shadow: 0 6px 14px rgba(var(--color-dark-rgb, 30,136,229), .10); }
+
+/* Título (dos formas, por si acaso) */
+.skillsSection h2,
+.sectionTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--color-dark, #1e88e5);               /* <-- azul titular */
+  text-align: center;
+  margin: 0;
+  padding-bottom: .75rem;
+  border-bottom: .15rem solid rgba(var(--color-accent-rgb, 3,169,244), .25); /* <-- azul acento */
+  letter-spacing: -.02em;
+  font-weight: 800;
 }
 
-.skillsSection h2 {
-  font-size: 2.2rem; /* Mayor impacto visual para el título principal */
-  color: var(--color-accent); /* Usando el color de acento para destacar */
-  margin-bottom: 0; /* El gap de .skillsSection lo manejará */
-  text-align: center; /* Centrar el título de la sección */
-  border-bottom: 0.15rem solid rgba(var(--color-accent-rgb), 0.3); /* Línea de acento más suave */
-  padding-bottom: 1rem; /* Más padding para la línea */
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  width: 100%; /* Asegura que el borde inferior abarque todo el ancho */
-}
-
+/* Grid fluido */
 .skillsGrid {
   display: grid;
-  /* Configuración de la cuadrícula:
-     - auto-fit: crea tantas columnas como quepan
-     - minmax(220px, 1fr): cada columna tiene un mínimo de 220px y ocupa 1 fracción del espacio disponible
-  */
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem; /* Espacio entre las tarjetas de habilidades */
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-.skillCategory { /* Ahora esta clase actúa como la 'skillCard' */
-  background-color: var(--color-primary); /* Fondo blanco para las tarjetas */
-  border: 0.08rem solid rgba(var(--color-dark-rgb), 0.08); /* Borde sutil */
-  border-radius: 0.8rem; /* Bordes redondeados para la tarjeta */
-  padding: 1.8rem; /* Padding interno de la tarjeta */
-  text-align: center; /* Centrar el contenido de la tarjeta */
-  transition: transform var(--transition-duration) var(--transition-timing-function),
-              box-shadow var(--transition-duration) var(--transition-timing-function);
-  box-shadow: 0 0.5rem 1rem rgba(var(--color-dark-rgb), 0.1); /* Sombra más pronunciada */
-  display: flex; /* Usar flexbox para el contenido interno de la tarjeta */
+/* Tarjeta de categoría */
+.skillCategory {
+  background-color: var(--color-primary, #fff);
+  border: 1px solid rgba(var(--color-dark-rgb, 30,136,229), .08);
+  border-radius: .9rem;
+  padding: clamp(1rem, 1.6vw, 1.4rem);
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  display: flex;
   flex-direction: column;
-  gap: 1rem; /* Espacio entre el título de la categoría y la lista de habilidades */
+  gap: .85rem;
+  text-align: left;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  outline: none;
+}
+.skillCategory:hover,
+.skillCategory:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  border-color: rgba(var(--color-accent-rgb, 3,169,244), .2);   /* <-- borde azul acento */
 }
 
-.skillCategory:hover {
-  transform: translateY(-0.4rem); /* Elevación más notable al pasar el ratón */
-  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-dark-rgb), 0.15); /* Sombra más intensa al hover */
+/* Título de categoría */
+.categoryTitle {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  color: var(--color-dark, #1e88e5);               /* <-- azul titular subtítulo */
+  font-weight: 700;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid rgba(var(--color-dark-rgb, 30,136,229), .08);
+  text-transform: none;
+  letter-spacing: 0;
 }
 
-.categoryTitle { /* Estilo para los h3 dentro de skillCategory */
-  font-size: 1.4rem; /* Tamaño de fuente para el título de la categoría */
-  color: var(--color-dark); /* Color oscuro para el título */
-  margin-bottom: 0; /* El gap lo maneja */
-  font-weight: 700; /* Más negrita */
-  text-transform: uppercase; /* Mayúsculas para destacar la categoría */
-  letter-spacing: 0.05em;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(var(--color-dark-rgb), 0.1); /* Separador sutil */
-}
-
+/* Chips */
 .skillList {
-  list-style: none; /* Eliminar viñetas por defecto */
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .6rem;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap; /* Para que las habilidades se envuelvan en varias líneas */
-  justify-content: center; /* Centrar las habilidades */
-  gap: 0.6rem; /* Espacio entre cada habilidad */
+  list-style: none;
 }
 
 .skillItem {
-  background-color: var(--color-secondary); /* Fondo suave para cada habilidad (como una 'píldora') */
-  color: var(--color-text); /* Color de texto para la habilidad */
-  padding: 0.5rem 1rem; /* Padding para las píldoras */
-  border-radius: 9999px; /* Bordes muy redondeados (forma de píldora) */
-  font-size: 0.9rem; /* Tamaño de fuente para la habilidad */
-  font-weight: 500;
-  border: 1px solid rgba(var(--color-dark-rgb), 0.05); /* Borde muy sutil */
-  transition: background-color 0.2s ease;
+  background-color: var(--color-primary, #fff);
+  color: var(--color-dark, #1e88e5);               /* <-- texto chip en azul oscuro */
+  border: 1px solid rgba(var(--color-dark-rgb, 30,136,229), .16); /* <-- borde algo más azul */
+  border-radius: 999px;
+  padding: .34rem .7rem;
+  font-size: .88rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease, color .2s ease;
 }
-
 .skillItem:hover {
-  background-color: rgba(var(--color-accent-rgb), 0.1); /* Ligero cambio de color al pasar el ratón */
+  background-color: rgba(var(--color-accent-rgb, 3,169,244), .06);
+  border-color: rgba(var(--color-accent-rgb, 3,169,244), .28);
+  color: var(--color-dark, #1e88e5);
+  transform: translateY(-1px);
+}
+.skillItem:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb, 3,169,244), .25);
+  outline-offset: 2px;
 }
 
-/* Media Queries para Responsividad */
+/* Variantes útiles */
+.skillsGrid.twoCols { grid-template-columns: repeat(2, 1fr); }
+.skillList.isCompact .skillItem { padding: .28rem .6rem; font-size: .82rem; }
+
+/* Responsive */
 @media (max-width: 768px) {
-  .skillsSection {
-    padding: 2rem;
-    gap: 2rem;
-  }
-
-  .skillsSection h2 {
-    font-size: 1.8rem;
-    padding-bottom: 0.8rem;
-  }
-
-  .skillsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste para tablets */
-    gap: 1.5rem;
-  }
-
-  .skillCategory {
-    padding: 1.5rem;
-    gap: 0.8rem;
-  }
-
-  .categoryTitle {
-    font-size: 1.2rem;
-  }
-
-  .skillItem {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
+  .skillsSection { padding: 2rem; gap: 1.6rem; }
+  .skillsGrid { gap: 1.1rem; }
+}
+@media (max-width: 480px) {
+  .skillsSection { padding: 1.5rem; gap: 1.2rem; }
 }
 
-@media (max-width: 480px) {
-  .skillsSection {
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .skillsSection, .skillCategory, .skillItem { transition: none !important; transform: none !important; }
+}
 
-  .skillsSection h2 {
-    font-size: 1.6rem;
-    padding-bottom: 0.6rem;
-  }
-
-  .skillsGrid {
-    grid-template-columns: 1fr; /* Una sola columna en móviles muy pequeños */
-    gap: 1rem;
-  }
-
-  .skillCategory {
-    padding: 1.2rem;
-    gap: 0.6rem;
-  }
-
-  .categoryTitle {
-    font-size: 1.1rem;
-  }
-
-  .skillItem {
-    padding: 0.3rem 0.7rem;
-    font-size: 0.75rem;
-  }
+/* Print */
+@media print {
+  .skillsSection { box-shadow: none; border-radius: 0; background: #fff; }
+  .skillCategory { box-shadow: none; break-inside: avoid; }
 }

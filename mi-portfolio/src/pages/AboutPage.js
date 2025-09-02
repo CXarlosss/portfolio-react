@@ -5,35 +5,28 @@ import SkillsSection from "../components/About/SkillsSection";
 import ExperienceSection from "../components/About/ExperienceSection";
 import EducationSection from "../components/About/EducationSection";
 import InterestsSection from "../components/About/InterestsSection";
-import styles from "../styles/pages/AboutPage.module.css"; // Create AboutPage.module.css
+import styles from "../styles/pages/AboutPage.module.css";
 
-function AboutPage() {
+export default function AboutPage() {
   return (
     <div className={styles.aboutPage}>
       <main className={styles.aboutMain}>
-  <div className={styles.introduction}>
-    <Introduction />
-  </div>
+        {/* Columna izquierda (contenido largo) */}
+        <section className={styles.colContent} aria-label="Contenido principal">
+          <div id="intro" className={styles.block}><Introduction /></div>
+          <div id="education" className={styles.block}><EducationSection /></div>
+          <div id="experience" className={styles.block}><ExperienceSection /></div>
+        </section>
 
-  <div className={styles.skillsSection}>
-    <SkillsSection />
-  </div>
+        {/* Sidebar (ahora con 2+ bloques) */}
+        <aside className={styles.colSidebar} aria-label="Sidebar">
+          <div className={styles.sidebarCard}><SkillsSection /></div>
+          <div className={styles.sidebarCard}><InterestsSection /></div>
 
-  
-
-  <div className={styles.educationSection}>
-    <EducationSection />
-  </div>
-  <div className={styles.secondarySection}>
-    <ExperienceSection />
-  </div>
-  <div className={styles.interestsSection}>
-    <InterestsSection />
-  </div>
-</main>
-
+          {/* Tarjeta opcional de enlaces/CTA */}
+          
+        </aside>
+      </main>
     </div>
   );
 }
-
-export default AboutPage;

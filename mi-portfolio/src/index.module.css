@@ -1,64 +1,174 @@
-/* En index.css o un archivo global */
+/* ============ Design Tokens ============ */
 :root {
-    --color-primary: #ffffff;      
-    --color-secondary: #e0f2f1;  
-    --color-accent: #03a9f4;        
-    --color-dark: #1e88e5;         
-    --color-text: #333333;        
-    --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  /* Paleta base */
+  --color-primary: #ffffff;        /* fondo tarjetas/sections claras */
+  --color-secondary: #e0f2f1;      /* fondo suave */
+  --color-surface: #f7fbfb;        /* superficie intermedia (opcional) */
+  --color-accent: #03a9f4;
+  --color-dark: #1e88e5;           /* títulos/acentos oscuros */
+  --color-text: #333333;           /* texto cuerpo */
 
-  
-    --color-dark-rgb: 30, 136, 229;   
-    --color-accent-rgb: 3, 169, 244; 
+  /* RGBs para transparencias */
+  --color-dark-rgb: 30, 136, 229;
+  --color-accent-rgb: 3, 169, 244;
 
-    --transition-duration: 0.3s;
-    --transition-timing-function: ease-in-out;
+  /* Tipografía */
+  --font-family-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-base: 16px;            /* 1rem */
+  --line-height-base: 1.6;
+
+  /* Espaciado */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Bordes / sombras */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --border-radius: 10px;
+
+  --shadow: 0 2px 6px rgba(0,0,0,.06);
+  --shadow-hover: 0 6px 14px rgba(0,0,0,.10);
+
+  /* Transiciones */
+  --transition-duration: .25s;
+  --transition-timing-function: ease-in-out;
+
+  /* Contenedores */
+  --container-max: 1200px; /* 1200–1400px funciona bien; elige tu ancho */
+}
+
+/* Dark mode opcional (si usas prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #0f172a;
+    --color-secondary: #0b1220;
+    --color-surface: #0b1324;
+    --color-dark: #e2e8f0;
+    --color-text: #dbe5f0;
+    --shadow: 0 2px 10px rgba(2,6,23,.5);
+    --shadow-hover: 0 8px 20px rgba(2,6,23,.6);
   }
+}
+
+/* ============ Base ============ */
 html {
-    scroll-behavior: smooth; 
-      overflow-x: hidden;
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
 
-  }
-  
-  body {
-    font-family: var(--font-family-main);
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    margin: 0;
-    padding: 0;
-  }
-  
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+/* Selección de texto suave */
+::selection {
+  background: rgba(var(--color-accent-rgb), .25);
+  color: inherit;
+}
+
+/* Links por defecto */
+a {
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+a:hover { color: var(--color-accent); }
+a:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), .35);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Titulares coherentes (escala responsiva ligera) */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-dark);
+  margin: 0 0 var(--space-4);
+  line-height: 1.25;
+}
+h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.4rem); }
+h4 { font-size: 1.1rem; }
+p  { margin: 0 0 var(--space-4); }
+
+/* Botones genéricos (si los usas) */
+button {
+  font: inherit;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  border: 0;
+  border-radius: 10px;
+  padding: .6rem 1rem;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+  box-shadow: 0 6px 14px rgba(var(--color-accent-rgb), .25);
+}
+button:hover { transform: translateY(-1px); }
+button:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), .35);
+  outline-offset: 2px;
+}
+
+/* Focus visible global (para inputs, cards, etc.) */
+:where(button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), .35);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ============ Layout global ============ */
 .appContainer {
   display: flex;
-  flex-direction: column; /* Apila Navbar, Main y Footer verticalmente */
-  min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la altura de la ventana */
-  background-color: var(--color-primary); /* Fondo blanco por defecto */
-  color: var(--color-text); /* Color de texto por defecto */
-  font-family: var(--font-family-main);
-  overflow-x: hidden; /* Evita el scroll horizontal en caso de desbordamiento */
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  overflow-x: hidden;
 }
 
 .mainContent {
-  flex-grow: 1; /* Permite que el contenido principal ocupe todo el espacio disponible */
-  padding: 1.5rem 1rem; /* Padding general para el contenido, ajustado para móviles */
-  max-width: 1400px; /* Ancho máximo para el contenido principal en pantallas grandes */
-  margin: 0 auto; /* Centra el contenido principal */
-  width: 100%; /* Asegura que ocupe el 100% del ancho disponible hasta el max-width */
+  flex-grow: 1;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 2.5vw, 3rem) clamp(1rem, 2vw, 2rem);
 }
 
-/* --- Media Queries para Responsividad --- */
-
-/* Para pantallas de tamaño tablet (ej. 768px y más) */
+/* ============ Media Queries ============ */
 @media (min-width: 768px) {
-  .mainContent {
-    padding: 2rem 1.5rem; /* Aumenta el padding en tablets */
+  .mainContent { padding: 2rem 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .mainContent { padding: 3rem 2rem; }
+}
+
+/* ============ Preferencias de usuario ============ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Para pantallas de tamaño desktop (ej. 1024px y más) */
-@media (min-width: 1024px) {
-  .mainContent {
-    padding: 3rem 2rem; /* Aumenta el padding en desktop */
-  }
+/* ============ Print ============ */
+@media print {
+  body { background: #fff; color: #000; }
+  .appContainer, .mainContent { box-shadow: none !important; }
 }
