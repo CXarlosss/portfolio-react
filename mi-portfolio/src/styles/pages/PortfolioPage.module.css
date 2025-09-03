@@ -1,16 +1,31 @@
+/* src/styles/pages/PortfolioPage.module.css */
+
 .portfolioPage {
   font-family: var(--font-family-main);
-  background-color: rgba(var(--color-primary-rgb), 0.9);
-  padding: 3rem 0;
-  width: 100vw;
-  max-width: none;
+  background: #FDFEFE; /* Blanco muy suave, casi puro */
+  padding: 4rem 0;
+  width: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  backdrop-filter: blur(10px);
+  gap: 3rem;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolioPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 320px;
+  background: linear-gradient(135deg, #E0F2FF 0%, #C3E6FF 100%); /* Degradado de azules muy claros */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 95%);
+  z-index: -1;
 }
 
 .portfolioContentWrapper {
@@ -20,40 +35,188 @@
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .portfolioPage h1 {
   font-family: var(--font-headings, var(--font-family-main));
-  color: var(--color-accent);
+  color: #3C4B64; /* Un azul oscuro y elegante para el título */
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 0;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin: 2rem 0 1.5rem 0;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
+  position: relative;
+  display: inline-block;
+  align-self: center;
+}
+
+.portfolioPage h1::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #80C0FA; /* Azul claro para el subrayado */
+  border-radius: 2px;
+}
+
+.portfolioIntro {
+  text-align: center;
+  color: #6C757D; /* Gris suave para el texto introductorio */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 1rem;
+  font-weight: 400;
+}
+
+.portfolioIntro p {
+  margin-bottom: 1.5rem;
+}
+
+.portfolioStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  padding: 0 1rem;
+}
+
+.statCard {
+  background: #ffffff; /* Fondo blanco puro para las tarjetas de estadísticas */
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(195, 230, 255, 0.4); /* Sombra suave de azul claro */
+  border: 1px solid rgba(220, 235, 250, 0.5); /* Borde casi invisible */
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(195, 230, 255, 0.6);
+}
+
+.statNumber {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #6C92D3; /* Azul medio para los números */
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.statLabel {
+  font-size: 0.95rem;
+  color: #7A8FA6;
+  font-weight: 500;
 }
 
 @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* Elementos flotantes - aún más sutiles */
+.floatingElement {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(220, 235, 250, 0.5) 0%, rgba(200, 225, 240, 0.4) 100%);
+  animation: float 8s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.floatingElement:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 15%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.floatingElement:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  top: 55%;
+  right: 7%;
+  animation-delay: 2s;
+}
+
+.floatingElement:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  bottom: 15%;
+  left: 12%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) rotate(3deg) scale(1.05);
+  }
+}
+
+/* Filtros - Diseño suave */
+.portfolioFilters {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.filterButton {
+  padding: 0.7rem 1.4rem;
+  border: 1.5px solid #C3E6FF; /* Borde muy claro */
+  background: #ffffff;
+  color: #5D7592; /* Azul grisáceo para el texto */
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterButton:hover,
+.filterButton.active {
+  background: #E0F2FF; /* Azul claro suave en hover */
+  color: #3C4B64;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(195, 230, 255, 0.4);
+  border-color: #C3E6FF;
+}
+
 /* Tablets */
 @media (min-width: 768px) {
   .portfolioPage {
-    padding: 4rem 0;
-    gap: 3rem;
+    padding: 4.5rem 0;
+    gap: 3.5rem;
   }
-
   .portfolioContentWrapper {
     padding: 0 2rem;
-    gap: 3rem;
+    gap: 3.5rem;
   }
-
-  .portfolioPage h1 {
-    font-size: 2.8rem;
+  .portfolioIntro {
+    font-size: 1.15rem;
+  }
+  .portfolioStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
   }
 }
 
@@ -63,14 +226,62 @@
     padding: 5rem 0;
     gap: 4rem;
   }
-
   .portfolioContentWrapper {
     padding: 0 3rem;
     gap: 4rem;
     max-width: 1600px;
   }
+  .portfolioStats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .portfolioFilters {
+    gap: 1rem;
+  }
+  .filterButton {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
+  }
+}
 
+/* Mobile */
+@media (max-width: 767px) {
+  .portfolioPage::before {
+    height: 220px;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 95%);
+  }
   .portfolioPage h1 {
-    font-size: 3rem;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 2.2rem;
+  }
+  .portfolioStats {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .statCard {
+    padding: 1.5rem;
+  }
+  .portfolioFilters {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .filterButton {
+    width: auto;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Pequeños dispositivos móviles */
+@media (max-width: 480px) {
+  .portfolioStats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .portfolioPage h1 {
+    font-size: 2rem;
+  }
+  .portfolioIntro {
+    font-size: 1rem;
   }
 }

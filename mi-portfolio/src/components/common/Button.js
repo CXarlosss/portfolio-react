@@ -1,18 +1,18 @@
 // @ts-nocheck
-import React from 'react';
-import styles from '../../styles/components/common/button.module.css'; // Create Common.module.css
+import React from "react";
+import styles from "../../styles/components/common/button.module.css"; // Create Common.module.css
 
-function Button({ children, onClick, variant, link, className }) {
+function Button({ children, onClick, variant, /* link */ className }) {
   const buttonStyle = `${styles.button} ${styles[variant]} ${className}`;
 
-  if (link) {
+/*   if (link) {
     return (
       <a href={link} className={buttonStyle} onClick={onClick}>
         {children}
       </a>
     );
   }
-
+ */
   return (
     <button className={buttonStyle} onClick={onClick}>
       {children}
@@ -21,8 +21,8 @@ function Button({ children, onClick, variant, link, className }) {
 }
 
 Button.defaultProps = {
-  variant: 'primary',
-  className: '',
+  variant: "primary",
+  className: "",
 };
 
 export default Button;

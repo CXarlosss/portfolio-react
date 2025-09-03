@@ -1,146 +1,287 @@
+/*
+ * Modern Project Modal - Glassmorphism Theme
+ * A sleek, semi-transparent design with a frosted-glass effect.
+ */
 
-.modalOverlay {
-  position: fixed;
-  inset: 0; /* Ensures it covers the entire viewport */
-  background: rgba(0, 0, 0, 0.8); /* Darker, more opaque background */
-  backdrop-filter: blur(18px); /* Increased blur for a more immersive effect */
-  z-index: 1000; /* High z-index to be on top */
-  
-  display: flex;
-  justify-content: center; /* Centers modalWrapper horizontally */
-  align-items: center; /* Centers modalWrapper vertically */
-  
-  padding: 2rem; /* Padding for the modal not to touch edges on small screens */
-  animation: fadeIn 0.4s ease forwards; /* Smoother fade-in animation */
-  
-  overflow-y: auto; /* Allow overlay to scroll if modal content is taller than viewport */
-  -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS devices */
+:root {
+  --modal-easing: cubic-bezier(0.16, 1, 0.3, 1);
+  --modal-transition-duration: 0.5s;
+  /* Glassmorphism color palette */
+  --color-dark-bg: #1a1a2e;
+  --color-modal-bg: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  --color-modal-text-light: #f0f0f0;
+  --color-modal-text-dark: #2d3748;
+  --color-accent: #00b894; /* A vibrant teal */
+  --color-border-subtle: rgba(255, 255, 255, 0.2);
+  --color-shadow-light: rgba(255, 255, 255, 0.05);
+  --color-shadow-dark: rgba(0, 0, 0, 0.2);
 }
 
-.modalWrapper {
-  background: var(--color-primary); /* White background for the modal */
-  border-radius: 1.5rem; /* Softer rounded corners */
-  width: 100%; /* Occupies 100% of available space within overlay padding */
-  max-width: 950px; /* Increased max-width for more content space */
-  
-  max-height: 90vh; /* Limits modal height to 90% of viewport */
-  overflow-y: auto; /* Allows internal scrolling if content is long */
-  flex-shrink: 0; /* Prevents modal from shrinking if space is limited */
-  margin: auto; /* Helps with robust vertical centering */
+/* --- Modal Overlay --- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  isolation: isolate;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, background 0.4s ease, backdrop-filter 0.4s ease;
+}
 
-  padding: 3rem; /* More generous padding inside the modal */
+.modalOverlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.modalOverlay.fadeOut {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+/* --- Modal Wrapper (Glassmorphism effect) --- */
+.modalWrapper {
+  background: var(--color-modal-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 750px;
+  max-height: 85vh;
+  overflow: hidden;
   position: relative;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); /* More intense shadow for prominence */
-  animation: slideInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smoother slide-in animation */
+  box-shadow: 
+    0 15px 30px -8px var(--color-shadow-dark),
+    inset 0 0 0 1px var(--color-shadow-light);
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-modal-text-light);
+  transition: transform 0.5s var(--modal-easing), opacity 0.5s var(--modal-easing);
+}
+
+.modalOverlay.open .modalWrapper {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.modalOverlay.fadeOut .modalWrapper {
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
 }
 
 /* --- Close Button --- */
 .modalCloseButton {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: none;
-  border: none;
-  font-size: 3rem; /* Larger for easier clicking */
-  font-weight: 300;
-  color: var(--color-dark); /* Darker color for better visibility */
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-  padding: 0.25rem;
-  line-height: 1;
-  z-index: 10; /* Ensure it's above other content */
-}
-
-.modalCloseButton:hover {
-  transform: scale(1.2) rotate(90deg); /* More pronounced scale and rotation */
-  color: var(--color-accent); /* Changes to accent color on hover */
-}
-
-/* --- Header Section --- */
-.headerSection {
-  text-align: center;
-  margin-bottom: 2.5rem; /* More space below the header */
-  padding-bottom: 1.5rem; /* Space for the line */
-  border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.7); /* Subtle separator line */
-}
-
-.projectTitle {
-  font-size: clamp(2.2rem, 4vw, 3rem); /* Responsive and larger title */
-  font-weight: 800; /* Extra bold */
-  color: var(--color-dark); /* Darker color for impact */
-  margin-bottom: 0.8rem; /* Space below title */
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-}
-
-.projectDescription {
-  font-size: clamp(1rem, 1.8vw, 1.15rem); /* Responsive font size for description */
-  line-height: 1.7;
-  color: var(--color-text); /* Standard text color */
-  max-width: 800px; /* Limits text width for better readability */
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.9;
-}
-
-.subheading {
-  font-size: 1.8rem; /* Larger subheading */
-  font-weight: 700;
-  color: var(--color-dark); /* Darker color for subheadings */
-  margin-bottom: 1.5rem; /* More space below subheading */
-  text-align: center;
-  font-family: var(--font-family-headings); /* Use heading font */
-}
-
-/* --- Image Carousel --- */
-.carousel {
+  top: 1.25rem;
+  right: 1.25rem;
+  background: var(--color-modal-bg);
+  border: 1px solid var(--color-border-subtle);
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem; /* More space between image and buttons */
-  margin-bottom: 3rem; /* More space below the carousel */
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--color-modal-text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  box-shadow: 0 4px 6px var(--color-shadow-dark);
+}
+
+.modalCloseButton:hover,
+.modalCloseButton:focus {
+  transform: scale(1.1) rotate(90deg);
+  background: var(--color-accent);
+  color: var(--color-dark-bg);
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 12px var(--color-accent);
+  outline: none;
+}
+
+/* --- Content Sections --- */
+.modalContent {
+  padding: 2.5rem 2rem 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border-subtle);
   position: relative;
-  width: 100%; /* Occupy full width */
+}
+
+.headerSection::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.projectTitle {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-modal-text-light);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.projectDescription {
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(240, 240, 240, 0.8);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subheading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-modal-text-light);
+  margin-bottom: 1.2rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.subheading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* --- Enhanced Image Carousel --- */
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.carouselImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 350px;
+  background-color: var(--color-modal-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carouselImageContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .carouselImage {
-  max-width: 90%; /* Image takes up to 90% of carousel width */
-  height: 450px; /* Increased height for more prominent images */
-  border-radius: 1.2rem; /* Softer rounded corners for images */
-  object-fit: contain; /* Ensures the full image is visible without cropping */
-  background-color: var(--color-secondary); /* Background for the 'contain' area */
-  box-shadow: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.25); /* More defined shadow */
-  transition: transform 0.3s ease;
-  padding: 1rem; /* Padding inside the image container to create a frame effect */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  transition: transform 0.5s ease;
+}
+
+.carouselImage:hover {
+  transform: scale(1.03);
+}
+
+.carouselNavContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
 }
 
 .navButton {
-  background: rgba(var(--color-dark-rgb), 0.6); /* Darker semi-transparent background */
-  color: var(--color-primary); /* White arrows */
-  border: none;
-  font-size: 3rem; /* Larger arrows */
-  width: 4rem; /* Larger buttons */
-  height: 4rem; /* Larger buttons */
+  background: var(--color-modal-bg);
+  color: var(--color-modal-text-light);
+  border: 1px solid var(--color-border-subtle);
+  font-size: 1.8rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   flex-shrink: 0;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* Shadow for buttons */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.navButton:hover {
-  background: var(--color-accent); /* Accent color on hover */
-  transform: scale(1.1); /* More pronounced scale effect */
-  box-shadow: 0 0.8rem 1.5rem rgba(var(--color-accent-rgb), 0.3); /* Accent shadow */
+.navButton:hover,
+.navButton:focus {
+  transform: scale(1.1);
+  background: var(--color-accent);
+  color: var(--color-dark-bg);
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  outline: none;
 }
 
-/* --- Technologies Section (Pills) --- */
+.carouselIndicator {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 1rem;
+}
+
+.indicatorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.indicatorDot.active {
+  background: var(--color-accent);
+  transform: scale(1.2);
+}
+
+/* --- Technologies Section --- */
 .technologiesSection {
-  margin-top: 2.5rem; /* More space above */
-  margin-bottom: 3rem; /* More space below */
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
@@ -148,216 +289,157 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem; /* More space between tech pills */
-  margin-top: 1.5rem; /* Space below subheading */
+  gap: 0.8rem;
+  margin-top: 1.2rem;
 }
 
 .modalTechnologies li {
   list-style: none;
-  background-color: var(--color-accent); /* Accent color for pills */
-  color: var(--color-primary); /* White text for contrast */
-  padding: 0.7rem 1.4rem; /* More padding for larger pills */
-  border-radius: 9999px; /* Fully rounded pills */
-  font-size: 1rem; /* Clearer font size */
+  background: var(--color-modal-bg);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-modal-text-light);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
   font-weight: 600;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow for pills */
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .modalTechnologies li:hover {
-  transform: translateY(-3px); /* Lift effect on hover */
-  background-color: var(--color-dark); /* Darker color on hover */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+  transform: translateY(-3px);
+  background: var(--color-accent);
+  color: var(--color-dark-bg);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Action Links (Buttons) --- */
+/* --- Action Links --- */
 .modalLinks {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem; /* More space between buttons */
-  margin-top: 3rem; /* More space above buttons */
+  gap: 1.2rem;
+  margin-top: 2.5rem;
   margin-bottom: 0;
 }
 
-/* --- Animations --- */
-.fadeOut {
-  animation: fadeOut 0.3s ease forwards;
+.linkButton,
+.linkButtonPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.linkButtonPrimary {
+  background: var(--color-accent);
+  color: var(--color-dark-bg);
 }
 
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+.linkButtonPrimary:hover,
+.linkButtonPrimary:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: var(--color-dark-bg);
+  color: var(--color-accent);
+  outline: none;
 }
 
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(100px) scale(0.9); /* Starts lower and slightly smaller */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.linkButton {
+  background: transparent;
+  color: var(--color-modal-text-light);
+  border: 2px solid var(--color-accent);
+}
+
+.linkButton:hover,
+.linkButton:focus {
+  transform: translateY(-3px);
+  background: var(--color-accent);
+  color: var(--color-dark-bg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  outline: none;
 }
 
 /* --- Media Queries for Responsiveness --- */
 @media (max-width: 1024px) {
-  .modalWrapper {
-    padding: 2.5rem;
-    max-width: 90vw;
-  }
-
-  .modalCloseButton {
-    font-size: 2.8rem;
-    top: 1.2rem;
-    right: 1.2rem;
-  }
-
-  .projectTitle {
-    font-size: clamp(2rem, 3.5vw, 2.5rem);
-  }
-
-  .projectDescription {
-    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
-  }
-
-  .subheading {
-    font-size: 1.6rem;
-  }
-
-  .carouselImage {
-    height: 380px;
-  }
-
-  .navButton {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 2.5rem;
-  }
-
-  .modalTechnologies li {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
-
-  .modalLinks {
-    gap: 1.2rem;
-  }
+  .modalWrapper { max-width: 90vw; }
+  .modalContent { padding: 2.5rem 2rem 2rem; }
+  .carouselImageContainer { height: 300px; }
 }
 
 @media (max-width: 768px) {
-  .modalOverlay {
-    padding: 1rem;
-  }
-
-  .modalWrapper {
-    padding: 2rem;
-    border-radius: 1.2rem;
-    max-height: 95vh; /* Allow more height on smaller screens */
-  }
-
+  .modalOverlay { padding: 1rem; }
+  .modalWrapper { border-radius: 16px; max-height: 95vh; }
+  .modalContent { padding: 2.5rem 1.5rem 1.5rem; }
   .modalCloseButton {
-    font-size: 2.2rem;
     top: 1rem;
     right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.25rem;
   }
-
-  .headerSection {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-  }
-
-  .projectTitle {
-    font-size: 2rem;
-  }
-
-  .projectDescription {
-    font-size: 0.9rem;
-  }
-
-  .subheading {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
-
-  .carouselImage {
-    height: 300px; /* Further adjust image height */
-  }
-
+  .carouselImageContainer { height: 250px; }
   .navButton {
     width: 3rem;
     height: 3rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
-
-  .modalTechnologies {
-    gap: 0.8rem;
-  }
-
-  .modalTechnologies li {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-
   .modalLinks {
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
+  }
+  .modalLinks a {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .modalWrapper {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
-
-  .modalCloseButton {
-    font-size: 1.8rem;
-    top: 0.75rem;
-    right: 0.75rem;
-  }
-
-  .projectTitle {
-    font-size: 1.8rem;
-  }
-
-  .projectDescription {
-    font-size: 0.85rem;
-    line-height: 1.6;
-  }
-
-  .subheading {
-    font-size: 1.2rem;
-  }
-
-  .carouselImage {
-    height: 220px; /* Even smaller on very small devices */
-  }
-
+  .modalWrapper { border-radius: 12px; }
+  .modalContent { padding: 2rem 1rem 1rem; }
+  .projectTitle { font-size: 1.6rem; }
+  .carouselImageContainer { height: 200px; }
   .navButton {
     width: 2.5rem;
     height: 2.5rem;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
-
-  .modalTechnologies {
-    gap: 0.6rem;
-  }
-
+  .modalTechnologies { gap: 0.5rem; }
   .modalTechnologies li {
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 1rem;
     font-size: 0.8rem;
   }
+}
 
-  .modalLinks {
-    gap: 0.8rem;
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .modalOverlay, .modalWrapper, .modalCloseButton, .carouselImageContainer, .navButton, .modalTechnologies li, .modalLinks a {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-dark-bg: #1a1a2e;
+    --color-modal-bg: rgba(26, 32, 44, 0.5);
+    --color-modal-text-light: #f0f0f0;
+    --color-modal-text-dark: #2d3748;
+    --color-accent: #63b3ed;
+    --color-border-subtle: rgba(255, 255, 255, 0.1);
+    --color-shadow-light: rgba(255, 255, 255, 0.05);
+    --color-shadow-dark: rgba(0, 0, 0, 0.2);
   }
 }
