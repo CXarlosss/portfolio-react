@@ -23,7 +23,7 @@ function SkillsHighlight() {
         </p>
       </header>
 
-      <ul className={styles.grid} role="list">
+      <ul className={styles.grid} > 
         {skills.map(({ icon, label }) => (
           <li key={label} className={styles.card}>
             <span className={styles.iconWrap}>{icon}</span>

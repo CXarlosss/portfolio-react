@@ -11,8 +11,6 @@ import productivityAppImage1 from '../../assets/images/Proyecto2.png';
 import productivityAppImage2 from '../../assets/images/Proyecto2-1.png';
 import movieAppImage1 from '../../assets/images/Proyecto3.png';
 import movieAppImage2 from '../../assets/images/Proyecto3-1.png';
-import expenseTrackerImage1 from '../../assets/images/Proyecto4.png';
-import expenseTrackerImage2 from '../../assets/images/Proyecto4-1.png';
 
 function RecentWorkPreview() {
   const projects = [

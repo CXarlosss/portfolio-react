@@ -36,7 +36,7 @@ function LanguagesList({ languages = DEFAULT_LANGUAGES, showFlags = true, showPr
       </h2>
 
       {/* Lista semántica */}
-      <ul className={styles.languagesGrid} role="list">
+      <ul className={styles.languagesGrid}>
         {languages.map((lang) => {
           const key = lang.code || lang.language;
           const flag = showFlags ? FLAGS[lang.code] : null;

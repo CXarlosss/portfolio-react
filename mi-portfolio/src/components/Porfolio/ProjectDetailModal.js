@@ -1,7 +1,6 @@
 // @ts-nocheck
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import styles from '../../styles/components/portfolio/projectDetailModal.module.css';
-import Button from '../common/Button';
 // No longer need to import the icons if we're not using them
 // import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
